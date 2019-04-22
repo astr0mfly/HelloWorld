@@ -1,14 +1,78 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on My New Hugo Site</title>
-    <link>https://astr0m.github.io/tags/</link>
-    <description>Recent content in Tags on My New Hugo Site</description>
+    <title>Tags on Valencia</title>
+    <link>https://astr0mfly.github.io/tags/</link>
+    <description>Recent content in Tags on Valencia</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-Hans</language>
+    <lastBuildDate>Mon, 22 Apr 2019 04:12:48 -0700</lastBuildDate>
     
-	<atom:link href="https://astr0m.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://astr0mfly.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>“go”</title>
+      <link>https://astr0mfly.github.io/tags/go/</link>
+      <pubDate>Mon, 22 Apr 2019 04:12:48 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blog</title>
+      <link>https://astr0mfly.github.io/tags/blog/</link>
+      <pubDate>Mon, 22 Apr 2019 04:09:23 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://astr0mfly.github.io/tags/hugo/</link>
+      <pubDate>Mon, 22 Apr 2019 04:09:23 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web</title>
+      <link>https://astr0mfly.github.io/tags/web/</link>
+      <pubDate>Mon, 22 Apr 2019 04:09:23 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/tags/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MBTI</title>
+      <link>https://astr0mfly.github.io/tags/mbti/</link>
+      <pubDate>Tue, 30 Jan 2018 15:04:48 +0800</pubDate>
+      
+      <guid>https://astr0mfly.github.io/tags/mbti/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>book</title>
+      <link>https://astr0mfly.github.io/tags/book/</link>
+      <pubDate>Tue, 30 Jan 2018 15:04:48 +0800</pubDate>
+      
+      <guid>https://astr0mfly.github.io/tags/book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>finance</title>
+      <link>https://astr0mfly.github.io/tags/finance/</link>
+      <pubDate>Tue, 30 Jan 2018 15:04:48 +0800</pubDate>
+      
+      <guid>https://astr0mfly.github.io/tags/finance/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on Valencia</title>
+    <link>https://astr0mfly.github.io/series/golang/</link>
+    <description>Recent content in golang on Valencia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Mon, 22 Apr 2019 04:12:48 -0700</lastBuildDate>
+    
+	<atom:link href="https://astr0mfly.github.io/series/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Golang安装环境搭建</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/golang%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 22 Apr 2019 04:12:48 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/golang%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+      <description>Go安装包下载 由于Go的官方网址国内不可达，推荐一个国内的镜像源： go语言中文网.Go安装包下载 编译安装 下载Linux版本：go1.12.4.linux-amd64.tar.gz #在下载文件夹下的Shell敲一下如下命令 sudo tar -C /usr/local -xzvf go1.12.4.linux-amd64.tar.gz #/etc/profile（全系统安装）或 $HOME/.profile 添加环境变量 export PATH=$PATH:/usr/local/go/bin 也有另一种方法添加环境变量： # vim /etc/profile.d/go.sh export PATH=$PATH:/usr/local/go/bin export GOPATH=$HOME/dev/go export GOBIN=$GOPATH/bin :wq! # source /etc/profile.d/go.sh 验证结果 创建一个hello.go的文件 package main import &amp;quot;fmt&amp;quot; func main() { fmt.Printf(&amp;quot;hello,</description>
+    </item>
+    
+  </channel>
+</rss>

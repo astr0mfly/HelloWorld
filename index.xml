@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
-    <link>https://astr0m.github.io/</link>
-    <description>Recent content on My New Hugo Site</description>
+    <title>Valencia</title>
+    <link>https://astr0mfly.github.io/</link>
+    <description>Recent content on Valencia</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-Hans</language>
+    <lastBuildDate>Mon, 22 Apr 2019 04:12:48 -0700</lastBuildDate>
     
-	<atom:link href="https://astr0m.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://astr0mfly.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang安装环境搭建</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/golang%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 22 Apr 2019 04:12:48 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/golang%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+      <description>Go安装包下载 由于Go的官方网址国内不可达，推荐一个国内的镜像源： go语言中文网.Go安装包下载 编译安装 下载Linux版本：go1.12.4.linux-amd64.tar.gz #在下载文件夹下的Shell敲一下如下命令 sudo tar -C /usr/local -xzvf go1.12.4.linux-amd64.tar.gz #/etc/profile（全系统安装）或 $HOME/.profile 添加环境变量 export PATH=$PATH:/usr/local/go/bin 也有另一种方法添加环境变量： # vim /etc/profile.d/go.sh export PATH=$PATH:/usr/local/go/bin export GOPATH=$HOME/dev/go export GOBIN=$GOPATH/bin :wq! # source /etc/profile.d/go.sh 验证结果 创建一个hello.go的文件 package main import &amp;quot;fmt&amp;quot; func main() { fmt.Printf(&amp;quot;hello,</description>
+    </item>
+    
+    <item>
+      <title>使用hugo制作静态个人界面</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/%E4%BD%BF%E7%94%A8hugo%E5%88%B6%E4%BD%9C%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E7%95%8C%E9%9D%A2/</link>
+      <pubDate>Mon, 22 Apr 2019 04:09:23 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/%E4%BD%BF%E7%94%A8hugo%E5%88%B6%E4%BD%9C%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E7%95%8C%E9%9D%A2/</guid>
+      <description>安装hugo 建议到如下链接下载对应文件，使用go get挺慢的。 https://github.com/gohugoio/hugo/releases 安装hugo 生成site并且 clone 对应皮肤的Git到theme文件夹下 调试 ：hugo server --theme=hyde --buildDrafts 打开 : http://localhost:1313 实时调试 生成部署： hugo --theme=hyde 上传到git ： git push -u origin master 实例皮肤：redlougue hugo链接： https://github.com/tmaiaroto/hugo-redlounge 路径解释 config.toml 站点全局的参数配置文件 archetypes Hugo的markdown文件中前置数据Front Matter定义的结构，默认使用的是default.md文件，可以自</description>
+    </item>
+    
+    <item>
+      <title>《弗洛伊德与荣格：从相识到决裂》</title>
+      <link>https://astr0mfly.github.io/moment/ronggejuelie/</link>
+      <pubDate>Tue, 30 Jan 2018 15:04:48 +0800</pubDate>
+      
+      <guid>https://astr0mfly.github.io/moment/ronggejuelie/</guid>
+      <description>西方有人认为：“20世纪是精神分析的世纪。”这种说法虽然不免过于夸大，但却从某种角度说明了精神分析理论在西方所产生的影响之大。弗洛伊德作为这一理论的创建者，荣格作为这一理论的有力推动与发展者都成为现代心理学中极其重要的心理学家。而发生在这两位巨擎间的由相识到决裂的恩恩怨怨也就成为精神分析学史上的一个重大事件。 我们本文中所要做的就是重新回顾那段历史，去了解发生在两人间的一场恩怨沧桑。 一、相识 我们先从</description>
+    </item>
+    
+    <item>
+      <title>穷爸爸富爸爸读后感</title>
+      <link>https://astr0mfly.github.io/moment/qiongbabafubaba/</link>
+      <pubDate>Tue, 30 Jan 2018 15:04:48 +0800</pubDate>
+      
+      <guid>https://astr0mfly.github.io/moment/qiongbabafubaba/</guid>
+      <description>章一 富爸爸 穷爸爸（观念的转变） 富人之所以越来越富，穷人之所以越来越穷，中产阶级之所以总是在债务泥潭中挣扎，其主要原因之一在于他们对金钱观念不是来自学校，而是来自家庭。 一个人的观念对其一生有着巨大影响力。 一个爸爸说“我可付不起” 另一个则禁止这类话。他说“我怎样才能付得起呢？”这两句话一个是陈述句，一个是疑问句；一个让你放弃，另一个则促使你想办法。富爸爸常说“脑袋越用越活，脑袋越活，挣钱就越多”，在他</description>
+    </item>
     
   </channel>
 </rss>
