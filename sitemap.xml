@@ -4,8 +4,37 @@
   
   <url>
     <loc>https://astr0mfly.github.io/categories/</loc>
-    <lastmod>2019-04-24T06:45:07-07:00</lastmod>
+    <lastmod>2019-04-24T08:14:44-07:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/tags/</loc>
+    <lastmod>2019-04-24T08:14:44-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/</loc>
+    <lastmod>2019-04-24T08:14:44-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/tags/cpp/</loc>
+    <lastmod>2019-04-24T08:14:44-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F/</loc>
+    <lastmod>2019-04-24T08:14:44-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/blog/2019-04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2019-04-24T08:14:44-07:00</lastmod>
   </url>
   
   <url>
@@ -20,18 +49,6 @@
   </url>
   
   <url>
-    <loc>https://astr0mfly.github.io/tags/</loc>
-    <lastmod>2019-04-24T06:45:07-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://astr0mfly.github.io/</loc>
-    <lastmod>2019-04-24T06:45:07-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://astr0mfly.github.io/series/golang/</loc>
     <lastmod>2019-04-24T06:45:07-07:00</lastmod>
     <priority>0</priority>
@@ -39,12 +56,6 @@
   
   <url>
     <loc>https://astr0mfly.github.io/tags/go/</loc>
-    <lastmod>2019-04-24T06:45:07-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F/</loc>
     <lastmod>2019-04-24T06:45:07-07:00</lastmod>
     <priority>0</priority>
   </url>

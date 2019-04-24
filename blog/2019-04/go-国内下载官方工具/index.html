@@ -7,10 +7,10 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
   <meta name="author" content="Valencia">
-  <meta name="description" content="国内下载golang.org中的工具包 国内有某种不可描述的原因，导致无法访问 golang.org,但是使用golang时官方工具包是必不可少的一部分. golang.org/x/ 这个目录，其实镜像托管在 github.com/golang/ GIT迁移 将Github的包下载到本地后，移动到相应的目录中. &gt;如: &gt;net &ndash;&gt;&gt; GOPATH/src/golang.org/x/net &gt;crypto &ndash;&gt;&gt; GOPATH/src/golang.org/x/crypto &gt;build &ndash;&gt;&gt; GOPATH/src/golang.org/x/build &gt;&hellip; 通过GIT直接下载 在 $GOPATH/src/golang.org/x/ 下通过git 进行 clone 如: ~/go/src/golang.org/x$ git clone http://github.com/golang/build 然后用git pull直接维护更新本地代码 版本控制 Version Action Time 1.0 Init 2019-04-24T06:45:07-07:00">
+  <meta name="description" content="国内下载golang.org中的工具包 国内有某种不可描述的原因，导致无法访问 golang.org,但是使用golang时官方工具包是必不可少的一部分. golang.org/x/这个目录，其实镜像托管在 github.com/golang/ GIT迁移 将Github的包下载到本地后，移动到相应的目录中. 如: net &ndash;&gt;&gt; GOPATH/src/golang.org/x/net crypto &ndash;&gt;&gt; GOPATH/src/golang.org/x/crypto build &ndash;&gt;&gt; GOPATH/src/golang.org/x/build &hellip; GIT下载 在 $GOPATH/src/golang.org/x/ 下通过git 进行 clone 如: ~/go/src/golang.org/x$ git clone http://github.com/golang/build 然后用git pull直接维护更新本地代码 版本控制 Version Action Time 1.0 Init 2019-04-24T06:45:07-07:00">
   
   <meta property="og:title" content="Go-国内下载官方工具" />
-<meta property="og:description" content="国内下载golang.org中的工具包 国内有某种不可描述的原因，导致无法访问 golang.org,但是使用golang时官方工具包是必不可少的一部分. golang.org/x/ 这个目录，其实镜像托管在 github.com/golang/ GIT迁移 将Github的包下载到本地后，移动到相应的目录中. &gt;如: &gt;net &ndash;&gt;&gt; GOPATH/src/golang.org/x/net &gt;crypto &ndash;&gt;&gt; GOPATH/src/golang.org/x/crypto &gt;build &ndash;&gt;&gt; GOPATH/src/golang.org/x/build &gt;&hellip; 通过GIT直接下载 在 $GOPATH/src/golang.org/x/ 下通过git 进行 clone 如: ~/go/src/golang.org/x$ git clone http://github.com/golang/build 然后用git pull直接维护更新本地代码 版本控制 Version Action Time 1.0 Init 2019-04-24T06:45:07-07:00" />
+<meta property="og:description" content="国内下载golang.org中的工具包 国内有某种不可描述的原因，导致无法访问 golang.org,但是使用golang时官方工具包是必不可少的一部分. golang.org/x/这个目录，其实镜像托管在 github.com/golang/ GIT迁移 将Github的包下载到本地后，移动到相应的目录中. 如: net &ndash;&gt;&gt; GOPATH/src/golang.org/x/net crypto &ndash;&gt;&gt; GOPATH/src/golang.org/x/crypto build &ndash;&gt;&gt; GOPATH/src/golang.org/x/build &hellip; GIT下载 在 $GOPATH/src/golang.org/x/ 下通过git 进行 clone 如: ~/go/src/golang.org/x$ git clone http://github.com/golang/build 然后用git pull直接维护更新本地代码 版本控制 Version Action Time 1.0 Init 2019-04-24T06:45:07-07:00" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://astr0mfly.github.io/blog/2019-04/go-%E5%9B%BD%E5%86%85%E4%B8%8B%E8%BD%BD%E5%AE%98%E6%96%B9%E5%B7%A5%E5%85%B7/" />
 <meta property="article:published_time" content="2019-04-24T06:45:07-07:00"/>
@@ -364,20 +364,23 @@
 
 <h2 id="国内下载golang-org中的工具包">国内下载golang.org中的工具包</h2>
 
-<p>国内有某种不可描述的原因，导致无法访问 golang.org,但是使用golang时官方工具包是必不可少的一部分.</p>
+<p>国内有某种不可描述的原因，导致无法访问 <code>golang.org</code>,但是使用golang时官方工具包是必不可少的一部分.</p>
 
-<p>golang.org/x/ 这个目录，其实镜像托管在 github.com/golang/</p>
+<p><strong>golang.org/x/</strong>这个目录，其实镜像托管在 <strong>github.com/golang/</strong></p>
 
 <h3 id="git迁移">GIT迁移</h3>
 
-<p>将Github的包下载到本地后，移动到相应的目录中.
-&gt;如:
-&gt;net &ndash;&gt;&gt; GOPATH/src/golang.org/x/net
-&gt;crypto &ndash;&gt;&gt; GOPATH/src/golang.org/x/crypto
-&gt;build &ndash;&gt;&gt; GOPATH/src/golang.org/x/build
-&gt;&hellip;</p>
+<p>将Github的包下载到本地后，移动到相应的目录中.</p>
 
-<h3 id="通过git直接下载">通过GIT直接下载</h3>
+<blockquote>
+<p>如:
+net &ndash;&gt;&gt; GOPATH/src/golang.org/x/net
+crypto &ndash;&gt;&gt; GOPATH/src/golang.org/x/crypto
+build &ndash;&gt;&gt; GOPATH/src/golang.org/x/build
+&hellip;</p>
+</blockquote>
+
+<h3 id="git下载">GIT下载</h3>
 
 <blockquote>
 <p>在 $GOPATH/src/golang.org/x/ 下通过git 进行 clone
@@ -445,6 +448,13 @@
             </div>
             
             <div class="col-md-6 text-right" >
+              
+                <a href=https://astr0mfly.github.io/blog/2019-04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>设计模式</span>
+                  </div>
+                </a>
               
             </div>
           </div>
@@ -540,8 +550,8 @@
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#%e9%80%9a%e8%bf%87git%e7%9b%b4%e6%8e%a5%e4%b8%8b%e8%bd%bd">
-												 通过GIT直接下载
+						 					<a class="nav-link" href="#git%e4%b8%8b%e8%bd%bd">
+												 GIT下载
 											</a>
 										</li>
 						 

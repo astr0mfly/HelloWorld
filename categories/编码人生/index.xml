@@ -6,10 +6,19 @@
     <description>Recent content in “编码人生” on Valencia</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Wed, 24 Apr 2019 06:45:07 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 24 Apr 2019 08:14:44 -0700</lastBuildDate>
     
 	<atom:link href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>设计模式</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Wed, 24 Apr 2019 08:14:44 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description>简介 推荐书籍《设计模式&amp;ndash;可复用面向对象软件的基础》 底层思维：向下，把握机器底层-&amp;gt;语言构造、编译转换、内存模型、运行机制 抽象思维：面向对象、组件封装、设计模式、架构模式 深入理解三大面向对象机制： - 封装，隐藏内部实现 - 继承，复用现有代码 - 多态，改写对象行为 设计模式详解 策略模式 起因 软件构造的过程中，算法和对象容易耦合，那么能不能让算法与对象本身解耦呢？ 要点 Strategy及其字类为组</description>
+    </item>
     
     <item>
       <title>Go-国内下载官方工具</title>
@@ -17,7 +26,7 @@
       <pubDate>Wed, 24 Apr 2019 06:45:07 -0700</pubDate>
       
       <guid>https://astr0mfly.github.io/blog/2019-04/go-%E5%9B%BD%E5%86%85%E4%B8%8B%E8%BD%BD%E5%AE%98%E6%96%B9%E5%B7%A5%E5%85%B7/</guid>
-      <description>国内下载golang.org中的工具包 国内有某种不可描述的原因，导致无法访问 golang.org,但是使用golang时官方工具包是必不可少的一部分. golang.org/x/ 这个目录，其实镜像托管在 github.com/golang/ GIT迁移 将Github的包下载到本地后，移动到相应的目录中. &amp;gt;如: &amp;gt;net &amp;ndash;&amp;gt;&amp;gt; GOPATH/src/golang.org/x/net &amp;gt;crypto &amp;ndash;&amp;gt;&amp;gt; GOPATH/src/golang.org/x/crypto &amp;gt;build &amp;ndash;&amp;gt;&amp;gt; GOPATH/src/golang.org/x/build &amp;gt;&amp;hellip; 通过GIT直接下载 在 $GOPATH/src/golang.org/x/ 下通过git 进行 clone 如: ~/go/src/golang.org/x$ git clone http://github.com/golang/build 然后用git pull直接维护更新本地代码 版本控制 Version Action Time 1.0 Init 2019-04-24T06:45:07-07:00</description>
+      <description>国内下载golang.org中的工具包 国内有某种不可描述的原因，导致无法访问 golang.org,但是使用golang时官方工具包是必不可少的一部分. golang.org/x/这个目录，其实镜像托管在 github.com/golang/ GIT迁移 将Github的包下载到本地后，移动到相应的目录中. 如: net &amp;ndash;&amp;gt;&amp;gt; GOPATH/src/golang.org/x/net crypto &amp;ndash;&amp;gt;&amp;gt; GOPATH/src/golang.org/x/crypto build &amp;ndash;&amp;gt;&amp;gt; GOPATH/src/golang.org/x/build &amp;hellip; GIT下载 在 $GOPATH/src/golang.org/x/ 下通过git 进行 clone 如: ~/go/src/golang.org/x$ git clone http://github.com/golang/build 然后用git pull直接维护更新本地代码 版本控制 Version Action Time 1.0 Init 2019-04-24T06:45:07-07:00</description>
     </item>
     
     <item>
