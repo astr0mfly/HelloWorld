@@ -7,23 +7,23 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
   <meta name="author" content="Valencia">
-  <meta name="description" content="MapReduce(并行运算编程模型)基础概念 MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。概念&rdquo;Map（映射）&rdquo;和&rdquo;Reduce（归约）&rdquo;，是它们的主要思想.软件实现是指定一个Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的Reduce（归约）函数，用来保证所有映射的键值对中的每一个共享相同的键组。">
+  <meta name="description" content="什么是反射 反射机制在java中是一个非常重要的特性，比如在spring框架中，就使用了xml &#43; 反射来完成类的动态扩展。 换句话说，反射就是根据一个字符串查找到一个类，查找到一个函数，并能生成这个类，或者函数的实例；就是在运行期通过字符串到内存单元的反向映射。 怎么做到反射 在动态语言中，反射是非常容易实现的，在java中，由于有字节码作为中间层的存在，所以实现也并不复杂。但是对于c&#43;&#43;来说，静态编译的程">
   
-  <meta property="og:title" content="Distributed-MapReduce" />
-<meta property="og:description" content="MapReduce(并行运算编程模型)基础概念 MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。概念&rdquo;Map（映射）&rdquo;和&rdquo;Reduce（归约）&rdquo;，是它们的主要思想.软件实现是指定一个Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的Reduce（归约）函数，用来保证所有映射的键值对中的每一个共享相同的键组。" />
+  <meta property="og:title" content="C&#43;&#43;如何做到反射" />
+<meta property="og:description" content="什么是反射 反射机制在java中是一个非常重要的特性，比如在spring框架中，就使用了xml &#43; 反射来完成类的动态扩展。 换句话说，反射就是根据一个字符串查找到一个类，查找到一个函数，并能生成这个类，或者函数的实例；就是在运行期通过字符串到内存单元的反向映射。 怎么做到反射 在动态语言中，反射是非常容易实现的，在java中，由于有字节码作为中间层的存在，所以实现也并不复杂。但是对于c&#43;&#43;来说，静态编译的程" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://astr0mfly.github.io/blog/2019-04/distributed-mapreduce/" />
-<meta property="article:published_time" content="2019-04-25T03:51:49-07:00"/>
-<meta property="article:modified_time" content="2019-04-25T03:51:49-07:00"/>
+<meta property="og:url" content="https://astr0mfly.github.io/blog/2019-04/c-%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E5%8F%8D%E5%B0%84/" />
+<meta property="article:published_time" content="2019-04-25T03:10:41-07:00"/>
+<meta property="article:modified_time" content="2019-04-25T03:10:41-07:00"/>
 
 
   <title>
   
-       Distributed-MapReduce | Valencia 
+       C&#43;&#43;如何做到反射 | Valencia 
   
   </title>
 
-  <link rel="canonical" href="https://astr0mfly.github.io/blog/2019-04/distributed-mapreduce/">
+  <link rel="canonical" href="https://astr0mfly.github.io/blog/2019-04/c-%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E5%8F%8D%E5%B0%84/">
 
   
   
@@ -331,13 +331,13 @@
   <ul class="post-meta li-x">
     
       
-        <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> “编码人生” </a></li>
+        <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%B9%8B%E9%81%93"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 编码之道 </a></li>
       
     
     
   </ul>
 
-  <div class="px-4 post-heading">Distributed-MapReduce</div>
+  <div class="px-4 post-heading">C&#43;&#43;如何做到反射</div>
 
   <ul class="post-meta li-x mt-1">
     
@@ -346,7 +346,7 @@
 
     
       <li class="middot"></li>
-      <li>5 minutes read</li>
+      <li>3 minutes read</li>
     
   </ul>
   
@@ -357,59 +357,132 @@
           <div class="post-content markdown">
             
 
-<h2 id="mapreduce-并行运算编程模型-基础概念">MapReduce(并行运算编程模型)基础概念</h2>
+<h2 id="什么是反射">什么是反射</h2>
 
-<p>MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。概念&rdquo;Map（映射）&rdquo;和&rdquo;Reduce（归约）&rdquo;，是它们的主要思想.软件实现是指定一个Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的Reduce（归约）函数，用来保证所有映射的键值对中的每一个共享相同的键组。</p>
+<p>反射机制在java中是一个非常重要的特性，比如在spring框架中，就使用了xml + 反射来完成类的动态扩展。
+换句话说，反射就是根据一个字符串查找到一个类，查找到一个函数，并能生成这个类，或者函数的实例；就是在运行期通过字符串到内存单元的反向映射。</p>
 
-<h2 id="特点-分而治之">特点(分而治之)</h2>
+<h2 id="怎么做到反射">怎么做到反射</h2>
 
-<ul>
-<li>映射和化简
-把一个数据集合映射缩小之后，事实上，每个元素都是被独立操作的，而原始列表没有被更改，因为这里创建了一个新的列表来保存新的答案。这就是说，Map操作是可以高度并行的，这对高性能要求的应用以及并行计算领域的需求非常有用。 而化简操作指的是对一个列表的元素进行适当的合并，同样也可以并行运算，因为数据运算的过程是相对独立的。</li>
-<li>分布可靠
-MapReduce通过把对数据集的大规模操作分发给网络上的每个节点实现可靠性；每个节点会周期性的返回它所完成的工作和最新的状态。如果一个节点保持沉默超过一个预设的时间间隔，主节点（类同Google File System中的主服务器）记录下这个节点状态为死亡，并把分配给这个节点的数据发到别的节点。每个操作使用命名文件的原子操作以确保不会发生并行线程间的冲突；当文件被改名的时候，系统可能会把他们复制到任务名以外的另一个名字上去。（避免副作用）。 化简操作工作方式与之类似，但是由于化简操作的可并行性相对较差，主节点会尽量把化简操作只分配在一个节点上，或者离需要操作的数据尽可能近的节点上</li>
-<li>MapReduce会生成大量的临时文件</li>
-<li>为应用开发者隐藏系统层细节</li>
-<li>平滑无缝的可扩展性 这里指出的可扩展性主要包括两层意义上的扩展性：数据扩展和系统规模扩展性。</li>
-<li>难以实时计算（MapReduce处理的是存储在本地磁盘上的离线数据）</li>
-<li>不能流式计算（MapReduce设计处理的数据源是静态的）</li>
-<li>难以DAG计算MapReduce这些并行计算大都是基于非循环的数据流模型，也就是说，一次计算过程中，不同计算节点之间保持高度并行，这样的数据流模型使得那些需要反复使用一个特定数据集的迭代算法无法高效地运行。</li>
-</ul>
+<p>在动态语言中，反射是非常容易实现的，在java中，由于有字节码作为中间层的存在，所以实现也并不复杂。但是对于c++来说，静态编译的程序在运行期能打交道的，只是一些内存地址，没有任何字符串相关的东西，也就是说，你写程序时的那些变量名，真正编译结束后，只是一些内存地址。当然了，万事没有绝对。 要想在c++中实现类似java的反射功能，也是可以做到的，比如——增加中间层。
+unix设计艺术里曾说过：所有的问题都可以通过增加中间层的方式来解决。</p>
 
-<h2 id="实现框架">实现框架</h2>
+<h3 id="编译期增加中间层">编译期增加中间层</h3>
 
-<h3 id="maptask">MapTask</h3>
+<p>程序在编译期，是有一个全局的符号对照表的，这个里面保存了字符串（变量或者类名）到内存地址的映射，但是一旦编译完成，在链接时，这些“多余”的信息都将不存在。我们只要把静态链接改为动态链接，就可以将需要的符号信息保存下来。</p>
 
-<p><img src="ex-maptask.png" alt="MapTask" /></p>
+<p>比如：
+1. 将所有需要动态创建的类放置于一个或多个独立的文件中；
+2. 将这些文件编译为一个.so文件；
+3. 在主程序中通过dlopen打开so文件；
+4. 调用dlsym(*pvSo, &ldquo;create&rdquo;)获得需要的函数；</p>
 
-<ol>
-<li>程序内的InputFormat(默认实现类TextInputFormat)来读取外部数据，它会调用RecordReader(它的成员变量)的read()方法来读取，返回k,v键值对。</li>
-<li>读取的k,v键值对传送给map()方法，作为其入参来执行用户定义的map逻辑</li>
-<li>context.write方法被调用时，outputCollector组件会将map()方法的输出结果写入到环形缓冲区内。</li>
-<li>环形缓冲区其实就是一个数组，后端不断接受数据的同时，前端数据不断被溢出，长度用完后读取的新数据再从前端开始覆盖。这个缓冲区默认大小100M，可以通过MR.SORT.MB(应该是它)配置</li>
-<li>spiller组件会从环形缓冲区溢出文件，这过程会按照定义的partitioner分区(默认是hashpartition),根据reduce任务的数目将数据划分为相同数目的分区，也就是一个reduce任务对应一个分区的数据，并且按照key.compareTo进行排序(底层主要用快排和外部排序)，若有combiner也会执行combiner。spiller的不断工作，会不断溢出许多小文件。这些文件仍在map task所处机器上。</li>
-<li>小文件执行merge(合并)，行程分区且区内有序的大文件(归并排序，会再一次调用combiner)</li>
-<li>Reduce会根据自己的分区，去所有map task中，从文件读取对应的数据。</li>
-<li>有人可能会问：分区中的数据怎么知道它对应的reduce是哪个呢？其实map任务一直和其父TaskTracker保持联系，而TaskTracker又一直和JobTracker保持心跳。所以JobTracker中保存了整个集群中的宏观信息</li>
-</ol>
+<p><strong>劣势</strong>
+对于c++来说，函数的命名方式和c完全不同，所以需要通过各种extern来修饰函数。而且，由于使用了动态编译，在so中就不能再使用一些模板的特性了。</p>
 
-<h3 id="reducetask">ReduceTask</h3>
+<h3 id="运行期增加中间层">运行期增加中间层</h3>
 
-<p><img src="ex-reducetask.png" alt="ReduceTask" /></p>
+<p>选择静态编译。也就是说在运行期增加一个字符串到函数的中间层。我们需要准备一个全局的map，以字符串为key，函数指针作为value。同时提供一个注册机制，把每个需要的类注册到这个全局map中。</p>
 
-<ol>
-<li>reduce task通过网络向map task获取某一分区的数据。如果reduce端接受的数据量相当小，则直接存储在内存中（缓冲区大小由mapred.job.shuffle.input.buffer.percent属性控制，表示用作此用途的堆空间的百分比），如果数据量超过了该缓冲区大小的一定比例（由mapred.job.shuffle.merge.percent决定），则对数据合并后溢写到磁盘中。</li>
-<li>通过GroupingComparator()分辨同一组的数据，把他们发送给reduce(k,iterator)方法(这里多个数据合成一组时，只取其中一个key，取得是第一个)。</li>
-<li>调用context.write()方法，会让OutPurFormat调用RecodeWriter的write()方法将处理结果写入到数据仓库中。写出的只有一个分区的文件数据，如图。</li>
-<li>其中map的context.write()调用后，开始聚合数据写入到reduce的过程叫做Shuffle</li>
-</ol>
+<p>谁来完成这个注册的过程？如果是调用者来注册，那么首先，我们需要在调用的文件中include用到的所有类的头文件，之后，我们需要一个一个把类注册进来，如果需要注册的类有上千个，这个过程将会非常的繁杂。如果是类的作者自己完成注册，就涉及到另一个问题，如何注册？因为注册的这个过程，本身需要在类外面，而且还必须是一段可执行代码。这样就又绕回了上面那步，谁来调用注册代码？</p>
 
-<h2 id="展望">展望</h2>
+<h3 id="类的静态对象">类的静态对象</h3>
 
-<ul>
-<li>在面试过程中，不管是频率统计还是topK问题，这些都意味着化简规约为MapReduce问题。</li>
-<li>bloom过滤器，利用二进制置位来进行筛选，但是它对已经存在的识别不一定准确，如果特征未出现则一定能识别</li>
-</ul>
+<p>我们知道，类的静态对象是全局的，而所有的全局变量，编译器保证了一定会在main执行前被初始化，换句话说，我们只要把注册代码放置于类的静态变量的初始化过程中，就可以了。</p>
+
+<p>于是我们可以知道</p>
+
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;map&gt;
+
+using namespace std;
+
+#define BASE_CLASS Test
+
+#define GLOBAL_FUN_MAP FunMap&lt;BASE_CLASS&gt;::get_fun_map()
+
+#define DEFINE_CLASS(class_name, fun_name) \
+    class_name(std::string) \
+    {\
+        GLOBAL_FUN_MAP.regist(#fun_name, class_name::fun_name);\
+    }\
+    class_name(){}\
+    static class_name class_name##_;\
+    static BASE_CLASS* fun_name()\
+    {\
+        return new class_name;\
+    }
+
+#define REGIST_CLASS(class_name) \
+    class_name class_name::class_name##_(#class_name);
+
+ 
+template &lt;class T&gt;
+class FunMap{
+    typedef T* (*FUN)(void);
+    map&lt;std::string, FUN&gt; fun_map_;
+public:
+    void regist(string fun_name, FUN fun){
+        fun_map_[fun_name] = fun;  
+    }
+
+    T* get(const string fun_name){
+        if (fun_map_.end() != fun_map_.find(fun_name)){
+            return fun_map_[fun_name](); 
+        } else {
+            return NULL;
+        }
+    }
+
+    static FunMap&lt;T&gt;&amp; get_fun_map(){
+        static FunMap&lt;T&gt; fun_map;
+        return fun_map;
+    }
+};
+
+ 
+class Test{
+
+};
+
+ 
+class Test1 : public Test
+{
+public:
+    DEFINE_CLASS(Test1, test1) //第一个参数是类名，第二个参数是字符串名字。
+};
+
+ 
+class Test2 : public Test{
+public:
+    DEFINE_CLASS(Test2, test2)
+};
+
+REGIST_CLASS(Test1)//在类的实现添加，参数是类名
+REGIST_CLASS(Test2)
+
+
+int main(){
+
+    GLOBAL_FUN_MAP.get(&quot;test1&quot;);   
+    GLOBAL_FUN_MAP.get(&quot;test2&quot;);   
+    GLOBAL_FUN_MAP.get(&quot;11111111&quot;);
+}
+
+</code></pre>
+
+<p><strong>宏定义知识补充</strong></p>
+
+<blockquote>
+<p><code>\</code>就是当前宏的定义除了本行下面还有，右边不能添加空格</p>
+
+<p>#define OUT(name) printf(#name);
+以这个为例其中的#name之前的#就表示把name格式化为字符串</p>
+
+<p>#define T(name) Class## name
+这里的## name 中的##就是连接符的意思,Class和可变字符name连接成一个字符串</p>
+</blockquote>
 
 <h2 id="版本控制">版本控制</h2>
 
@@ -426,7 +499,7 @@ MapReduce通过把对数据集的大规模操作分发给网络上的每个节�
 <tr>
 <td>1.0</td>
 <td>Init</td>
-<td>2019-04-25T03:51:49-07:00</td>
+<td>2019-04-25T03:10:41-07:00</td>
 </tr>
 </tbody>
 </table>
@@ -443,7 +516,7 @@ MapReduce通过把对数据集的大规模操作分发给网络上的每个节�
   <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
   <div class="tags-sm">
     
-      <li><a href="https://astr0mfly.github.io/tags/distributed" role="button">Distributed </a></li>
+      <li><a href="https://astr0mfly.github.io/tags/cpp" role="button">cpp </a></li>
       
     
   </div>
@@ -459,10 +532,10 @@ MapReduce通过把对数据集的大规模操作分发给网络上的每个节�
           <div class="row pt-3">
             <div class="col-md-6">
               
-                <a href=https://astr0mfly.github.io/blog/2019-04/c-%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E5%8F%8D%E5%B0%84/ class="post-meta">Previous
+                <a href=https://astr0mfly.github.io/blog/2019-04/git-flow/ class="post-meta">Previous
                   <div class="pt-2 pb-5 d-flex">
                     <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
-                    <span>C&#43;&#43;如何做到反射</span>
+                    <span>git-flow</span>
                   </div>
                 </a>
               
@@ -470,10 +543,10 @@ MapReduce通过把对数据集的大规模操作分发给网络上的每个节�
             
             <div class="col-md-6 text-right" >
               
-                <a href=https://astr0mfly.github.io/blog/2019-04/go-lession/ class="post-meta">Next
+                <a href=https://astr0mfly.github.io/blog/2019-04/distributed-mapreduce/ class="post-meta">Next
                   <div class="pt-2 pb-5 flex-reverse">
                     <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
-                    <span>Go-Lession</span>
+                    <span>Distributed-MapReduce</span>
                   </div>
                 </a>
               
@@ -521,8 +594,8 @@ MapReduce通过把对数据集的大规模操作分发给网络上的每个节�
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#mapreduce-%e5%b9%b6%e8%a1%8c%e8%bf%90%e7%ae%97%e7%bc%96%e7%a8%8b%e6%a8%a1%e5%9e%8b-%e5%9f%ba%e7%a1%80%e6%a6%82%e5%bf%b5">
-												 MapReduce(并行运算编程模型)基础概念
+						 					<a class="nav-link" href="#%e4%bb%80%e4%b9%88%e6%98%af%e5%8f%8d%e5%b0%84">
+												 什么是反射
 											</a>
 										</li>
 						 
@@ -543,30 +616,8 @@ MapReduce通过把对数据集的大规模操作分发给网络上的每个节�
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#%e7%89%b9%e7%82%b9-%e5%88%86%e8%80%8c%e6%b2%bb%e4%b9%8b">
-												 特点(分而治之)
-											</a>
-										</li>
-						 
-								
-								
-									</ul>
-								
-							
-						
-				 
-						
-						
-							
-								
-								
-									<ul class="nav">
-								
-								
-
-										<li class="nav-item">
-						 					<a class="nav-link" href="#%e5%ae%9e%e7%8e%b0%e6%a1%86%e6%9e%b6">
-												 实现框架
+						 					<a class="nav-link" href="#%e6%80%8e%e4%b9%88%e5%81%9a%e5%88%b0%e5%8f%8d%e5%b0%84">
+												 怎么做到反射
 											</a>
 										</li>
 						 
@@ -589,8 +640,8 @@ MapReduce通过把对数据集的大规模操作分发给网络上的每个节�
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#maptask">
-												 MapTask
+						 					<a class="nav-link" href="#%e7%bc%96%e8%af%91%e6%9c%9f%e5%a2%9e%e5%8a%a0%e4%b8%ad%e9%97%b4%e5%b1%82">
+												 编译期增加中间层
 											</a>
 										</li>
 						 
@@ -615,8 +666,8 @@ MapReduce通过把对数据集的大规模操作分发给网络上的每个节�
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#reducetask">
-												 ReduceTask
+						 					<a class="nav-link" href="#%e8%bf%90%e8%a1%8c%e6%9c%9f%e5%a2%9e%e5%8a%a0%e4%b8%ad%e9%97%b4%e5%b1%82">
+												 运行期增加中间层
 											</a>
 										</li>
 						 
@@ -636,15 +687,19 @@ MapReduce通过把对数据集的大规模操作分发给网络上的每个节�
 								
 									<ul class="nav">
 								
+									<ul class="nav">
+								
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#%e5%b1%95%e6%9c%9b">
-												 展望
+						 					<a class="nav-link" href="#%e7%b1%bb%e7%9a%84%e9%9d%99%e6%80%81%e5%af%b9%e8%b1%a1">
+												 类的静态对象
 											</a>
 										</li>
 						 
 								
+								
+									</ul>
 								
 									</ul>
 								
