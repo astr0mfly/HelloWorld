@@ -9,21 +9,21 @@
   <meta name="author" content="Valencia">
   <meta name="description" content="Devops = &ldquo;Development&rdquo; &#43; &ldquo;Operations&rdquo; DevOps 是一个完整的面向IT运维的工作流，以 IT 自动化以及持续集成（CI）、持续部署（CD）为基础，来优化程式开发、测试、系统运维等所有环节。 在敏捷开发的基础上，提出开发与运营之间的软件版本迭代循环。 工具链 代码管理（SCM）：GitHub、GitLab、BitBucket、SubVersion 构建工具：Ant、Gradle、maven 自动部署：Capistrano、CodeDeploy 持续集成（">
   
-  <meta property="og:title" content="Git-工作流" />
+  <meta property="og:title" content="git-flow" />
 <meta property="og:description" content="Devops = &ldquo;Development&rdquo; &#43; &ldquo;Operations&rdquo; DevOps 是一个完整的面向IT运维的工作流，以 IT 自动化以及持续集成（CI）、持续部署（CD）为基础，来优化程式开发、测试、系统运维等所有环节。 在敏捷开发的基础上，提出开发与运营之间的软件版本迭代循环。 工具链 代码管理（SCM）：GitHub、GitLab、BitBucket、SubVersion 构建工具：Ant、Gradle、maven 自动部署：Capistrano、CodeDeploy 持续集成（" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://astr0mfly.github.io/blog/2019-04/git-%E5%B7%A5%E4%BD%9C%E6%B5%81/" />
+<meta property="og:url" content="https://astr0mfly.github.io/blog/2019-04/git-flow/" />
 <meta property="article:published_time" content="2019-04-24T20:24:45-07:00"/>
 <meta property="article:modified_time" content="2019-04-24T20:24:45-07:00"/>
 
 
   <title>
   
-       Git-工作流 | Valencia 
+       git-flow | Valencia 
   
   </title>
 
-  <link rel="canonical" href="https://astr0mfly.github.io/blog/2019-04/git-%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+  <link rel="canonical" href="https://astr0mfly.github.io/blog/2019-04/git-flow/">
 
   
   
@@ -337,7 +337,7 @@
     
   </ul>
 
-  <div class="px-4 post-heading">Git-工作流</div>
+  <div class="px-4 post-heading">git-flow</div>
 
   <ul class="post-meta li-x mt-1">
     
@@ -396,7 +396,7 @@
 3. Git 分支和 SVN 的分支不同：分支在 SVN 中一点都不特别，其实它就是版本库中的另外一个目录。
 4. Git 没有一个全局的版本号，而 SVN 有：目前为止这是跟 SVN 相比 Git 缺少的最大的一个特征。
 5. Git 的内容完整性要优于 SVN：Git 的内容存储使用的是 SHA-1 哈希算法。这能确保代码内容的完整性，确保在遇到磁盘故障和网络问题时降低对版本库的破坏
-<img src="git-flow/git-vs-svn.jpg" alt="集中式与分布式的对比" /></p>
+<img src="git-vs-svn.jpg" alt="集中式与分布式的对比" /></p>
 
 <h3 id="什么是git-flow">什么是git-flow</h3>
 
@@ -406,7 +406,7 @@
 
 <h3 id="git-flow框架">git-flow框架</h3>
 
-<p><img src="git-flow/git-workflow-release-cycle-4maintenance.png" alt="演示图" /></p>
+<p><img src="git-workflow-release-cycle-4maintenance.png" alt="演示图" /></p>
 
 <p><strong>分支介绍</strong>
 - master 分支
