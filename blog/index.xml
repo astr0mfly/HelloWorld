@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>distri-load_balance</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/distri-load_balance/</link>
+      <pubDate>Thu, 25 Apr 2019 07:04:20 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/distri-load_balance/</guid>
+      <description>负载均衡(Load Balance) 负载均衡可以将工作任务分摊到多个处理单元，从而提高并发处理能力。 常见的web负载均衡技术包括：DNS轮询、IP负载均衡和CDN。其中IP负载均衡可以使用硬件设备或软件方式来实现。 服务器集群(Cluster)使得多个服务器节点能够协同工作，根据目的的不同，服务器集群可以分为： 高性能集群：将单个重负载的请求分散到多个节点进行处理，最后再将处理结果进行汇总 高可用集群：提高冗余单元，避</description>
+    </item>
+    
+    <item>
       <title>Shell-AutoCookies</title>
       <link>https://astr0mfly.github.io/blog/2019-04/shell-autocookies/</link>
       <pubDate>Thu, 25 Apr 2019 04:26:27 -0700</pubDate>
@@ -30,7 +39,7 @@
     </item>
     
     <item>
-      <title>Distributed-MapReduce</title>
+      <title>distributed-mapreduce</title>
       <link>https://astr0mfly.github.io/blog/2019-04/distributed-mapreduce/</link>
       <pubDate>Thu, 25 Apr 2019 03:51:49 -0700</pubDate>
       

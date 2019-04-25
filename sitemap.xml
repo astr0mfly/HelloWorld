@@ -3,20 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://astr0mfly.github.io/blog/2019-04/shell-autocookies/</loc>
-    <lastmod>2019-04-25T04:26:27-07:00</lastmod>
+    <loc>https://astr0mfly.github.io/categories/</loc>
+    <lastmod>2019-04-25T07:04:20-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/tags/distributed/</loc>
+    <lastmod>2019-04-25T07:04:20-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/tags/</loc>
+    <lastmod>2019-04-25T07:04:20-07:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://astr0mfly.github.io/</loc>
-    <lastmod>2019-04-25T04:26:27-07:00</lastmod>
+    <lastmod>2019-04-25T07:04:20-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://astr0mfly.github.io/categories/</loc>
-    <lastmod>2019-04-25T04:21:58-07:00</lastmod>
+    <loc>https://astr0mfly.github.io/blog/2019-04/distri-load_balance/</loc>
+    <lastmod>2019-04-25T07:04:20-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F/</loc>
+    <lastmod>2019-04-25T07:04:20-07:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/blog/2019-04/shell-autocookies/</loc>
+    <lastmod>2019-04-25T04:26:27-07:00</lastmod>
   </url>
   
   <url>
@@ -31,12 +54,6 @@
   </url>
   
   <url>
-    <loc>https://astr0mfly.github.io/tags/</loc>
-    <lastmod>2019-04-25T04:21:58-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://astr0mfly.github.io/series/golang/</loc>
     <lastmod>2019-04-25T04:21:58-07:00</lastmod>
     <priority>0</priority>
@@ -45,18 +62,6 @@
   <url>
     <loc>https://astr0mfly.github.io/tags/go/</loc>
     <lastmod>2019-04-25T04:21:58-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F/</loc>
-    <lastmod>2019-04-25T04:21:58-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://astr0mfly.github.io/tags/distributed/</loc>
-    <lastmod>2019-04-25T03:51:49-07:00</lastmod>
     <priority>0</priority>
   </url>
   
