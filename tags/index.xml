@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Valencia</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Wed, 24 Apr 2019 08:14:44 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 24 Apr 2019 20:24:45 -0700</lastBuildDate>
     
 	<atom:link href="https://astr0mfly.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>git</title>
+      <link>https://astr0mfly.github.io/tags/git/</link>
+      <pubDate>Wed, 24 Apr 2019 20:24:45 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>“go”</title>
+      <link>https://astr0mfly.github.io/tags/go/</link>
+      <pubDate>Wed, 24 Apr 2019 20:21:23 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/tags/go/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>“cpp”</title>
@@ -17,15 +35,6 @@
       <pubDate>Wed, 24 Apr 2019 08:14:44 -0700</pubDate>
       
       <guid>https://astr0mfly.github.io/tags/cpp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>“go”</title>
-      <link>https://astr0mfly.github.io/tags/go/</link>
-      <pubDate>Wed, 24 Apr 2019 06:45:07 -0700</pubDate>
-      
-      <guid>https://astr0mfly.github.io/tags/go/</guid>
       <description></description>
     </item>
     

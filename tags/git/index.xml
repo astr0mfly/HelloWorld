@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Valencia</title>
+    <link>https://astr0mfly.github.io/tags/git/</link>
+    <description>Recent content in git on Valencia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Wed, 24 Apr 2019 20:24:45 -0700</lastBuildDate>
+    
+	<atom:link href="https://astr0mfly.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git-工作流</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/git-%E5%B7%A5%E4%BD%9C%E6%B5%81/</link>
+      <pubDate>Wed, 24 Apr 2019 20:24:45 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/git-%E5%B7%A5%E4%BD%9C%E6%B5%81/</guid>
+      <description>Devops = &amp;ldquo;Development&amp;rdquo; + &amp;ldquo;Operations&amp;rdquo; DevOps 是一个完整的面向IT运维的工作流，以 IT 自动化以及持续集成（CI）、持续部署（CD）为基础，来优化程式开发、测试、系统运维等所有环节。 在敏捷开发的基础上，提出开发与运营之间的软件版本迭代循环。 工具链 代码管理（SCM）：GitHub、GitLab、BitBucket、SubVersion 构建工具：Ant、Gradle、maven 自动部署：Capistrano、CodeDeploy 持续集成（</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,10 +6,28 @@
     <description>Recent content on Valencia</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Wed, 24 Apr 2019 08:14:44 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 24 Apr 2019 20:24:45 -0700</lastBuildDate>
     
 	<atom:link href="https://astr0mfly.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git-工作流</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/git-%E5%B7%A5%E4%BD%9C%E6%B5%81/</link>
+      <pubDate>Wed, 24 Apr 2019 20:24:45 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/git-%E5%B7%A5%E4%BD%9C%E6%B5%81/</guid>
+      <description>Devops = &amp;ldquo;Development&amp;rdquo; + &amp;ldquo;Operations&amp;rdquo; DevOps 是一个完整的面向IT运维的工作流，以 IT 自动化以及持续集成（CI）、持续部署（CD）为基础，来优化程式开发、测试、系统运维等所有环节。 在敏捷开发的基础上，提出开发与运营之间的软件版本迭代循环。 工具链 代码管理（SCM）：GitHub、GitLab、BitBucket、SubVersion 构建工具：Ant、Gradle、maven 自动部署：Capistrano、CodeDeploy 持续集成（</description>
+    </item>
+    
+    <item>
+      <title>基于GO的分布式云存储框架</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/%E5%9F%BA%E4%BA%8Ego%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%91%E5%AD%98%E5%82%A8%E6%A1%86%E6%9E%B6/</link>
+      <pubDate>Wed, 24 Apr 2019 20:21:23 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/%E5%9F%BA%E4%BA%8Ego%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%91%E5%AD%98%E5%82%A8%E6%A1%86%E6%9E%B6/</guid>
+      <description>AstroCloudFIle 基于golang实现的一种分布式云存储服务 关于分支和标签 分支说明: master分支: 通过原生net/http实现各接口功能 gin分支: 通过Gin框架来改造(微服务化章节之后主要基于Gin框架来进行演示) pkg分支: 通过go-bindata等工具实现静态资源打包的一个示例 标签 tag是分支代码某个阶段的快照。如master主分支的v0.1是首个发布的版本，该版本是接入了阿里OSS。 关于需要手动安装的</description>
+    </item>
     
     <item>
       <title>设计模式</title>
