@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Distributed on Valencia</title>
+    <link>https://astr0mfly.github.io/tags/distributed/</link>
+    <description>Recent content in Distributed on Valencia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Thu, 25 Apr 2019 03:51:49 -0700</lastBuildDate>
+    
+	<atom:link href="https://astr0mfly.github.io/tags/distributed/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Distributed-MapReduce</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/distributed-mapreduce/</link>
+      <pubDate>Thu, 25 Apr 2019 03:51:49 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/distributed-mapreduce/</guid>
+      <description>MapReduce(并行运算编程模型)基础概念 MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。概念&amp;rdquo;Map（映射）&amp;rdquo;和&amp;rdquo;Reduce（归约）&amp;rdquo;，是它们的主要思想.软件实现是指定一个Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的Reduce（归约）函数，用来保证所有映射的键值对中的每一个共享相同的键组。</description>
+    </item>
+    
+  </channel>
+</rss>

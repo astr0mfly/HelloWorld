@@ -7,24 +7,23 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
   <meta name="author" content="Valencia">
-  <meta name="description" content="Go安装包下载 由于Go的官方网址国内不可达，推荐一个国内的镜像源： go语言中文网.Go安装包下载 编译安装 下载Linux版本：go1.12.4.linux-amd64.tar.gz #在下载文件夹下的Shell敲一下如下命令 sudo tar -C /usr/local -xzvf go1.12.4.linux-amd64.tar.gz #/etc/profile（全系统安装）或 $HOME/.profile 添加环境变量 export PATH=$PATH:/usr/local/go/bin 也有另一种方法添加环境变量： # vim /etc/profile.d/go.sh export PATH=$PATH:/usr/local/go/bin export GOPATH=$HOME/dev/go export GOBIN=$GOPATH/bin :wq! # source /etc/profile.d/go.sh 验证结果 创建一个hello.go的文件 package main import &quot;fmt&quot; func main() { fmt.Printf(&quot;hello,">
+  <meta name="description" content="MapReduce(并行运算编程模型)基础概念 MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。概念&rdquo;Map（映射）&rdquo;和&rdquo;Reduce（归约）&rdquo;，是它们的主要思想.软件实现是指定一个Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的Reduce（归约）函数，用来保证所有映射的键值对中的每一个共享相同的键组。">
   
-  <meta property="og:title" content="Golang安装环境搭建" />
-<meta property="og:description" content="Go安装包下载 由于Go的官方网址国内不可达，推荐一个国内的镜像源： go语言中文网.Go安装包下载 编译安装 下载Linux版本：go1.12.4.linux-amd64.tar.gz #在下载文件夹下的Shell敲一下如下命令 sudo tar -C /usr/local -xzvf go1.12.4.linux-amd64.tar.gz #/etc/profile（全系统安装）或 $HOME/.profile 添加环境变量 export PATH=$PATH:/usr/local/go/bin 也有另一种方法添加环境变量： # vim /etc/profile.d/go.sh export PATH=$PATH:/usr/local/go/bin export GOPATH=$HOME/dev/go export GOBIN=$GOPATH/bin :wq! # source /etc/profile.d/go.sh 验证结果 创建一个hello.go的文件 package main import &quot;fmt&quot; func main() { fmt.Printf(&quot;hello," />
+  <meta property="og:title" content="Distributed-MapReduce" />
+<meta property="og:description" content="MapReduce(并行运算编程模型)基础概念 MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。概念&rdquo;Map（映射）&rdquo;和&rdquo;Reduce（归约）&rdquo;，是它们的主要思想.软件实现是指定一个Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的Reduce（归约）函数，用来保证所有映射的键值对中的每一个共享相同的键组。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://astr0mfly.github.io/blog/2019-04/golang%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" />
-<meta property="article:published_time" content="2019-04-22T04:12:48-07:00"/>
-<meta property="article:modified_time" content="2019-04-22T04:12:48-07:00"/><meta property="og:see_also" content="https://astr0mfly.github.io/blog/2019-04/go-lession/" /><meta property="og:see_also" content="https://astr0mfly.github.io/blog/2019-04/%E5%9F%BA%E4%BA%8Ego%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%91%E5%AD%98%E5%82%A8%E6%A1%86%E6%9E%B6/" /><meta property="og:see_also" content="https://astr0mfly.github.io/blog/2019-04/go-%E5%9B%BD%E5%86%85%E4%B8%8B%E8%BD%BD%E5%AE%98%E6%96%B9%E5%B7%A5%E5%85%B7/" />
-
+<meta property="og:url" content="https://astr0mfly.github.io/blog/2019-04/distributed-mapreduce/" />
+<meta property="article:published_time" content="2019-04-25T03:51:49-07:00"/>
+<meta property="article:modified_time" content="2019-04-25T03:51:49-07:00"/>
 
 
   <title>
   
-       Golang安装环境搭建 | Valencia 
+       Distributed-MapReduce | Valencia 
   
   </title>
 
-  <link rel="canonical" href="https://astr0mfly.github.io/blog/2019-04/golang%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+  <link rel="canonical" href="https://astr0mfly.github.io/blog/2019-04/distributed-mapreduce/">
 
   
   
@@ -336,22 +335,18 @@
       
     
     
-      
-        <li><a href="https://astr0mfly.github.io/series/golang"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>golang</a></li>
-      
-    
   </ul>
 
-  <div class="px-4 post-heading">Golang安装环境搭建</div>
+  <div class="px-4 post-heading">Distributed-MapReduce</div>
 
   <ul class="post-meta li-x mt-1">
     
-      <li>Apr 22, 2019</li>
+      <li>Apr 25, 2019</li>
     
 
     
       <li class="middot"></li>
-      <li>2 minutes read</li>
+      <li>5 minutes read</li>
     
   </ul>
   
@@ -362,99 +357,59 @@
           <div class="post-content markdown">
             
 
-<h3 id="go安装包下载">Go安装包下载</h3>
+<h2 id="mapreduce-并行运算编程模型-基础概念">MapReduce(并行运算编程模型)基础概念</h2>
 
-<p>由于Go的官方网址国内不可达，推荐一个国内的镜像源：
-<a href="https://studygolang.com/dl">go语言中文网.Go安装包下载</a></p>
+<p>MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。概念&rdquo;Map（映射）&rdquo;和&rdquo;Reduce（归约）&rdquo;，是它们的主要思想.软件实现是指定一个Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的Reduce（归约）函数，用来保证所有映射的键值对中的每一个共享相同的键组。</p>
 
-<h3 id="编译安装">编译安装</h3>
+<h2 id="特点-分而治之">特点(分而治之)</h2>
 
-<p>下载Linux版本：go1.12.4.linux-amd64.tar.gz</p>
+<ul>
+<li>映射和化简
+把一个数据集合映射缩小之后，事实上，每个元素都是被独立操作的，而原始列表没有被更改，因为这里创建了一个新的列表来保存新的答案。这就是说，Map操作是可以高度并行的，这对高性能要求的应用以及并行计算领域的需求非常有用。 而化简操作指的是对一个列表的元素进行适当的合并，同样也可以并行运算，因为数据运算的过程是相对独立的。</li>
+<li>分布可靠
+MapReduce通过把对数据集的大规模操作分发给网络上的每个节点实现可靠性；每个节点会周期性的返回它所完成的工作和最新的状态。如果一个节点保持沉默超过一个预设的时间间隔，主节点（类同Google File System中的主服务器）记录下这个节点状态为死亡，并把分配给这个节点的数据发到别的节点。每个操作使用命名文件的原子操作以确保不会发生并行线程间的冲突；当文件被改名的时候，系统可能会把他们复制到任务名以外的另一个名字上去。（避免副作用）。 化简操作工作方式与之类似，但是由于化简操作的可并行性相对较差，主节点会尽量把化简操作只分配在一个节点上，或者离需要操作的数据尽可能近的节点上</li>
+<li>MapReduce会生成大量的临时文件</li>
+<li>为应用开发者隐藏系统层细节</li>
+<li>平滑无缝的可扩展性 这里指出的可扩展性主要包括两层意义上的扩展性：数据扩展和系统规模扩展性。</li>
+<li>难以实时计算（MapReduce处理的是存储在本地磁盘上的离线数据）</li>
+<li>不能流式计算（MapReduce设计处理的数据源是静态的）</li>
+<li>难以DAG计算MapReduce这些并行计算大都是基于非循环的数据流模型，也就是说，一次计算过程中，不同计算节点之间保持高度并行，这样的数据流模型使得那些需要反复使用一个特定数据集的迭代算法无法高效地运行。</li>
+</ul>
 
-<pre><code class="language-shell">#在下载文件夹下的Shell敲一下如下命令
-sudo tar -C /usr/local -xzvf go1.12.4.linux-amd64.tar.gz
-#/etc/profile（全系统安装）或 $HOME/.profile 添加环境变量
-export PATH=$PATH:/usr/local/go/bin
-</code></pre>
+<h2 id="实现框架">实现框架</h2>
 
-<p>也有另一种方法添加环境变量：</p>
+<h3 id="maptask">MapTask</h3>
 
-<pre><code class="language-shell"># vim /etc/profile.d/go.sh
-	export PATH=$PATH:/usr/local/go/bin
-	export GOPATH=$HOME/dev/go
-	export GOBIN=$GOPATH/bin
+<p><img src="ex-maptask.png" alt="MapTask" /></p>
 
-   :wq!
-# source /etc/profile.d/go.sh
+<ol>
+<li>程序内的InputFormat(默认实现类TextInputFormat)来读取外部数据，它会调用RecordReader(它的成员变量)的read()方法来读取，返回k,v键值对。</li>
+<li>读取的k,v键值对传送给map()方法，作为其入参来执行用户定义的map逻辑</li>
+<li>context.write方法被调用时，outputCollector组件会将map()方法的输出结果写入到环形缓冲区内。</li>
+<li>环形缓冲区其实就是一个数组，后端不断接受数据的同时，前端数据不断被溢出，长度用完后读取的新数据再从前端开始覆盖。这个缓冲区默认大小100M，可以通过MR.SORT.MB(应该是它)配置</li>
+<li>spiller组件会从环形缓冲区溢出文件，这过程会按照定义的partitioner分区(默认是hashpartition),根据reduce任务的数目将数据划分为相同数目的分区，也就是一个reduce任务对应一个分区的数据，并且按照key.compareTo进行排序(底层主要用快排和外部排序)，若有combiner也会执行combiner。spiller的不断工作，会不断溢出许多小文件。这些文件仍在map task所处机器上。</li>
+<li>小文件执行merge(合并)，行程分区且区内有序的大文件(归并排序，会再一次调用combiner)</li>
+<li>Reduce会根据自己的分区，去所有map task中，从文件读取对应的数据。</li>
+<li>有人可能会问：分区中的数据怎么知道它对应的reduce是哪个呢？其实map任务一直和其父TaskTracker保持联系，而TaskTracker又一直和JobTracker保持心跳。所以JobTracker中保存了整个集群中的宏观信息</li>
+</ol>
 
-</code></pre>
+<h3 id="reducetask">ReduceTask</h3>
 
-<h3 id="验证结果">验证结果</h3>
+<p><img src="ex-reducetask.png" alt="ReduceTask" /></p>
 
-<p>创建一个<code>hello.go</code>的文件</p>
+<ol>
+<li>reduce task通过网络向map task获取某一分区的数据。如果reduce端接受的数据量相当小，则直接存储在内存中（缓冲区大小由mapred.job.shuffle.input.buffer.percent属性控制，表示用作此用途的堆空间的百分比），如果数据量超过了该缓冲区大小的一定比例（由mapred.job.shuffle.merge.percent决定），则对数据合并后溢写到磁盘中。</li>
+<li>通过GroupingComparator()分辨同一组的数据，把他们发送给reduce(k,iterator)方法(这里多个数据合成一组时，只取其中一个key，取得是第一个)。</li>
+<li>调用context.write()方法，会让OutPurFormat调用RecodeWriter的write()方法将处理结果写入到数据仓库中。写出的只有一个分区的文件数据，如图。</li>
+<li>其中map的context.write()调用后，开始聚合数据写入到reduce的过程叫做Shuffle</li>
+</ol>
 
-<pre><code class="language-go">package main
+<h2 id="展望">展望</h2>
 
-import &quot;fmt&quot;
-
-func main() {
-    fmt.Printf(&quot;hello, world!\n&quot;)
-}
-</code></pre>
-
-<p>然后用刚才安装好的go去运行</p>
-
-<pre><code class="language-shell">go version
-go version go1.12.4 linux/amd64
-
-$ go run hello.go
-hello, world!
-</code></pre>
-
-<h3 id="工程目录">工程目录</h3>
-
-<pre><code>bin/
- hello                 # 可执行命令
-pkg/
- linux_amd64/          # 这里会反映出你的操作系统和架构
-  github.com/user/
-   stringutil.a  # 包对象
-src/
- github.com/user/
-  hello/
-   hello.go      # 命令源码
-  stringutil/
-   reverse.go       # 包源码
-
-</code></pre>
-
-<h3 id="卸载go">卸载Go</h3>
-
-<p>从你的系统中移除既有的Go安装，需删除 go 目录/usr/local/go;
-从你的 PATH 环境变量中移除 Go 的 bin 目录, 编辑 /etc/profile 或 $HOME/.profile。</p>
-
-<h3 id="日常问题">日常问题</h3>
-
-<p>解决sudo go command not found 报错
-在这个 /etc/sudoers 文件里面，有一个secure_path配置，大家一看就知道了，它的意思当你使用 sudo+command 这种形式执行命令的时候会从其配置的路径里面寻找命令，肯定是没有你自定义的PATH的，这个主要是安全考虑。
-解决方法有几种：</p>
-
-<p>直接把自定义PATH路径配置在secure_path里面，简单粗暴，就是有点麻烦
-将 Defaults env_reset 改成 Defaults !env_reset 取消掉对PATH变量的重置，然后在.bashrc中最后添加alias sudo=&lsquo;sudo env PATH=$PATH&rsquo;，这个感觉更麻烦
-直接把这3行注释掉，经测试完全没有任何问题</p>
-
-<p>解决go install github.com/user/valens_blog: open /home/valens/dev/go/bin/valens_blog: permission denied</p>
-
-<pre><code class="language-shell">sudo  chmod -R 777 ~/dev/go
-</code></pre>
-
-<p>设置GOPATH</p>
-
-<pre><code class="language-shell">#设置当前目录为$GOPATH
-alias gopath='export GOPATH=`pwd` &amp;&amp; echo $GOPATH'
-#尤其适合多个不同目录下的go项目,在每个项目下运行一次gopath,就设置好了当前的gopath,十分方便
-
-</code></pre>
+<ul>
+<li>在面试过程中，不管是频率统计还是topK问题，这些都意味着化简规约为MapReduce问题。</li>
+<li>bloom过滤器，利用二进制置位来进行筛选，但是它对已经存在的识别不一定准确，如果特征未出现则一定能识别</li>
+</ul>
 
 <h2 id="版本控制">版本控制</h2>
 
@@ -471,7 +426,7 @@ alias gopath='export GOPATH=`pwd` &amp;&amp; echo $GOPATH'
 <tr>
 <td>1.0</td>
 <td>Init</td>
-<td>2019-04-22T04:12:48-07:00</td>
+<td>2019-04-25T03:51:49-07:00</td>
 </tr>
 </tbody>
 </table>
@@ -488,7 +443,7 @@ alias gopath='export GOPATH=`pwd` &amp;&amp; echo $GOPATH'
   <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
   <div class="tags-sm">
     
-      <li><a href="https://astr0mfly.github.io/tags/go" role="button">“go” </a></li>
+      <li><a href="https://astr0mfly.github.io/tags/distributed" role="button">Distributed </a></li>
       
     
   </div>
@@ -504,10 +459,10 @@ alias gopath='export GOPATH=`pwd` &amp;&amp; echo $GOPATH'
           <div class="row pt-3">
             <div class="col-md-6">
               
-                <a href=https://astr0mfly.github.io/blog/2019-04/%E4%BD%BF%E7%94%A8hugo%E5%88%B6%E4%BD%9C%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E7%95%8C%E9%9D%A2/ class="post-meta">Previous
+                <a href=https://astr0mfly.github.io/blog/2019-04/git-flow/ class="post-meta">Previous
                   <div class="pt-2 pb-5 d-flex">
                     <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
-                    <span>使用hugo制作静态个人界面</span>
+                    <span>git-flow</span>
                   </div>
                 </a>
               
@@ -515,10 +470,10 @@ alias gopath='export GOPATH=`pwd` &amp;&amp; echo $GOPATH'
             
             <div class="col-md-6 text-right" >
               
-                <a href=https://astr0mfly.github.io/blog/2019-04/go-%E5%9B%BD%E5%86%85%E4%B8%8B%E8%BD%BD%E5%AE%98%E6%96%B9%E5%B7%A5%E5%85%B7/ class="post-meta">Next
+                <a href=https://astr0mfly.github.io/blog/2019-04/go-lession/ class="post-meta">Next
                   <div class="pt-2 pb-5 flex-reverse">
                     <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
-                    <span>Go-国内下载官方工具</span>
+                    <span>Go-Lession</span>
                   </div>
                 </a>
               
@@ -563,13 +518,79 @@ alias gopath='export GOPATH=`pwd` &amp;&amp; echo $GOPATH'
 								
 									<ul class="nav">
 								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#mapreduce-%e5%b9%b6%e8%a1%8c%e8%bf%90%e7%ae%97%e7%bc%96%e7%a8%8b%e6%a8%a1%e5%9e%8b-%e5%9f%ba%e7%a1%80%e6%a6%82%e5%bf%b5">
+												 MapReduce(并行运算编程模型)基础概念
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
 									<ul class="nav">
 								
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#go%e5%ae%89%e8%a3%85%e5%8c%85%e4%b8%8b%e8%bd%bd">
-												 Go安装包下载
+						 					<a class="nav-link" href="#%e7%89%b9%e7%82%b9-%e5%88%86%e8%80%8c%e6%b2%bb%e4%b9%8b">
+												 特点(分而治之)
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%ae%9e%e7%8e%b0%e6%a1%86%e6%9e%b6">
+												 实现框架
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#maptask">
+												 MapTask
 											</a>
 										</li>
 						 
@@ -594,8 +615,8 @@ alias gopath='export GOPATH=`pwd` &amp;&amp; echo $GOPATH'
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85">
-												 编译安装
+						 					<a class="nav-link" href="#reducetask">
+												 ReduceTask
 											</a>
 										</li>
 						 
@@ -615,97 +636,15 @@ alias gopath='export GOPATH=`pwd` &amp;&amp; echo $GOPATH'
 								
 									<ul class="nav">
 								
-									<ul class="nav">
-								
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#%e9%aa%8c%e8%af%81%e7%bb%93%e6%9e%9c">
-												 验证结果
+						 					<a class="nav-link" href="#%e5%b1%95%e6%9c%9b">
+												 展望
 											</a>
 										</li>
 						 
 								
-								
-									</ul>
-								
-									</ul>
-								
-							
-						
-				 
-						
-						
-							
-								
-								
-									<ul class="nav">
-								
-									<ul class="nav">
-								
-								
-
-										<li class="nav-item">
-						 					<a class="nav-link" href="#%e5%b7%a5%e7%a8%8b%e7%9b%ae%e5%bd%95">
-												 工程目录
-											</a>
-										</li>
-						 
-								
-								
-									</ul>
-								
-									</ul>
-								
-							
-						
-				 
-						
-						
-							
-								
-								
-									<ul class="nav">
-								
-									<ul class="nav">
-								
-								
-
-										<li class="nav-item">
-						 					<a class="nav-link" href="#%e5%8d%b8%e8%bd%bdgo">
-												 卸载Go
-											</a>
-										</li>
-						 
-								
-								
-									</ul>
-								
-									</ul>
-								
-							
-						
-				 
-						
-						
-							
-								
-								
-									<ul class="nav">
-								
-									<ul class="nav">
-								
-								
-
-										<li class="nav-item">
-						 					<a class="nav-link" href="#%e6%97%a5%e5%b8%b8%e9%97%ae%e9%a2%98">
-												 日常问题
-											</a>
-										</li>
-						 
-								
-								
-									</ul>
 								
 									</ul>
 								

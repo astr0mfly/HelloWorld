@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>Go-Lession</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/go-lession/</link>
+      <pubDate>Thu, 25 Apr 2019 04:21:58 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/go-lession/</guid>
+      <description>启动两个线程，合并输出 package main import &amp;quot;fmt&amp;quot; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 0 { ch1 &amp;lt;- i } } }() go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 1 { ch2 &amp;lt;- i } } }() tmp := 0 for i := 0; i &amp;lt; 5; i++ { tmp = &amp;lt;-ch1 fmt.Println(tmp) tmp = &amp;lt;-ch2 fmt.Println(tmp) } } 版本控制 Version Action Time 1.0 Init 2019-04-25T04:21:58-07:00</description>
+    </item>
+    
+    <item>
+      <title>Distributed-MapReduce</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/distributed-mapreduce/</link>
+      <pubDate>Thu, 25 Apr 2019 03:51:49 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/distributed-mapreduce/</guid>
+      <description>MapReduce(并行运算编程模型)基础概念 MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。概念&amp;rdquo;Map（映射）&amp;rdquo;和&amp;rdquo;Reduce（归约）&amp;rdquo;，是它们的主要思想.软件实现是指定一个Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的Reduce（归约）函数，用来保证所有映射的键值对中的每一个共享相同的键组。</description>
+    </item>
+    
+    <item>
       <title>git-flow</title>
       <link>https://astr0mfly.github.io/blog/2019-04/git-flow/</link>
       <pubDate>Wed, 24 Apr 2019 20:24:45 -0700</pubDate>
