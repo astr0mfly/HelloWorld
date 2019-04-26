@@ -67,11 +67,6 @@
   </url>
   
   <url>
-    <loc>https://astr0mfly.github.io/pocket/wen-protobuf/</loc>
-    <lastmod>2019-04-25T09:36:07-07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://astr0mfly.github.io/blog/2019-04/distri-consisitency/</loc>
     <lastmod>2019-04-25T08:51:17-07:00</lastmod>
   </url>
@@ -248,16 +243,6 @@
   <url>
     <loc>https://astr0mfly.github.io/pocket/</loc>
     <lastmod>2015-08-19T20:29:37-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://astr0mfly.github.io/about/markdown-language/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://astr0mfly.github.io/about/markdown-latex/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>

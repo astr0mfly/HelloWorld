@@ -353,7 +353,7 @@
 
     
       <li class="middot"></li>
-      <li>7 minutes read</li>
+      <li>8 minutes read</li>
     
   </ul>
   
@@ -490,6 +490,18 @@ Please type 'yes' or 'no': yes
 Warning: Permanently added 'github.com,52.74.223.119' (RSA) to the list of known hosts.
 Hi astr0mfly! You've successfully authenticated, but GitHub does not provide shell access.
 #如果是第一次的会提示是否continue，输入yes就会看到：You've successfully authenticated, but GitHub does not provide shell access 。这就表示已成功连上github。
+
+#如果此时PUSH还是要输入密码
+cd ~/.ssh
+
+ssh-add isa_ra
+
+#更改仓库地址为SSH形式
+cd clone_path
+cat .git/config #查看remote地址是https形式的
+git remote rm origin
+git remote add git@github.com:astr0mfly/astr0mfly.github.io.git
+
 </code></pre>
 
 <h3 id="新建仓库">新建仓库</h3>

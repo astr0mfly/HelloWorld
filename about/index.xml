@@ -11,45 +11,5 @@
 	<atom:link href="https://astr0mfly.github.io/about/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
-      <title></title>
-      <link>https://astr0mfly.github.io/about/markdown-language/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://astr0mfly.github.io/about/markdown-language/</guid>
-      <description>h1 h2 h3 h4 h5 h6 ####### h7 // 错误代码 ######## h8 // 错误代码 ######### h9 // 错误代码 ########## h10 // 错误代码
-一级标题 二级标题 [TOC]
- aaaaaaaaa &amp;gt; bbbbbbbbb &amp;gt;&amp;gt; cccccccccc
- 标记之外hello world标记之外
-注：用```生成块
-&amp;lt;div&amp;gt; &amp;lt;div&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt;  var num = 0; for (var i = 0; i &amp;lt; 5; i++) { num+=i; } console.log(num);  百度1{:target=&amp;rdquo;_blank&amp;rdquo;}
-百度2{:target=&amp;rdquo;_blank&amp;rdquo;}
-[图片上传失败&amp;hellip;(image-90880b-1542510791300)]
-[图片上传失败&amp;hellip;(image-f83b77-1542510791300)]{:target=&amp;rdquo;_blank&amp;rdquo;} // 内链式
-[图片上传失败&amp;hellip;(image-4dc956-1542510791300)]{:target=&amp;rdquo;_blank&amp;rdquo;} // 引用式
- one two three   one two three  这是文字……
-选项一 选项二
- [选项3]     a b c     居中 左对齐 右对齐   ========= =============== ============    删除线
-斜体
-加粗
-Za
-Za
-Ctrl
-$$ x \href{why-equal.html}{=} y^2 + 1 $$ $ x = {-b \pm \sqrt{b^2-4ac} \over 2a}. $
-Markdown1 公式标题锚点
-[需要跳转的目录] // 方括号后保持空格   Markdown 轻量级文本标记语言，可以转换成html，pdf等格式 // 开头一个: + Tab 或 四个空格 代码块定义 代码块定义……
-var a = 10; // 保持空一行与 递进缩进   xxx@outlook.com
-st=&amp;gt;start: 开始|past:&amp;gt; http://www.baidu.com // 开始 e=&amp;gt;end: 结束 // 结束 c1=&amp;gt;condition: 条件1:&amp;gt;http://www.baidu.com[_parent] // 判断条件 c2=&amp;gt;condition: 条件2 // 判断条件 c3=&amp;gt;condition: 条件3 // 判断条件 io=&amp;gt;inputoutput: 输出 // 输出 //----------------以上为定义参数------------------------- //----------------以下为连接参数------------------------- // 开始-&amp;gt;判断条件1为no-&amp;gt;判断条件2为no-&amp;gt;判断条件3为no-&amp;gt;输出-&amp;gt;结束 st-&amp;gt;c1(yes,right)-&amp;gt;c2(yes,right)-&amp;gt;c3(yes,right)-&amp;gt;io-&amp;gt;e c1(no)-&amp;gt;e // 条件1不满足-&amp;gt;结束 c2(no)-&amp;gt;e // 条件2不满足-&amp;gt;结束 c3(no)-&amp;gt;e // 条件3不满足-&amp;gt;结束  tag=&amp;gt;type: content:&amp;gt;url // 形参格式 st=&amp;gt;start: 开始:&amp;gt;http://www.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://astr0mfly.github.io/about/markdown-latex/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://astr0mfly.github.io/about/markdown-latex/</guid>
-      <description>Markdown中Latex常用语法 常用希腊字母表    Name Display Capital Case Display Var Case Display     \alpha $\alpha$       \beta $\beta$       \gamma $\gamma$ \Gamma $\Gamma$     \theta $\theta$ \Theta $\Theta$ \vartheta $\vartheta$   \mu $\mu$       \delta $\delta$ \Delta $\Delta$     \epsilon $\epsilon$   \varepsilon $\varepsilon$   \sigma $\sigma$ \Sigma $\Sigma$ \varsigma $\varsigma$   \pi $\pi$ \Pi $\Pi$ \varpi $\varpi$   \omega $\omega$ \Omega $\Omega$     \xi $\xi$ \Xi $\Xi$     \zeta $\zeta$       \chi $\chi$       \rho $\rho$   \varrho $\varrho$   \phi $\phi$ \Phi $\Phi$ \varphi $\varphi$   \eta $\eta$       \lambda $\lambda$ \Lambda $\Lambda$     \kappa $\kappa$       \nu $\nu$       \upsilon $\upsilon$ \Upsilon $\Upsilon$     \psi $\psi$ \Psi $\Psi$     \tau $\tau$       \iota $\iota$       o $o$        常用特殊字符表    Name Display Name Display Name Display Name Display     \times $\times$ \div $\div$ \pm $\pm$ \mp $\mp$   \otimes $\otimes$ \ominus $\ominus$ \oplus $\oplus$ \odot $\odot$   \oslash $\oslash$ \triangleq $\triangleq$ \ne $\ne$ \equiv $\equiv$   \lt $\lt$ \gt $\gt$ \le $\le$ \ge $\ge$   \cup $\cup$ \cap $\cap$ \Cup $\Cup$ \Cap $\Cap$   \bigcup $\bigcup$ \bigcap $\bigcap$ \ast $\ast$ \star $\star$   \bigotimes $\bigotimes$ \bigoplus $\bigoplus$ \circ $\circ$ \bullet $\bullet$   \bigcirc $\bigcirc$ \amalg $\amalg$ \to $\to$ \infty $\infty$   \vee $\vee$ \wedge $\wedge$ \lhd $\lhd$ \rhd $\rhd$   \bigvee $\bigvee$ \bigwedge $\bigwedge$ \unlhd $\unlhd$ \unrhd $\unrhd$   \sqcap $\sqcap$ \sqcup $\sqcup$ \prec $\prec$ \succ $\succ$   \subset $\subset$ \supset $\supset$ \sim $\sim$ \approx $\approx$   \subseteq $\subseteq$ \supseteq $\supseteq$ \cong $\cong$ \doteq $\doteq$   \setminus $\setminus$ \mid $\mid$ \ll $\ll$ \gg $\gg$   \parallel $\parallel$ \Join $\Join$ \in $\in$ \notin $\notin$   \propto $\propto$ \neg $\neg$ \ldots $\ldots$ \cdots $\cdots$   \forall $\forall$ \exists $\exists$ \vdots $\vdots$ \ddots $\ddots$   \aleph $\aleph$ \nabla $\nabla$ \imath $\imath$ \jmath $\jmath$   \ell $\ell$ \partial $\partial$ \int $\int$ \oint $\oint$   \uplus $\uplus$ \biguplus $\biguplus$        其他    Name Display Name Display     \triangleleft $\triangleleft$ \triangleright $\triangleright$   \bigtriangleup $\bigtriangleup$ \bigtriangledown $\bigtriangledown$   \uparrow $\uparrow$ \downarrow $\downarrow$   \leftarrow $\leftarrow$ \rightarrow $\rightarrow$   \Leftarrow $\Leftarrow$ \Rightarrow $\Rightarrow$   \longleftarrow $\longleftarrow$ \longrightarrow $\longrightarrow$   \Longleftarrow $\Longleftarrow$ \Longrightarrow $\Longrightarrow$   \leftrightarrow $\leftrightarrow$ \longleftrightarrow $\longleftrightarrow$   \Leftrightarrow $\Leftrightarrow$ \Longleftrightarrow $\Longleftrightarrow$   \leftharpoonup $\leftharpoonup$ \rightharpoonup $\rightharpoonup$   \leftharpoondown $\leftharpoondown$ \rightharpoondown $\rightharpoondown$   \rightleftharpoons $\rightleftharpoons$ \S $\S$   \nwarrow $\nwarrow$ \nearrow $\nearrow$   \swarrow $\swarrow$ \searrow $\searrow$   \triangle $\triangle$ \box $\Box$   \diamond $\diamond$ \diamondsuit $\diamondsuit$   \heartsuit $\heartsuit$ \clubsuit $\clubsuit$   \spadesuit $\spadesuit$      公式语法  上下标_ ^ , _{}^{}： $$ y = x_i^{a_1^2} $$ 公式中插入文本\mbox{}： $$ y = x^2 \; \mbox{(二次函数)} $$ 公式中插入空格\, \; \quad \qquad间隔依次变宽： $$ ab $$ $$ a\,b $$ $$ a\;b $$ $$ a\quad b $$ $$ a\qquad b $$</description>
-    </item>
-    
   </channel>
 </rss>
