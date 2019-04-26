@@ -121,6 +121,11 @@
           
              
             <li class="nav-item ">
+              <a class="nav-link" href="https://astr0mfly.github.io/pocket/" >Pocket  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
               <a class="nav-link" href="https://astr0mfly.github.io/about/" >About  </a>
             </li>
           
@@ -275,7 +280,7 @@
              
         <div class="mt-2" style="font-size: 1rem; color: white;">
             
-              <a href="//github.com/astr0mfly" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+                <a href="//github.com/astr0mfly" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
             
             
 
@@ -288,12 +293,14 @@
             
     
             
-    
-        
+
             
                 <a href="mailto:pengwanring@live.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
             
     
+            
+                <a href="//blog.csdn.net/u011138254" target="_blank" rel="noopener"><i class="fa fa-sticky-note" aria-hidden="true"></i></a>    
+            
             
 
             
@@ -468,6 +475,22 @@ hotfix是用来修复上线版本BUG使用，从master分支新建，如上图�
 <p><strong>每次打标签后，建议将版本变更信息补充到项目wiki中</strong></p>
 
 <h2 id="git常用操作">Git常用操作</h2>
+
+<h3 id="ssh连接">SSH连接</h3>
+
+<pre><code class="language-shell">$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot; #github上注册的邮箱
+#在~/下生成.ssh文件夹，进去，打开id_rsa.pub，复制里面的key。
+#回到github上，进入 Account Settings（账户配置），左边选择SSH Keys，Add SSH Key,title随便填，粘贴在你电脑上生成的key。
+$ ssh -T git@github.com
+
+The authenticity of host 'github.com (52.74.223.119)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? y
+Please type 'yes' or 'no': yes
+Warning: Permanently added 'github.com,52.74.223.119' (RSA) to the list of known hosts.
+Hi astr0mfly! You've successfully authenticated, but GitHub does not provide shell access.
+#如果是第一次的会提示是否continue，输入yes就会看到：You've successfully authenticated, but GitHub does not provide shell access 。这就表示已成功连上github。
+</code></pre>
 
 <h3 id="新建仓库">新建仓库</h3>
 
@@ -893,6 +916,32 @@ git remote rm [别名] #删除远程库
 								
 
 										<li class="nav-item">
+						 					<a class="nav-link" href="#ssh%e8%bf%9e%e6%8e%a5">
+												 SSH连接
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
 						 					<a class="nav-link" href="#%e6%96%b0%e5%bb%ba%e4%bb%93%e5%ba%93">
 												 新建仓库
 											</a>
@@ -1107,7 +1156,7 @@ git remote rm [别名] #删除远程库
   
   <div class="pb-2 mt-5 pt-5">
     
-      <a href="//github.com/astr0mfly " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+        <a href="//github.com/astr0mfly " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
     
     
 
@@ -1120,10 +1169,13 @@ git remote rm [别名] #删除远程库
     
 
     
-
 
     
         <a href="mailto:pengwanring@live.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+        <a href="//blog.csdn.net/u011138254" target="_blank" rel="noopener"><i class="fa fa-sticky-note" aria-hidden="true"></i></a>    
     
 
     
@@ -1148,39 +1200,42 @@ git remote rm [别名] #删除远程库
 
 
 
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/jquery/jquery-3.3.1.min.js%20"></script>
 
-
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/jquery/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
-
-
-
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/popper.min.js"></script>
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/holder.min.js"></script>
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
-
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/mdb/mdb.min.js"></script>
-
-<script type="text/javascript" src="https://astr0mfly.github.io/js/main.js"></script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/jquery/jquery.smooth-scroll.min.js%20"></script>
 
 
 
-  
-  <script src="https://astr0mfly.github.io/js/vendors/highlight.pack.js"> </script>
-  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/popper.min.js%20"></script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/holder.min.js%20"></script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors-extensions/bootstrap4/bootstrap.js%20"></script>
+
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/mdb/mdb.min.js%20"></script>
+
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/main.js%20"></script>
 
 
 
 
- 
-  <script src="https://astr0mfly.github.io/js/vendors/katex/katex.min.js"> </script>
-  <script src="https://astr0mfly.github.io/js/vendors/katex/contrib/auto-render.min.js"></script>
+<script src="https://astr0mfly.github.io/%20js/vendors/highlight.pack.js%20">
+</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 
-  <script>
-      document.addEventListener("DOMContentLoaded", function () {
-          renderMathInElement(document.body);
-      });
-  </script>
+
+
+
+
+<link rel="stylesheet" href="https://astr0mfly.github.io/%20js/vendors/katex/katex.min.css%20" />
+<script defer src="https://astr0mfly.github.io/%20js/vendors/katex/katex.min.js%20"></script>
+<script defer src="https://astr0mfly.github.io/%20js/vendors/katex/contrib/auto-render.min.js%20"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body);
+    });
+</script>
 
 
 
@@ -1190,12 +1245,8 @@ git remote rm [别名] #删除远程库
 
 
 <script type="text/javascript">
-  
-  new WOW().init();
+    
+    new WOW().init();
 </script>
-
-
-
-
   </body>
 </html>

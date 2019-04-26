@@ -52,6 +52,8 @@
 
   
   
+  <link href="https://astr0mfly.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="Valencia" />
+  
 
   <style type="text/css">
       @media (min-width: 800px) and (max-width: 850px) {
@@ -117,6 +119,11 @@
              
             <li class="nav-item ">
               <a class="nav-link" href="https://astr0mfly.github.io/moment/" >Moment  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://astr0mfly.github.io/pocket/" >Pocket  </a>
             </li>
           
              
@@ -275,7 +282,7 @@
              
         <div class="mt-2" style="font-size: 1rem; color: white;">
             
-              <a href="//github.com/astr0mfly" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+                <a href="//github.com/astr0mfly" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
             
             
 
@@ -288,12 +295,16 @@
             
     
             
-    
-        
+
             
                 <a href="mailto:pengwanring@live.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
             
     
+            
+                <a href="//blog.csdn.net/u011138254" target="_blank" rel="noopener"><i class="fa fa-sticky-note" aria-hidden="true"></i></a>    
+            
+            
+                <a href="https://astr0mfly.github.io/blog/index.xml"><i class="fas fa-rss pr-1" aria-hidden="true"></i></a>
             
 
             
@@ -344,6 +355,12 @@
 
   
 
+  
+
+  
+
+  
+
 
 
 
@@ -367,7 +384,7 @@
             
             <li class="py-1">
               <a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F">
-                <span>编码人生 (9)</span>
+                <span>编码人生 (10)</span>
               </a>
             </li>           
           
@@ -376,7 +393,7 @@
             
             <li class="py-1">
               <a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%B9%8B%E9%81%93">
-                <span>编码之道 (1)</span>
+                <span>编码之道 (3)</span>
               </a>
             </li>           
           
@@ -389,6 +406,12 @@
 
     
           
+
+  
+
+  
+
+  
 
   
 
@@ -435,10 +458,10 @@
             <li><a href="https://astr0mfly.github.io/tags/go" role="button"><span>go (5)</span></a></li>
           
         
-            <li><a href="https://astr0mfly.github.io/tags/cpp" role="button"><span>cpp (2)</span></a></li>
+            <li><a href="https://astr0mfly.github.io/tags/distributed" role="button"><span>distributed (4)</span></a></li>
           
         
-            <li><a href="https://astr0mfly.github.io/tags/distributed" role="button"><span>distributed (2)</span></a></li>
+            <li><a href="https://astr0mfly.github.io/tags/cpp" role="button"><span>cpp (2)</span></a></li>
           
         
             <li><a href="https://astr0mfly.github.io/tags/blog" role="button"><span>blog (1)</span></a></li>
@@ -448,6 +471,9 @@
           
         
             <li><a href="https://astr0mfly.github.io/tags/hugo" role="button"><span>hugo (1)</span></a></li>
+          
+        
+            <li><a href="https://astr0mfly.github.io/tags/mysql" role="button"><span>mysql (1)</span></a></li>
           
         
             <li><a href="https://astr0mfly.github.io/tags/web" role="button"><span>web (1)</span></a></li>
@@ -460,6 +486,8 @@
   
 
           
+  
+
   
 
   
@@ -496,6 +524,8 @@
           
             <li class="py-1"><a href="https://astr0mfly.github.io/series/golang"><span>Golang (4)</span></a></li>
           
+            <li class="py-1"><a href="https://astr0mfly.github.io/series/database"><span>Database (1)</span></a></li>
+          
             <li class="py-1"><a href="https://astr0mfly.github.io/series/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B9%8B%E8%B7%AF"><span>个人博客搭建之路 (1)</span></a></li>
           
         
@@ -525,7 +555,7 @@
               
                 <div class="px-2 middot"></div>
                 <div>
-                  11 posts
+                  14 posts
                 </div>
               
             </div>
@@ -598,6 +628,172 @@
 </ul>
 
           </div>
+
+          
+              <div class="post-wrapper white-bg post-card">
+  
+  <a href="https://astr0mfly.github.io/blog/2019-04/go-lession/">
+    <div class="post-header text-center">
+      <div class="px-4 post-heading">Go-Lession</div>
+      <ul class="post-meta li-x mt-1">
+        
+          <li>Apr 25, 2019</li>
+        
+    
+        
+          <li class="middot"></li>
+          <li>One minute read</li>
+        
+      </ul>
+    </div>
+    
+
+    
+      启动两个线程，合并输出 package main import &#34;fmt&#34; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &lt; 10; i&#43;&#43; { if i%2 == 0 { ch1 &lt;- i } } }() go func() { for i := 0; i &lt; 10; i&#43;&#43; { if i%2 == 1 { ch2 &lt;- i } } }() tmp := 0 for i := 0; i &lt; 5; i&#43;&#43; { tmp = &lt;-ch1 fmt.Println(tmp) tmp = &lt;-ch2 fmt.Println(tmp) } } for-range package main import &#34;fmt&#34; func main() { slice := []int{0, 1, 2, 3} mp := make(map[int]*int) fmt.Println(&#34;for range 坑&#34;) for index, value := range slice { mp[index] = &amp;value } //根本原因在于for range是用一个变量承接mp中的内容的 for key, value := range mp { fmt.Println(key, &#34; &#34;, *value) } fmt.Println(&#34;等价写法&amp;qu......
+    
+  </a>
+
+  
+  
+  <div class="post-meta li-x mt-2 div-x">
+    <div>
+      
+        
+          <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> “编码人生” </a></li>
+        
+      
+      
+        
+          <li><a href="https://astr0mfly.github.io/series/golang"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>golang</a></li>
+        
+      
+    </div>
+   
+    <div>
+      
+        
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://astr0mfly.github.io/tags/go" role="button">go </a></li>
+      
+    
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+</div>
+
+          
+              <div class="post-wrapper white-bg post-card">
+  
+  <a href="https://astr0mfly.github.io/blog/2019-04/distributed-mapreduce/">
+    <div class="post-header text-center">
+      <div class="px-4 post-heading">distributed-mapreduce</div>
+      <ul class="post-meta li-x mt-1">
+        
+          <li>Apr 25, 2019</li>
+        
+    
+        
+          <li class="middot"></li>
+          <li>5 minutes read</li>
+        
+      </ul>
+    </div>
+    
+
+    
+      MapReduce(并行运算编程模型)基础概念 MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。概念”Map（映射）”和”Reduce（归约）”，是它们的主要思想.软件实现是指定一个Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的Reduce（归约）函数，用来保证所有映射的键值对中的每一个共享相同的键组。......
+    
+  </a>
+
+  
+  
+  <div class="post-meta li-x mt-2 div-x">
+    <div>
+      
+        
+          <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> “编码人生” </a></li>
+        
+      
+      
+    </div>
+   
+    <div>
+      
+        
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://astr0mfly.github.io/tags/distributed" role="button">Distributed </a></li>
+      
+    
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+</div>
+
+          
+              <div class="post-wrapper white-bg post-card">
+  
+  <a href="https://astr0mfly.github.io/blog/2019-04/c-%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E5%8F%8D%E5%B0%84/">
+    <div class="post-header text-center">
+      <div class="px-4 post-heading">C&#43;&#43;如何做到反射</div>
+      <ul class="post-meta li-x mt-1">
+        
+          <li>Apr 25, 2019</li>
+        
+    
+        
+          <li class="middot"></li>
+          <li>3 minutes read</li>
+        
+      </ul>
+    </div>
+    
+
+    
+      什么是反射 反射机制在java中是一个非常重要的特性，比如在spring框架中，就使用了xml &#43; 反射来完成类的动态扩展。 换句话说，反射就是根据一个字符串查找到一个类，查找到一个函数，并能生成这个类，或者函数的实例；就是在运行期通过字符串到内存单元的反向映射。 怎么做到反射 在动态语言中，反射是非常容易实现的，在java中，由于有字节码作为中间层的存在，所以实现也并不复杂。但是对于c&#43;&#43;来说，静态编译的程......
+    
+  </a>
+
+  
+  
+  <div class="post-meta li-x mt-2 div-x">
+    <div>
+      
+        
+          <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%B9%8B%E9%81%93"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 编码之道 </a></li>
+        
+      
+      
+    </div>
+   
+    <div>
+      
+        
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://astr0mfly.github.io/tags/cpp" role="button">cpp </a></li>
+      
+    
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+</div>
 
           
               <div class="post-wrapper white-bg post-card">
@@ -712,176 +908,6 @@
 </div>
 
           
-              <div class="post-wrapper white-bg post-card">
-  
-  <a href="https://astr0mfly.github.io/blog/2019-04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-    <div class="post-header text-center">
-      <div class="px-4 post-heading">设计模式</div>
-      <ul class="post-meta li-x mt-1">
-        
-          <li>Apr 24, 2019</li>
-        
-    
-        
-          <li class="middot"></li>
-          <li>4 minutes read</li>
-        
-      </ul>
-    </div>
-    
-
-    
-      简介 推荐书籍《设计模式–可复用面向对象软件的基础》 底层思维：向下，把握机器底层-&gt;语言构造、编译转换、内存模型、运行机制 抽象思维：面向对象、组件封装、设计模式、架构模式 深入理解三大面向对象机制： - 封装，隐藏内部实现 - 继承，复用现有代码 - 多态，改写对象行为 设计模式详解 策略模式 起因 软件构造的过程中，算法和对象容易耦合，那么能不能让算法与对象本身解耦呢？ 要点 Strategy及其字类为组......
-    
-  </a>
-
-  
-  
-  <div class="post-meta li-x mt-2 div-x">
-    <div>
-      
-        
-          <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> “编码人生” </a></li>
-        
-      
-      
-    </div>
-   
-    <div>
-      
-        
-<div class="li-x div-x post-meta">
-  <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
-  <div class="tags-sm">
-    
-      <li><a href="https://astr0mfly.github.io/tags/cpp" role="button">“cpp” </a></li>
-      
-    
-  </div>
-</div>
-      
-    </div>
-  </div>
-
-</div>
-
-          
-              <div class="post-wrapper white-bg post-card">
-  
-  <a href="https://astr0mfly.github.io/blog/2019-04/go-%E5%9B%BD%E5%86%85%E4%B8%8B%E8%BD%BD%E5%AE%98%E6%96%B9%E5%B7%A5%E5%85%B7/">
-    <div class="post-header text-center">
-      <div class="px-4 post-heading">Go-国内下载官方工具</div>
-      <ul class="post-meta li-x mt-1">
-        
-          <li>Apr 24, 2019</li>
-        
-    
-        
-          <li class="middot"></li>
-          <li>One minute read</li>
-        
-      </ul>
-    </div>
-    
-
-    
-      国内下载golang.org中的工具包 国内有某种不可描述的原因，导致无法访问 golang.org,但是使用golang时官方工具包是必不可少的一部分. golang.org/x/这个目录，其实镜像托管在 github.com/golang/ GIT迁移 将Github的包下载到本地后，移动到相应的目录中. 如: net –&gt;&gt; GOPATH/src/golang.org/x/net crypto –&gt;&gt; GOPATH/src/golang.org/x/crypto build –&gt;&gt; GOPATH/src/golang.org/x/build … GIT下载 在 $GOPATH/src/golang.org/x/ 下通过git 进行 clone 如: ~/go/src/golang.org/x$ git clone http://github.com/golang/build 然后用git pull直接维护更新本地代码 版本控制 Version Action Time 1.0 Init 2019-04-24T06:45:07-07:00......
-    
-  </a>
-
-  
-  
-  <div class="post-meta li-x mt-2 div-x">
-    <div>
-      
-        
-          <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> “编码人生” </a></li>
-        
-      
-      
-        
-          <li><a href="https://astr0mfly.github.io/series/golang"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>golang</a></li>
-        
-      
-    </div>
-   
-    <div>
-      
-        
-<div class="li-x div-x post-meta">
-  <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
-  <div class="tags-sm">
-    
-      <li><a href="https://astr0mfly.github.io/tags/go" role="button">“go” </a></li>
-      
-    
-  </div>
-</div>
-      
-    </div>
-  </div>
-
-</div>
-
-          
-              <div class="post-wrapper white-bg post-card">
-  
-  <a href="https://astr0mfly.github.io/blog/2019-04/golang%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
-    <div class="post-header text-center">
-      <div class="px-4 post-heading">Golang安装环境搭建</div>
-      <ul class="post-meta li-x mt-1">
-        
-          <li>Apr 22, 2019</li>
-        
-    
-        
-          <li class="middot"></li>
-          <li>2 minutes read</li>
-        
-      </ul>
-    </div>
-    
-
-    
-      Go安装包下载 由于Go的官方网址国内不可达，推荐一个国内的镜像源： go语言中文网.Go安装包下载 编译安装 下载Linux版本：go1.12.4.linux-amd64.tar.gz #在下载文件夹下的Shell敲一下如下命令 sudo tar -C /usr/local -xzvf go1.12.4.linux-amd64.tar.gz #/etc/profile（全系统安装）或 $HOME/.profile 添加环境变量 export PATH=$PATH:/usr/local/go/bin 也有另一种方法添加环境变量： # vim /etc/profile.d/go.sh export PATH=$PATH:/usr/local/go/bin export GOPATH=$HOME/dev/go export GOBIN=$GOPATH/bin :wq! # source /etc/profile.d/go.sh 验证结果 创建一个hello.go的文件 package main import &#34;fmt&#34; func main() { fmt.Printf(&#34;hello,......
-    
-  </a>
-
-  
-  
-  <div class="post-meta li-x mt-2 div-x">
-    <div>
-      
-        
-          <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> “编码人生” </a></li>
-        
-      
-      
-        
-          <li><a href="https://astr0mfly.github.io/series/golang"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>golang</a></li>
-        
-      
-    </div>
-   
-    <div>
-      
-        
-<div class="li-x div-x post-meta">
-  <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
-  <div class="tags-sm">
-    
-      <li><a href="https://astr0mfly.github.io/tags/go" role="button">“go” </a></li>
-      
-    
-  </div>
-</div>
-      
-    </div>
-  </div>
-
-</div>
-
-          
             
         </div>
       </div>
@@ -899,7 +925,7 @@
   
   <div class="pb-2 mt-5 pt-5">
     
-      <a href="//github.com/astr0mfly " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+        <a href="//github.com/astr0mfly " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
     
     
 
@@ -912,12 +938,17 @@
     
 
     
-
 
     
         <a href="mailto:pengwanring@live.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
     
 
+    
+        <a href="//blog.csdn.net/u011138254" target="_blank" rel="noopener"><i class="fa fa-sticky-note" aria-hidden="true"></i></a>    
+    
+
+    
+        <a href="https://astr0mfly.github.io/blog/index.xml"><i class="fas fa-rss mr-3" aria-hidden="true"></i></a>
     
 
     
@@ -940,39 +971,42 @@
 
 
 
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/jquery/jquery-3.3.1.min.js%20"></script>
 
-
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/jquery/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
-
-
-
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/popper.min.js"></script>
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/holder.min.js"></script>
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
-
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/mdb/mdb.min.js"></script>
-
-<script type="text/javascript" src="https://astr0mfly.github.io/js/main.js"></script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/jquery/jquery.smooth-scroll.min.js%20"></script>
 
 
 
-  
-  <script src="https://astr0mfly.github.io/js/vendors/highlight.pack.js"> </script>
-  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/popper.min.js%20"></script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/holder.min.js%20"></script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors-extensions/bootstrap4/bootstrap.js%20"></script>
+
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/mdb/mdb.min.js%20"></script>
+
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/main.js%20"></script>
 
 
 
 
- 
-  <script src="https://astr0mfly.github.io/js/vendors/katex/katex.min.js"> </script>
-  <script src="https://astr0mfly.github.io/js/vendors/katex/contrib/auto-render.min.js"></script>
+<script src="https://astr0mfly.github.io/%20js/vendors/highlight.pack.js%20">
+</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 
-  <script>
-      document.addEventListener("DOMContentLoaded", function () {
-          renderMathInElement(document.body);
-      });
-  </script>
+
+
+
+
+<link rel="stylesheet" href="https://astr0mfly.github.io/%20js/vendors/katex/katex.min.css%20" />
+<script defer src="https://astr0mfly.github.io/%20js/vendors/katex/katex.min.js%20"></script>
+<script defer src="https://astr0mfly.github.io/%20js/vendors/katex/contrib/auto-render.min.js%20"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body);
+    });
+</script>
 
 
 
@@ -982,12 +1016,8 @@
 
 
 <script type="text/javascript">
-  
-  new WOW().init();
+    
+    new WOW().init();
 </script>
-
-
-
-
   </body>
 </html>

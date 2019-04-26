@@ -17,7 +17,7 @@
       <pubDate>Thu, 25 Apr 2019 04:21:58 -0700</pubDate>
       
       <guid>https://astr0mfly.github.io/blog/2019-04/go-lession/</guid>
-      <description>启动两个线程，合并输出 package main import &amp;quot;fmt&amp;quot; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 0 { ch1 &amp;lt;- i } } }() go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 1 { ch2 &amp;lt;- i } } }() tmp := 0 for i := 0; i &amp;lt; 5; i++ { tmp = &amp;lt;-ch1 fmt.Println(tmp) tmp = &amp;lt;-ch2 fmt.Println(tmp) } } 版本控制 Version Action Time 1.0 Init 2019-04-25T04:21:58-07:00</description>
+      <description>启动两个线程，合并输出 package main import &amp;quot;fmt&amp;quot; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 0 { ch1 &amp;lt;- i } } }() go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 1 { ch2 &amp;lt;- i } } }() tmp := 0 for i := 0; i &amp;lt; 5; i++ { tmp = &amp;lt;-ch1 fmt.Println(tmp) tmp = &amp;lt;-ch2 fmt.Println(tmp) } } for-range package main import &amp;quot;fmt&amp;quot; func main() { slice := []int{0, 1, 2, 3} mp := make(map[int]*int) fmt.Println(&amp;quot;for range 坑&amp;quot;) for index, value := range slice { mp[index] = &amp;amp;value } //根本原因在于for range是用一个变量承接mp中的内容的 for key, value := range mp { fmt.Println(key, &amp;quot; &amp;quot;, *value) } fmt.Println(&amp;quot;等价写法&amp;qu</description>
     </item>
     
     <item>

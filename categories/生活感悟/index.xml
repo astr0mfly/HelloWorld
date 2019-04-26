@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>生活感悟 on Valencia</title>
+    <link>https://astr0mfly.github.io/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/</link>
+    <description>Recent content in 生活感悟 on Valencia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Thu, 25 Apr 2019 10:49:04 -0700</lastBuildDate>
+    
+	<atom:link href="https://astr0mfly.github.io/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Life-Fast_employee</title>
+      <link>https://astr0mfly.github.io/moment/life-fast_employee/</link>
+      <pubDate>Thu, 25 Apr 2019 10:49:04 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/moment/life-fast_employee/</guid>
+      <description>前言 找到满意的工作比想像中难多了，不仅仅是因为时间不对，其实还有自身的技能匹配问题。 - 有计划——计划好每天要复习的知识模块（内容较多） - 高效率——从整体到细节，着重把知识点“手写”到自己的电脑记录本 - 优简历——展示你的项目亮点，难点 有计划 反思： 为什么好多知识看过后不能记住，面试一紧张更加想不起？一方面自己没有深入学习，另一方面复习过程杂乱，和写代码一个道理，如果你的业务逻辑和其他乱七八糟的都放在控</description>
+    </item>
+    
+  </channel>
+</rss>

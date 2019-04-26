@@ -6,10 +6,55 @@
     <description>Recent content on Valencia</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Thu, 25 Apr 2019 07:04:20 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 25 Apr 2019 10:49:04 -0700</lastBuildDate>
     
 	<atom:link href="https://astr0mfly.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Life-Fast_employee</title>
+      <link>https://astr0mfly.github.io/moment/life-fast_employee/</link>
+      <pubDate>Thu, 25 Apr 2019 10:49:04 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/moment/life-fast_employee/</guid>
+      <description>前言 找到满意的工作比想像中难多了，不仅仅是因为时间不对，其实还有自身的技能匹配问题。 - 有计划——计划好每天要复习的知识模块（内容较多） - 高效率——从整体到细节，着重把知识点“手写”到自己的电脑记录本 - 优简历——展示你的项目亮点，难点 有计划 反思： 为什么好多知识看过后不能记住，面试一紧张更加想不起？一方面自己没有深入学习，另一方面复习过程杂乱，和写代码一个道理，如果你的业务逻辑和其他乱七八糟的都放在控</description>
+    </item>
+    
+    <item>
+      <title>Mysql-Index</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/mysql-index/</link>
+      <pubDate>Thu, 25 Apr 2019 09:49:26 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/mysql-index/</guid>
+      <description>索引的本质 MySQL官方对索引的定义为：索引（Index）是帮助MySQL高效获取数据的数据结构。提取句子主干，就可以得到索引的本质：索引是数据结构。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。 实际的数据库系统几乎没有使用二叉查找树或其进化品种红黑树（red-black tree</description>
+    </item>
+    
+    <item>
+      <title>Wen-Protobuf</title>
+      <link>https://astr0mfly.github.io/pocket/wen-protobuf/</link>
+      <pubDate>Thu, 25 Apr 2019 09:36:07 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/pocket/wen-protobuf/</guid>
+      <description>$$ \left { \begin{matrix} 1&amp;amp;2&amp;amp;3 4&amp;amp;5&amp;amp;6 7&amp;amp;8&amp;amp;9 \end{matrix} \right } $$ $$ x^n+y^n=z^n $$ 版本控制 Version Action Time 1.0 Init 2019-04-25T09:36:07-07:00</description>
+    </item>
+    
+    <item>
+      <title>Distri-Consisitency</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/distri-consisitency/</link>
+      <pubDate>Thu, 25 Apr 2019 08:51:17 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/distri-consisitency/</guid>
+      <description>分布式系统中一个重要的问题就是数据复制，数据复制一般是为了增强系统的可用性或提高性能。而实现数据复制的一个主要难题就是保持各个副本的一致性。 什么是一致性模型 一致性模型本质上是进程与数据存储的约定：如果进程遵循某些规则，那么进程对数据的读写操作都是可预期的。 一致性模型主要可以分为两类：能够保证所有进程对数据的读写顺序都保持一致的一致性模型称为强一致性模型，而不能保证的一致性模型称为弱一致性模型。 强一</description>
+    </item>
+    
+    <item>
+      <title>Distri-Queue</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/distri-queue/</link>
+      <pubDate>Thu, 25 Apr 2019 08:17:54 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/distri-queue/</guid>
+      <description>摘要 作为一种基础的抽象数据结构，队列被广泛应用在各类编程中。 - 使用分布式队列的时候，没有意识到它是队列。 - 有具体需求的时候，忘记了分布式队列的存在。 方案选型 当确定系统之间有通信需求的时候，工程师们需要做很多的决策和平衡，这直接影响工程师们是否会选择分布式队列编程模型作为架构。从这个角度出发，影响建模的因素有四个：When、Who、Where、How。 when：同步VS异步 基本问题：发出去的消息什么</description>
+    </item>
     
     <item>
       <title>distri-load_balance</title>
@@ -35,7 +80,7 @@
       <pubDate>Thu, 25 Apr 2019 04:21:58 -0700</pubDate>
       
       <guid>https://astr0mfly.github.io/blog/2019-04/go-lession/</guid>
-      <description>启动两个线程，合并输出 package main import &amp;quot;fmt&amp;quot; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 0 { ch1 &amp;lt;- i } } }() go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 1 { ch2 &amp;lt;- i } } }() tmp := 0 for i := 0; i &amp;lt; 5; i++ { tmp = &amp;lt;-ch1 fmt.Println(tmp) tmp = &amp;lt;-ch2 fmt.Println(tmp) } } 版本控制 Version Action Time 1.0 Init 2019-04-25T04:21:58-07:00</description>
+      <description>启动两个线程，合并输出 package main import &amp;quot;fmt&amp;quot; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 0 { ch1 &amp;lt;- i } } }() go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 1 { ch2 &amp;lt;- i } } }() tmp := 0 for i := 0; i &amp;lt; 5; i++ { tmp = &amp;lt;-ch1 fmt.Println(tmp) tmp = &amp;lt;-ch2 fmt.Println(tmp) } } for-range package main import &amp;quot;fmt&amp;quot; func main() { slice := []int{0, 1, 2, 3} mp := make(map[int]*int) fmt.Println(&amp;quot;for range 坑&amp;quot;) for index, value := range slice { mp[index] = &amp;amp;value } //根本原因在于for range是用一个变量承接mp中的内容的 for key, value := range mp { fmt.Println(key, &amp;quot; &amp;quot;, *value) } fmt.Println(&amp;quot;等价写法&amp;qu</description>
     </item>
     
     <item>
@@ -126,6 +171,46 @@
       
       <guid>https://astr0mfly.github.io/moment/qiongbabafubaba/</guid>
       <description>章一 富爸爸 穷爸爸（观念的转变） 富人之所以越来越富，穷人之所以越来越穷，中产阶级之所以总是在债务泥潭中挣扎，其主要原因之一在于他们对金钱观念不是来自学校，而是来自家庭。 一个人的观念对其一生有着巨大影响力。 一个爸爸说“我可付不起” 另一个则禁止这类话。他说“我怎样才能付得起呢？”这两句话一个是陈述句，一个是疑问句；一个让你放弃，另一个则促使你想办法。富爸爸常说“脑袋越用越活，脑袋越活，挣钱就越多”，在他</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://astr0mfly.github.io/about/markdown-language/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://astr0mfly.github.io/about/markdown-language/</guid>
+      <description>h1 h2 h3 h4 h5 h6 ####### h7 // 错误代码 ######## h8 // 错误代码 ######### h9 // 错误代码 ########## h10 // 错误代码
+一级标题 二级标题 [TOC]
+ aaaaaaaaa &amp;gt; bbbbbbbbb &amp;gt;&amp;gt; cccccccccc
+ 标记之外hello world标记之外
+注：用```生成块
+&amp;lt;div&amp;gt; &amp;lt;div&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt;  var num = 0; for (var i = 0; i &amp;lt; 5; i++) { num+=i; } console.log(num);  百度1{:target=&amp;rdquo;_blank&amp;rdquo;}
+百度2{:target=&amp;rdquo;_blank&amp;rdquo;}
+[图片上传失败&amp;hellip;(image-90880b-1542510791300)]
+[图片上传失败&amp;hellip;(image-f83b77-1542510791300)]{:target=&amp;rdquo;_blank&amp;rdquo;} // 内链式
+[图片上传失败&amp;hellip;(image-4dc956-1542510791300)]{:target=&amp;rdquo;_blank&amp;rdquo;} // 引用式
+ one two three   one two three  这是文字……
+选项一 选项二
+ [选项3]     a b c     居中 左对齐 右对齐   ========= =============== ============    删除线
+斜体
+加粗
+Za
+Za
+Ctrl
+$$ x \href{why-equal.html}{=} y^2 + 1 $$ $ x = {-b \pm \sqrt{b^2-4ac} \over 2a}. $
+Markdown1 公式标题锚点
+[需要跳转的目录] // 方括号后保持空格   Markdown 轻量级文本标记语言，可以转换成html，pdf等格式 // 开头一个: + Tab 或 四个空格 代码块定义 代码块定义……
+var a = 10; // 保持空一行与 递进缩进   xxx@outlook.com
+st=&amp;gt;start: 开始|past:&amp;gt; http://www.baidu.com // 开始 e=&amp;gt;end: 结束 // 结束 c1=&amp;gt;condition: 条件1:&amp;gt;http://www.baidu.com[_parent] // 判断条件 c2=&amp;gt;condition: 条件2 // 判断条件 c3=&amp;gt;condition: 条件3 // 判断条件 io=&amp;gt;inputoutput: 输出 // 输出 //----------------以上为定义参数------------------------- //----------------以下为连接参数------------------------- // 开始-&amp;gt;判断条件1为no-&amp;gt;判断条件2为no-&amp;gt;判断条件3为no-&amp;gt;输出-&amp;gt;结束 st-&amp;gt;c1(yes,right)-&amp;gt;c2(yes,right)-&amp;gt;c3(yes,right)-&amp;gt;io-&amp;gt;e c1(no)-&amp;gt;e // 条件1不满足-&amp;gt;结束 c2(no)-&amp;gt;e // 条件2不满足-&amp;gt;结束 c3(no)-&amp;gt;e // 条件3不满足-&amp;gt;结束  tag=&amp;gt;type: content:&amp;gt;url // 形参格式 st=&amp;gt;start: 开始:&amp;gt;http://www.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://astr0mfly.github.io/about/markdown-latex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://astr0mfly.github.io/about/markdown-latex/</guid>
+      <description>Markdown中Latex常用语法 常用希腊字母表    Name Display Capital Case Display Var Case Display     \alpha $\alpha$       \beta $\beta$       \gamma $\gamma$ \Gamma $\Gamma$     \theta $\theta$ \Theta $\Theta$ \vartheta $\vartheta$   \mu $\mu$       \delta $\delta$ \Delta $\Delta$     \epsilon $\epsilon$   \varepsilon $\varepsilon$   \sigma $\sigma$ \Sigma $\Sigma$ \varsigma $\varsigma$   \pi $\pi$ \Pi $\Pi$ \varpi $\varpi$   \omega $\omega$ \Omega $\Omega$     \xi $\xi$ \Xi $\Xi$     \zeta $\zeta$       \chi $\chi$       \rho $\rho$   \varrho $\varrho$   \phi $\phi$ \Phi $\Phi$ \varphi $\varphi$   \eta $\eta$       \lambda $\lambda$ \Lambda $\Lambda$     \kappa $\kappa$       \nu $\nu$       \upsilon $\upsilon$ \Upsilon $\Upsilon$     \psi $\psi$ \Psi $\Psi$     \tau $\tau$       \iota $\iota$       o $o$        常用特殊字符表    Name Display Name Display Name Display Name Display     \times $\times$ \div $\div$ \pm $\pm$ \mp $\mp$   \otimes $\otimes$ \ominus $\ominus$ \oplus $\oplus$ \odot $\odot$   \oslash $\oslash$ \triangleq $\triangleq$ \ne $\ne$ \equiv $\equiv$   \lt $\lt$ \gt $\gt$ \le $\le$ \ge $\ge$   \cup $\cup$ \cap $\cap$ \Cup $\Cup$ \Cap $\Cap$   \bigcup $\bigcup$ \bigcap $\bigcap$ \ast $\ast$ \star $\star$   \bigotimes $\bigotimes$ \bigoplus $\bigoplus$ \circ $\circ$ \bullet $\bullet$   \bigcirc $\bigcirc$ \amalg $\amalg$ \to $\to$ \infty $\infty$   \vee $\vee$ \wedge $\wedge$ \lhd $\lhd$ \rhd $\rhd$   \bigvee $\bigvee$ \bigwedge $\bigwedge$ \unlhd $\unlhd$ \unrhd $\unrhd$   \sqcap $\sqcap$ \sqcup $\sqcup$ \prec $\prec$ \succ $\succ$   \subset $\subset$ \supset $\supset$ \sim $\sim$ \approx $\approx$   \subseteq $\subseteq$ \supseteq $\supseteq$ \cong $\cong$ \doteq $\doteq$   \setminus $\setminus$ \mid $\mid$ \ll $\ll$ \gg $\gg$   \parallel $\parallel$ \Join $\Join$ \in $\in$ \notin $\notin$   \propto $\propto$ \neg $\neg$ \ldots $\ldots$ \cdots $\cdots$   \forall $\forall$ \exists $\exists$ \vdots $\vdots$ \ddots $\ddots$   \aleph $\aleph$ \nabla $\nabla$ \imath $\imath$ \jmath $\jmath$   \ell $\ell$ \partial $\partial$ \int $\int$ \oint $\oint$   \uplus $\uplus$ \biguplus $\biguplus$        其他    Name Display Name Display     \triangleleft $\triangleleft$ \triangleright $\triangleright$   \bigtriangleup $\bigtriangleup$ \bigtriangledown $\bigtriangledown$   \uparrow $\uparrow$ \downarrow $\downarrow$   \leftarrow $\leftarrow$ \rightarrow $\rightarrow$   \Leftarrow $\Leftarrow$ \Rightarrow $\Rightarrow$   \longleftarrow $\longleftarrow$ \longrightarrow $\longrightarrow$   \Longleftarrow $\Longleftarrow$ \Longrightarrow $\Longrightarrow$   \leftrightarrow $\leftrightarrow$ \longleftrightarrow $\longleftrightarrow$   \Leftrightarrow $\Leftrightarrow$ \Longleftrightarrow $\Longleftrightarrow$   \leftharpoonup $\leftharpoonup$ \rightharpoonup $\rightharpoonup$   \leftharpoondown $\leftharpoondown$ \rightharpoondown $\rightharpoondown$   \rightleftharpoons $\rightleftharpoons$ \S $\S$   \nwarrow $\nwarrow$ \nearrow $\nearrow$   \swarrow $\swarrow$ \searrow $\searrow$   \triangle $\triangle$ \box $\Box$   \diamond $\diamond$ \diamondsuit $\diamondsuit$   \heartsuit $\heartsuit$ \clubsuit $\clubsuit$   \spadesuit $\spadesuit$      公式语法  上下标_ ^ , _{}^{}： $$ y = x_i^{a_1^2} $$ 公式中插入文本\mbox{}： $$ y = x^2 \; \mbox{(二次函数)} $$ 公式中插入空格\, \; \quad \qquad间隔依次变宽： $$ ab $$ $$ a\,b $$ $$ a\;b $$ $$ a\quad b $$ $$ a\qquad b $$</description>
     </item>
     
   </channel>

@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="Valencia">
+  <meta name="description" content="索引的本质 MySQL官方对索引的定义为：索引（Index）是帮助MySQL高效获取数据的数据结构。提取句子主干，就可以得到索引的本质：索引是数据结构。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。 实际的数据库系统几乎没有使用二叉查找树或其进化品种红黑树（red-black tree">
+  
+  <meta property="og:title" content="Mysql-Index" />
+<meta property="og:description" content="索引的本质 MySQL官方对索引的定义为：索引（Index）是帮助MySQL高效获取数据的数据结构。提取句子主干，就可以得到索引的本质：索引是数据结构。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。 实际的数据库系统几乎没有使用二叉查找树或其进化品种红黑树（red-black tree" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://astr0mfly.github.io/blog/2019-04/mysql-index/" />
+<meta property="article:published_time" content="2019-04-25T09:49:26-07:00"/>
+<meta property="article:modified_time" content="2019-04-25T09:49:26-07:00"/>
+
+
+
+  <title>
+  
+       Mysql-Index | Valencia 
+  
+  </title>
+
+  <link rel="canonical" href="https://astr0mfly.github.io/blog/2019-04/mysql-index/">
+
+  
+  
+
+  
+  <link href="https://astr0mfly.github.io/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://astr0mfly.github.io/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://astr0mfly.github.io/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://astr0mfly.github.io/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://astr0mfly.github.io/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://astr0mfly.github.io/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://astr0mfly.github.io/img/head-valens.png"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+    
+    <link rel="stylesheet" href="https://astr0mfly.github.io/js/vendors/katex/katex.min.css">
+  
+  
+
+  
+    
+    <link rel="stylesheet" href="https://astr0mfly.github.io/css/vendors/highlight/github-gist.css">
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://astr0mfly.github.io">
+          
+        <img class="avatar" src="https://astr0mfly.github.io/img/head-valens.png" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> Valencia</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://astr0mfly.github.io">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://astr0mfly.github.io/blog/" >Blog  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://astr0mfly.github.io/moment/" >Moment  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://astr0mfly.github.io/pocket/" >Pocket  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://astr0mfly.github.io/about/" >About  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://astr0mfly.github.io/img/header-slides/1a08978053aba70979f3962bb70524e8.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://astr0mfly.github.io/img/header-slides//4346dc57c0dd7af3b29bdc20f780e434.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://astr0mfly.github.io/img/header-slides//821b8cf31b75431716674da4ddf3d895.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://astr0mfly.github.io/img/header-slides//a1b2a3c18fd7b64d5b425dac2c73c31f.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://astr0mfly.github.io/img/header-slides//bf08d7884fb4a02e1fe952101975a376.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://astr0mfly.github.io">
+          
+            <img class="pull-right avatar avatar-md" src="https://astr0mfly.github.io/img/timg.jpeg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://astr0mfly.github.io">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>Valencia</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+                <a href="//github.com/astr0mfly" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+
+            
+
+            
+
+            
+
+            
+    
+            
+
+            
+                <a href="mailto:pengwanring@live.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+                <a href="//blog.csdn.net/u011138254" target="_blank" rel="noopener"><i class="fa fa-sticky-note" aria-hidden="true"></i></a>    
+            
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="col-md-10">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> “编码人生” </a></li>
+      
+    
+    
+      
+        <li><a href="https://astr0mfly.github.io/series/database"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>DataBase</a></li>
+      
+    
+  </ul>
+
+  <div class="px-4 post-heading">Mysql-Index</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Apr 25, 2019</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>11 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            
+
+<h2 id="索引的本质">索引的本质</h2>
+
+<p>MySQL官方对索引的定义为：索引（Index）是帮助MySQL高效获取数据的数据结构。提取句子主干，就可以得到索引的本质：索引是数据结构。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。</p>
+
+<p>实际的数据库系统几乎没有使用二叉查找树或其进化品种红黑树（red-black tree）实现的，原因会在下文介绍。</p>
+
+<h3 id="b-tree和b-tree">B-Tree和B+Tree</h3>
+
+<p>为了描述B-Tree，首先定义一条数据记录为一个二元组[key, data]，key为记录的键值，对于不同数据记录，key是互不相同的；data为数据记录除key外的数据。那么B-Tree是满足下列条件的数据结构：
+1. d为大于1的一个正整数，称为B-Tree的度。
+2. h为一个正整数，称为B-Tree的高度。
+3. 每个非叶子节点由n-1个key和n个指针组成，其中d&lt;=n&lt;=2d。
+4. 每个叶子节点最少包含一个key和两个指针，最多包含2d-1个key和2d个指针，叶节点的指针均为null 。
+5. 所有叶节点具有相同的深度，等于树高h。
+6. key和指针互相间隔，节点两端是指针。
+7. 一个节点中的key从左到右非递减排列。
+8. 所有节点组成树结构。
+9. 每个指针要么为null，要么指向另外一个节点。
+10. 如果某个指针在节点node最左边且不为null，则其指向节点的所有key小于v(key1)，其中v(key1)为node的第一个key的值。
+11. 如果某个指针在节点node最右边且不为null，则其指向节点的所有key大于v(keym)，其中v(keym)为node的最后一个key的值。
+12. 如果某个指针在节点node的左右相邻key分别是keyi和keyi+1且不为null，则其指向节点的所有key小于v(keyi+1)且大于v(keyi)。</p>
+
+<p>由于B-Tree的特性，在B-Tree中按key检索数据的算法非常直观：首先从根节点进行二分查找，如果找到则返回对应节点的data，否则对 相应区间的指针指向的节点递归进行查找，直到找到节点或找到null指针，前者查找成功，后者查找失败。</p>
+
+<h3 id="b-tree">B+Tree</h3>
+
+<p>B-Tree有许多变种，其中最常见的是B+Tree，例如MySQL就普遍使用B+Tree实现其索引结构。
+与B-Tree相比，B+Tree有以下不同点：
+1. 每个节点的指针上限为2d而不是2d+1。
+2. 内节点不存储data，只存储key；叶子节点不存储指针。</p>
+
+<p>由于并不是所有节点都具有相同的域，因此B+Tree中叶节点和内节点一般大小不同。这点与B-Tree不同，虽然B-Tree中不同节点存放的key和指针可能数量不一致，但是每个节点的域和上限是一致的，所以在实现中B-Tree往往对每个节点申请同等大小的空间。
+一般来说，B+Tree比B-Tree更适合实现外存储索引结构，具体原因与外存储器原理及计算机存取原理有关，将在下面讨论。</p>
+
+<h3 id="带有顺序访问指针的b-tree">带有顺序访问指针的B+Tree、</h3>
+
+<p>一般在数据库系统或文件系统中使用的B+Tree结构都在经典B+Tree的基础上进行了优化，增加了顺序访问指针。
+在B+Tree的每个叶子节点增加一个指向相邻叶子节点的指针，就形成了带有顺序访问指针的B+Tree。做这个优化的目的是为了提高 区间访问的性能，例如图4中如果要查询key为从18到49的所有数据记录，当找到18后，只需顺着节点和指针顺序遍历就可以一次性访问到所有数据节点， 极大提到了区间查询效率。
+这一节对B-Tree和B+Tree进行了一个简单的介绍，下一节结合存储器存取原理介绍为什么目前B+Tree是数据库系统实现索引的首选数据结构。</p>
+
+<h3 id="为什么使用b-tree-b-tree">为什么使用B-Tree（B+Tree）</h3>
+
+<p>上文说过，红黑树等数据结构也可以用来实现索引，但是文件系统及数据库系统普遍采用B-/+Tree作为索引结构，这一节将结合计算机组成原理相关知识讨论B-/+Tree作为索引的理论基础。
+一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘I/O消 耗，相对于内存存取，I/O存取的消耗要高几个数量级，所以评价一个数据结构作为索引的优劣最重要的指标就是在查找过程中磁盘I/O操作次数的渐进复杂 度。换句话说，索引的结构组织要尽量减少查找过程中磁盘I/O的存取次数。下面先介绍内存和磁盘存取原理，然后再结合这些原理分析B-/+Tree作为索 引的效率。</p>
+
+<h4 id="主存存取原理">主存存取原理</h4>
+
+<p>目前计算机使用的主存基本都是随机读写存储器（RAM）
+从抽象角度看，主存是一系列的存储单元组成的矩阵，每个存储单元存储固定大小的数据。每个存储单元有唯一的地址，现代主存的编址规则比较复杂，这里将其简化成一个二维地址：通过一个行地址和一个列地址可以唯一定位到一个存储单元
+主存的存取过程如下：
+当系统需要读取主存时，则将地址信号放到地址总线上传给主存，主存读到地址信号后，解析信号并定位到指定存储单元，然后将此存储单元数据放到数据总线上，供其它部件读取。
+写主存的过程类似，系统将要写入单元地址和数据分别放在地址总线和数据总线上，主存读取两个总线的内容，做相应的写操作。
+这里可以看出，主存存取的时间仅与存取次数呈线性关系，因为不存在机械操作，两次存取的数据的“距离”不会对时间有任何影响，例如，先取A0再取A1和先取A0再取D3的时间消耗是一样的</p>
+
+<h4 id="磁盘存取原理">磁盘存取原理</h4>
+
+<p>上文说过，索引一般以文件形式存储在磁盘上，索引检索需要磁盘I/O操作。与主存不同，磁盘I/O存在机械运动耗费，因此磁盘I/O的时间消耗是巨大的。
+一个磁盘由大小相同且同轴的圆形盘片组成，磁盘可以转动（各个磁盘必须同步转动）。在磁盘的一侧有磁头支架，磁头支架固定了一组磁头，每个磁头负责 存取一个磁盘的内容。磁头不能转动，但是可以沿磁盘半径方向运动（实际是斜切向运动），每个磁头同一时刻也必须是同轴的，即从正上方向下看，所有磁头任何 时候都是重叠的（不过目前已经有多磁头独立技术，可不受此限制）。
+当需要从磁盘读取数据时，系统会将数据逻辑地址传给磁盘，磁盘的控制电路按照寻址逻辑将逻辑地址翻译成物理地址，即确定要读的数据在哪个磁道，哪个 扇区。为了读取这个扇区的数据，需要将磁头放到这个扇区上方，为了实现这一点，磁头需要移动对准相应磁道，这个过程叫做寻道，所耗费时间叫做寻道时间，然 后磁盘旋转将目标扇区旋转到磁头下，这个过程耗费的时间叫做旋转时间。</p>
+
+<h4 id="局部性原理与磁盘预读">局部性原理与磁盘预读</h4>
+
+<p>由于存储介质的特性，磁盘本身存取就比主存慢很多，再加上机械运动耗费，磁盘的存取速度往往是主存的几百分分之一，因此为了提高效率，要尽量减少磁 盘I/O。为了达到这个目的，磁盘往往不是严格按需读取，而是每次都会预读，即使只需要一个字节，磁盘也会从这个位置开始，顺序向后读取一定长度的数据放 入内存。这样做的理论依据是计算机科学中著名的局部性原理：
+当一个数据被用到时，其附近的数据也通常会马上被使用。
+程序运行期间所需要的数据通常比较集中。
+由于磁盘顺序读取的效率很高（不需要寻道时间，只需很少的旋转时间），因此对于具有局部性的程序来说，预读可以提高I/O效率。
+预读的长度一般为页（page）的整倍数。页是计算机管理存储器的逻辑块，硬件及操作系统往往将主存和磁盘存储区分割为连续的大小相等的块，每个存 储块称为一页（在许多操作系统中，页得大小通常为4k），主存和磁盘以页为单位交换数据。当程序要读取的数据不在主存中时，会触发一个缺页异常，此时系统 会向磁盘发出读盘信号，磁盘会找到数据的起始位置并向后连续读取一页或几页载入内存中，然后异常返回，程序继续运行。</p>
+
+<h3 id="b-tree索引的性能分析">B-/+Tree索引的性能分析</h3>
+
+<p>上文说过一般使用磁盘I/O次数评价索引结构的优劣。先从B-Tree分析，根据B-Tree的定义，可知检索一次最多需要访问h个节点。数据库系 统的设计者巧妙利用了磁盘预读原理，将一个节点的大小设为等于一个页，这样每个节点只需要一次I/O就可以完全载入。为了达到这个目的，在实际实现B- Tree还需要使用如下技巧：
+每次新建节点时，直接申请一个页的空间，这样就保证一个节点物理上也存储在一个页里，加之计算机存储分配都是按页对齐的，就实现了一个node只需一次I/O。
+B-Tree中一次检索最多需要h-1次I/O（根节点常驻内存），渐进复杂度为O(h)=O(logdN)。一般实际应用中，出度d是非常大的数字，通常超过100，因此h非常小（通常不超过3）。
+综上所述，用B-Tree作为索引结构效率是非常高的。
+而红黑树这种结构，h明显要深的多。由于逻辑上很近的节点（父子）物理上可能很远，无法利用局部性，所以红黑树的I/O渐进复杂度也为O(h)，效率明显比B-Tree差很多。
+上文还说过，B+Tree更适合外存索引，原因和内节点出度d有关。从上面分析可以看到，d越大索引的性能越好，而出度的上限取决于节点内key和data的大小</p>
+
+<h2 id="mysql索引实现">MySQL索引实现</h2>
+
+<h3 id="myisam索引实现">MyISAM索引实现</h3>
+
+<p>MyISAM引擎使用B+Tree作为索引结构，叶节点的data域存放的是数据记录的地址。</p>
+
+<p>在MyISAM中，主索引和辅助索引（Secondary key）在结构上没有任何区别，只是主索引要求key是唯一的，而辅助索引的key可以重复。
+MyISAM中索引检索的算法为首先按照B+Tree搜索算法搜索索引，如果指定的Key存在，则取出其data域的值，然后以data域的值为地址，读取相应数据记录。
+MyISAM的索引方式也叫做“非聚集”的，之所以这么称呼是为了与InnoDB的聚集索引区分。</p>
+
+<h3 id="innodb索引实现">InnoDB索引实现</h3>
+
+<p>虽然InnoDB也使用B+Tree作为索引结构，但具体实现方式却与MyISAM截然不同。
+第一个重大区别是InnoDB的数据文件本身就是索引文件。从上文知道，MyISAM索引文件和数据文件是分离 的，索引文件仅保存数据记录的地址。而在InnoDB中，表数据文件本身就是按B+Tree组织的一个索引结构，这棵树的叶节点data域保存了完整的数 据记录。这个索引的key是数据表的主键，因此InnoDB表数据文件本身就是主索引。
+第二个与MyISAM索引的不同是InnoDB的辅助索引data域存储相应记录主键的值而不是地址。换句话说，InnoDB的所有辅助索引都引用主键作为data域。
+聚集索引这种实现方式使得按主键的搜索十分高效，但是辅助索引搜索需要检索两遍索引：首先检索辅助索引获得主键，然后用主键到主索引中检索获得记录。</p>
+
+<hr />
+
+<h2 id="例如知道了innodb的索引实现后-就很容易明白为什么不建议使用过长的字-段作为主键-因为所有辅助索引都引用主索引-过长的主索引会令辅助索引变得过大-再例如-用非单调的字段作为主键在innodb中不是个好主意-因为-innodb数据文件本身是一颗b-tree-非单调的主键会造成在插入新记录时数据文件为了维持b-tree的特性而频繁的分裂调整-十分低效-而使用-自增字段作为主键则是一个很好的选择">例如知道了InnoDB的索引实现后，就很容易明白为什么不建议使用过长的字 段作为主键，因为所有辅助索引都引用主索引，过长的主索引会令辅助索引变得过大。再例如，用非单调的字段作为主键在InnoDB中不是个好主意，因为 InnoDB数据文件本身是一颗B+Tree，非单调的主键会造成在插入新记录时数据文件为了维持B+Tree的特性而频繁的分裂调整，十分低效，而使用 自增字段作为主键则是一个很好的选择。</h2>
+
+<h2 id="索引使用策略及优化">索引使用策略及优化</h2>
+
+<h3 id="最左前缀原理与相关优化">最左前缀原理与相关优化</h3>
+
+<p>高效使用索引的首要条件是知道什么样的查询会使用到索引，这个问题和B+Tree中的“最左前缀原理”有关，下面通过例子说明最左前缀原理。
+这里先说一下联合索引的概念。在上文中，我们都是假设索引只引用了单个的列，实际上，MySQL中的索引可以以一定顺序引用多个列，这种索引叫做联 合索引，一般的，一个联合索引是一个有序元组<a1, a2, …, an>，其中各个元素均为数据表的一列，实际上要严格定义索引需要用到关系代数，但是这里我不想讨论太多关系代数的话题，因为那样会显得很枯燥，所 以这里就不再做严格定义。另外，单列索引可以看成联合索引元素数为1的特例。</p>
+
+<h3 id="索引选择性与前缀索引">索引选择性与前缀索引</h3>
+
+<p>既然索引可以加快查询速度，那么是不是只要是查询语句需要，就建上索引？答案是否定的。因为索引虽然加快了查询速度，但索引也是有代价的：索引文件 本身要消耗存储空间，同时索引会加重插入、删除和修改记录时的负担，另外，MySQL在运行时也要消耗资源维护索引，因此索引并不是越多越好。一般两种情 况下不建议建索引。</p>
+
+<h3 id="innodb的主键选择与插入优化">InnoDB的主键选择与插入优化</h3>
+
+<p>使用InnoDB存储引擎时，如果没有特别的需要，请永远使用一个与业务无关的自增字段作为主键。
+经常看到有帖子或博客讨论主键选择问题，有人建议使用业务无关的自增主键，有人觉得没有必要，完全可以使用如学号或身份证号这种唯一字段作为主键。 不论支持哪种论点，大多数论据都是业务层面的。如果从数据库索引优化角度看，使用InnoDB引擎而不使用自增主键绝对是一个糟糕的主意。</p>
+
+<hr />
+
+<h2 id="展望">展望</h2>
+
+<p>如与排序（ORDER BY）相关的索引优化及覆盖索引（Covering index）的话题本文并未涉及，同时除B-Tree索引外MySQL还根据不同引擎支持的哈希索引、全文索引
+<a href="https://segmentfault.com/a/1190000018719035">参考</a></p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2019-04-25T09:49:26-07:00</td>
+</tr>
+</tbody>
+</table>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://astr0mfly.github.io/tags/mysql" role="button">mysql </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://astr0mfly.github.io/blog/2019-04/distri-consisitency/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>Distri-Consisitency</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+	
+	
+	
+	
+		
+		
+		
+	
+
+		
+		<div class="col-md-2 pl-0">
+
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- CATALOG - </span>
+					</li>
+
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%b4%a2%e5%bc%95%e7%9a%84%e6%9c%ac%e8%b4%a8">
+												 索引的本质
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#b-tree%e5%92%8cb-tree">
+												 B-Tree和B&#43;Tree
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#b-tree">
+												 B&#43;Tree
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%b8%a6%e6%9c%89%e9%a1%ba%e5%ba%8f%e8%ae%bf%e9%97%ae%e6%8c%87%e9%92%88%e7%9a%84b-tree">
+												 带有顺序访问指针的B&#43;Tree、
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e4%bd%bf%e7%94%a8b-tree-b-tree">
+												 为什么使用B-Tree（B&#43;Tree）
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%b8%bb%e5%ad%98%e5%ad%98%e5%8f%96%e5%8e%9f%e7%90%86">
+												 主存存取原理
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%a3%81%e7%9b%98%e5%ad%98%e5%8f%96%e5%8e%9f%e7%90%86">
+												 磁盘存取原理
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%b1%80%e9%83%a8%e6%80%a7%e5%8e%9f%e7%90%86%e4%b8%8e%e7%a3%81%e7%9b%98%e9%a2%84%e8%af%bb">
+												 局部性原理与磁盘预读
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#b-tree%e7%b4%a2%e5%bc%95%e7%9a%84%e6%80%a7%e8%83%bd%e5%88%86%e6%9e%90">
+												 B-/&#43;Tree索引的性能分析
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#mysql%e7%b4%a2%e5%bc%95%e5%ae%9e%e7%8e%b0">
+												 MySQL索引实现
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#myisam%e7%b4%a2%e5%bc%95%e5%ae%9e%e7%8e%b0">
+												 MyISAM索引实现
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#innodb%e7%b4%a2%e5%bc%95%e5%ae%9e%e7%8e%b0">
+												 InnoDB索引实现
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%be%8b%e5%a6%82%e7%9f%a5%e9%81%93%e4%ba%86innodb%e7%9a%84%e7%b4%a2%e5%bc%95%e5%ae%9e%e7%8e%b0%e5%90%8e-%e5%b0%b1%e5%be%88%e5%ae%b9%e6%98%93%e6%98%8e%e7%99%bd%e4%b8%ba%e4%bb%80%e4%b9%88%e4%b8%8d%e5%bb%ba%e8%ae%ae%e4%bd%bf%e7%94%a8%e8%bf%87%e9%95%bf%e7%9a%84%e5%ad%97-%e6%ae%b5%e4%bd%9c%e4%b8%ba%e4%b8%bb%e9%94%ae-%e5%9b%a0%e4%b8%ba%e6%89%80%e6%9c%89%e8%be%85%e5%8a%a9%e7%b4%a2%e5%bc%95%e9%83%bd%e5%bc%95%e7%94%a8%e4%b8%bb%e7%b4%a2%e5%bc%95-%e8%bf%87%e9%95%bf%e7%9a%84%e4%b8%bb%e7%b4%a2%e5%bc%95%e4%bc%9a%e4%bb%a4%e8%be%85%e5%8a%a9%e7%b4%a2%e5%bc%95%e5%8f%98%e5%be%97%e8%bf%87%e5%a4%a7-%e5%86%8d%e4%be%8b%e5%a6%82-%e7%94%a8%e9%9d%9e%e5%8d%95%e8%b0%83%e7%9a%84%e5%ad%97%e6%ae%b5%e4%bd%9c%e4%b8%ba%e4%b8%bb%e9%94%ae%e5%9c%a8innodb%e4%b8%ad%e4%b8%8d%e6%98%af%e4%b8%aa%e5%a5%bd%e4%b8%bb%e6%84%8f-%e5%9b%a0%e4%b8%ba-innodb%e6%95%b0%e6%8d%ae%e6%96%87%e4%bb%b6%e6%9c%ac%e8%ba%ab%e6%98%af%e4%b8%80%e9%a2%97b-tree-%e9%9d%9e%e5%8d%95%e8%b0%83%e7%9a%84%e4%b8%bb%e9%94%ae%e4%bc%9a%e9%80%a0%e6%88%90%e5%9c%a8%e6%8f%92%e5%85%a5%e6%96%b0%e8%ae%b0%e5%bd%95%e6%97%b6%e6%95%b0%e6%8d%ae%e6%96%87%e4%bb%b6%e4%b8%ba%e4%ba%86%e7%bb%b4%e6%8c%81b-tree%e7%9a%84%e7%89%b9%e6%80%a7%e8%80%8c%e9%a2%91%e7%b9%81%e7%9a%84%e5%88%86%e8%a3%82%e8%b0%83%e6%95%b4-%e5%8d%81%e5%88%86%e4%bd%8e%e6%95%88-%e8%80%8c%e4%bd%bf%e7%94%a8-%e8%87%aa%e5%a2%9e%e5%ad%97%e6%ae%b5%e4%bd%9c%e4%b8%ba%e4%b8%bb%e9%94%ae%e5%88%99%e6%98%af%e4%b8%80%e4%b8%aa%e5%be%88%e5%a5%bd%e7%9a%84%e9%80%89%e6%8b%a9">
+												 例如知道了InnoDB的索引实现后，就很容易明白为什么不建议使用过长的字 段作为主键，因为所有辅助索引都引用主索引，过长的主索引会令辅助索引变得过大。再例如，用非单调的字段作为主键在InnoDB中不是个好主意，因为 InnoDB数据文件本身是一颗B&#43;Tree，非单调的主键会造成在插入新记录时数据文件为了维持B&#43;Tree的特性而频繁的分裂调整，十分低效，而使用 自增字段作为主键则是一个很好的选择。
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%b4%a2%e5%bc%95%e4%bd%bf%e7%94%a8%e7%ad%96%e7%95%a5%e5%8f%8a%e4%bc%98%e5%8c%96">
+												 索引使用策略及优化
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%9c%80%e5%b7%a6%e5%89%8d%e7%bc%80%e5%8e%9f%e7%90%86%e4%b8%8e%e7%9b%b8%e5%85%b3%e4%bc%98%e5%8c%96">
+												 最左前缀原理与相关优化
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%b4%a2%e5%bc%95%e9%80%89%e6%8b%a9%e6%80%a7%e4%b8%8e%e5%89%8d%e7%bc%80%e7%b4%a2%e5%bc%95">
+												 索引选择性与前缀索引
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#innodb%e7%9a%84%e4%b8%bb%e9%94%ae%e9%80%89%e6%8b%a9%e4%b8%8e%e6%8f%92%e5%85%a5%e4%bc%98%e5%8c%96">
+												 InnoDB的主键选择与插入优化
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%b1%95%e6%9c%9b">
+												 展望
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
+												 版本控制
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+
+				</ul>
+			</div>
+			
+
+		</div>
+		
+	
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+        <a href="//github.com/astr0mfly " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="mailto:pengwanring@live.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+        <a href="//blog.csdn.net/u011138254" target="_blank" rel="noopener"><i class="fa fa-sticky-note" aria-hidden="true"></i></a>    
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2019 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/jquery/jquery-3.3.1.min.js%20"></script>
+
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/jquery/jquery.smooth-scroll.min.js%20"></script>
+
+
+
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/popper.min.js%20"></script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/holder.min.js%20"></script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors-extensions/bootstrap4/bootstrap.js%20"></script>
+
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/mdb/mdb.min.js%20"></script>
+
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/main.js%20"></script>
+
+
+
+
+<script src="https://astr0mfly.github.io/%20js/vendors/highlight.pack.js%20">
+</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="https://astr0mfly.github.io/%20js/vendors/katex/katex.min.css%20" />
+<script defer src="https://astr0mfly.github.io/%20js/vendors/katex/katex.min.js%20"></script>
+<script defer src="https://astr0mfly.github.io/%20js/vendors/katex/contrib/auto-render.min.js%20"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body);
+    });
+</script>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    
+    new WOW().init();
+</script>
+  </body>
+</html>

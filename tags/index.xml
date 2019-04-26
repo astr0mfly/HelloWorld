@@ -6,15 +6,33 @@
     <description>Recent content in Tags on Valencia</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Thu, 25 Apr 2019 07:04:20 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 25 Apr 2019 10:49:04 -0700</lastBuildDate>
     
 	<atom:link href="https://astr0mfly.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>life</title>
+      <link>https://astr0mfly.github.io/tags/life/</link>
+      <pubDate>Thu, 25 Apr 2019 10:49:04 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/tags/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>https://astr0mfly.github.io/tags/mysql/</link>
+      <pubDate>Thu, 25 Apr 2019 09:49:26 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Distributed</title>
       <link>https://astr0mfly.github.io/tags/distributed/</link>
-      <pubDate>Thu, 25 Apr 2019 07:04:20 -0700</pubDate>
+      <pubDate>Thu, 25 Apr 2019 08:51:17 -0700</pubDate>
       
       <guid>https://astr0mfly.github.io/tags/distributed/</guid>
       <description></description>

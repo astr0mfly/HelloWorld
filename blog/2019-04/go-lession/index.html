@@ -7,10 +7,10 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
   <meta name="author" content="Valencia">
-  <meta name="description" content="启动两个线程，合并输出 package main import &quot;fmt&quot; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &lt; 10; i&#43;&#43; { if i%2 == 0 { ch1 &lt;- i } } }() go func() { for i := 0; i &lt; 10; i&#43;&#43; { if i%2 == 1 { ch2 &lt;- i } } }() tmp := 0 for i := 0; i &lt; 5; i&#43;&#43; { tmp = &lt;-ch1 fmt.Println(tmp) tmp = &lt;-ch2 fmt.Println(tmp) } } 版本控制 Version Action Time 1.0 Init 2019-04-25T04:21:58-07:00">
+  <meta name="description" content="启动两个线程，合并输出 package main import &quot;fmt&quot; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &lt; 10; i&#43;&#43; { if i%2 == 0 { ch1 &lt;- i } } }() go func() { for i := 0; i &lt; 10; i&#43;&#43; { if i%2 == 1 { ch2 &lt;- i } } }() tmp := 0 for i := 0; i &lt; 5; i&#43;&#43; { tmp = &lt;-ch1 fmt.Println(tmp) tmp = &lt;-ch2 fmt.Println(tmp) } } for-range package main import &quot;fmt&quot; func main() { slice := []int{0, 1, 2, 3} mp := make(map[int]*int) fmt.Println(&quot;for range 坑&quot;) for index, value := range slice { mp[index] = &amp;value } //根本原因在于for range是用一个变量承接mp中的内容的 for key, value := range mp { fmt.Println(key, &quot; &quot;, *value) } fmt.Println(&quot;等价写法&qu">
   
   <meta property="og:title" content="Go-Lession" />
-<meta property="og:description" content="启动两个线程，合并输出 package main import &quot;fmt&quot; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &lt; 10; i&#43;&#43; { if i%2 == 0 { ch1 &lt;- i } } }() go func() { for i := 0; i &lt; 10; i&#43;&#43; { if i%2 == 1 { ch2 &lt;- i } } }() tmp := 0 for i := 0; i &lt; 5; i&#43;&#43; { tmp = &lt;-ch1 fmt.Println(tmp) tmp = &lt;-ch2 fmt.Println(tmp) } } 版本控制 Version Action Time 1.0 Init 2019-04-25T04:21:58-07:00" />
+<meta property="og:description" content="启动两个线程，合并输出 package main import &quot;fmt&quot; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &lt; 10; i&#43;&#43; { if i%2 == 0 { ch1 &lt;- i } } }() go func() { for i := 0; i &lt; 10; i&#43;&#43; { if i%2 == 1 { ch2 &lt;- i } } }() tmp := 0 for i := 0; i &lt; 5; i&#43;&#43; { tmp = &lt;-ch1 fmt.Println(tmp) tmp = &lt;-ch2 fmt.Println(tmp) } } for-range package main import &quot;fmt&quot; func main() { slice := []int{0, 1, 2, 3} mp := make(map[int]*int) fmt.Println(&quot;for range 坑&quot;) for index, value := range slice { mp[index] = &amp;value } //根本原因在于for range是用一个变量承接mp中的内容的 for key, value := range mp { fmt.Println(key, &quot; &quot;, *value) } fmt.Println(&quot;等价写法&qu" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://astr0mfly.github.io/blog/2019-04/go-lession/" />
 <meta property="article:published_time" content="2019-04-25T04:21:58-07:00"/>
@@ -118,6 +118,11 @@
              
             <li class="nav-item ">
               <a class="nav-link" href="https://astr0mfly.github.io/moment/" >Moment  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://astr0mfly.github.io/pocket/" >Pocket  </a>
             </li>
           
              
@@ -276,7 +281,7 @@
              
         <div class="mt-2" style="font-size: 1rem; color: white;">
             
-              <a href="//github.com/astr0mfly" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+                <a href="//github.com/astr0mfly" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
             
             
 
@@ -289,12 +294,14 @@
             
     
             
-    
-        
+
             
                 <a href="mailto:pengwanring@live.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
             
     
+            
+                <a href="//blog.csdn.net/u011138254" target="_blank" rel="noopener"><i class="fa fa-sticky-note" aria-hidden="true"></i></a>    
+            
             
 
             
@@ -398,6 +405,74 @@ func main() {
 }
 
 </code></pre>
+
+<h2 id="for-range">for-range</h2>
+
+<pre><code class="language-golang">package main
+
+import &quot;fmt&quot;
+
+func main() {
+	slice := []int{0, 1, 2, 3}
+	mp := make(map[int]*int)
+	fmt.Println(&quot;for range 坑&quot;)
+	for index, value := range slice {
+		mp[index] = &amp;value
+	}
+	//根本原因在于for range是用一个变量承接mp中的内容的
+	for key, value := range mp {
+		fmt.Println(key, &quot; &quot;, *value)
+	}
+
+	fmt.Println(&quot;等价写法&quot;)
+	var index, value int
+	mp2 := make(map[int]*int)
+	for index, value = range slice {
+		mp2[index] = &amp;value
+	}
+
+	for key, value := range mp2 {
+		fmt.Println(key, &quot; &quot;, *value)
+	}
+
+	fmt.Println(&quot;正确写法&quot;)
+	mp3 := make(map[int]*int)
+	for index, value := range slice {
+		num := value
+		mp3[index] = &amp;num
+	}
+	//根本原因在于for range是用一个变量承接mp中的内容的
+	//因为for range创建的是每个元素的拷贝，而不是直接返回每个元素的引用，如果使用该值变量的地址作为指向每个元素的指针，就会导致错误，在迭代时，返回的变量是一个迭代过程中根据切片依次赋值的新变量，所以值的地址总是相同的，导致结果不如预期。
+	for key, value := range mp3 {
+		fmt.Println(key, &quot; &quot;, *value)
+	}
+
+}
+
+</code></pre>
+
+<hr />
+
+<p>out</p>
+
+<pre><code class="language-golang">for range 坑
+0   3
+1   3
+2   3
+3   3
+等价写法
+0   3
+1   3
+2   3
+3   3
+正确写法
+0   0
+1   1
+2   2
+3   3
+</code></pre>
+
+<hr />
 
 <h2 id="版本控制">版本控制</h2>
 
@@ -531,6 +606,28 @@ func main() {
 								
 
 										<li class="nav-item">
+						 					<a class="nav-link" href="#for-range">
+												 for-range
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
 						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
 												 版本控制
 											</a>
@@ -569,7 +666,7 @@ func main() {
   
   <div class="pb-2 mt-5 pt-5">
     
-      <a href="//github.com/astr0mfly " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+        <a href="//github.com/astr0mfly " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
     
     
 
@@ -582,10 +679,13 @@ func main() {
     
 
     
-
 
     
         <a href="mailto:pengwanring@live.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+        <a href="//blog.csdn.net/u011138254" target="_blank" rel="noopener"><i class="fa fa-sticky-note" aria-hidden="true"></i></a>    
     
 
     
@@ -610,39 +710,42 @@ func main() {
 
 
 
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/jquery/jquery-3.3.1.min.js%20"></script>
 
-
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/jquery/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
-
-
-
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/popper.min.js"></script>
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/holder.min.js"></script>
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
-
-<script type="text/javascript" src="https://astr0mfly.github.io/js/vendors/mdb/mdb.min.js"></script>
-
-<script type="text/javascript" src="https://astr0mfly.github.io/js/main.js"></script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/jquery/jquery.smooth-scroll.min.js%20"></script>
 
 
 
-  
-  <script src="https://astr0mfly.github.io/js/vendors/highlight.pack.js"> </script>
-  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/popper.min.js%20"></script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/holder.min.js%20"></script>
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors-extensions/bootstrap4/bootstrap.js%20"></script>
+
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/vendors/mdb/mdb.min.js%20"></script>
+
+<script type="text/javascript" src="https://astr0mfly.github.io/%20js/main.js%20"></script>
 
 
 
 
- 
-  <script src="https://astr0mfly.github.io/js/vendors/katex/katex.min.js"> </script>
-  <script src="https://astr0mfly.github.io/js/vendors/katex/contrib/auto-render.min.js"></script>
+<script src="https://astr0mfly.github.io/%20js/vendors/highlight.pack.js%20">
+</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 
-  <script>
-      document.addEventListener("DOMContentLoaded", function () {
-          renderMathInElement(document.body);
-      });
-  </script>
+
+
+
+
+<link rel="stylesheet" href="https://astr0mfly.github.io/%20js/vendors/katex/katex.min.css%20" />
+<script defer src="https://astr0mfly.github.io/%20js/vendors/katex/katex.min.js%20"></script>
+<script defer src="https://astr0mfly.github.io/%20js/vendors/katex/contrib/auto-render.min.js%20"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body);
+    });
+</script>
 
 
 
@@ -652,12 +755,8 @@ func main() {
 
 
 <script type="text/javascript">
-  
-  new WOW().init();
+    
+    new WOW().init();
 </script>
-
-
-
-
   </body>
 </html>

@@ -6,10 +6,19 @@
     <description>Recent content in “编码人生” on Valencia</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Thu, 25 Apr 2019 07:04:20 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 25 Apr 2019 09:49:26 -0700</lastBuildDate>
     
 	<atom:link href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mysql-Index</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/mysql-index/</link>
+      <pubDate>Thu, 25 Apr 2019 09:49:26 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/mysql-index/</guid>
+      <description>索引的本质 MySQL官方对索引的定义为：索引（Index）是帮助MySQL高效获取数据的数据结构。提取句子主干，就可以得到索引的本质：索引是数据结构。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。 实际的数据库系统几乎没有使用二叉查找树或其进化品种红黑树（red-black tree</description>
+    </item>
     
     <item>
       <title>distri-load_balance</title>
@@ -26,7 +35,7 @@
       <pubDate>Thu, 25 Apr 2019 04:21:58 -0700</pubDate>
       
       <guid>https://astr0mfly.github.io/blog/2019-04/go-lession/</guid>
-      <description>启动两个线程，合并输出 package main import &amp;quot;fmt&amp;quot; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 0 { ch1 &amp;lt;- i } } }() go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 1 { ch2 &amp;lt;- i } } }() tmp := 0 for i := 0; i &amp;lt; 5; i++ { tmp = &amp;lt;-ch1 fmt.Println(tmp) tmp = &amp;lt;-ch2 fmt.Println(tmp) } } 版本控制 Version Action Time 1.0 Init 2019-04-25T04:21:58-07:00</description>
+      <description>启动两个线程，合并输出 package main import &amp;quot;fmt&amp;quot; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 0 { ch1 &amp;lt;- i } } }() go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 1 { ch2 &amp;lt;- i } } }() tmp := 0 for i := 0; i &amp;lt; 5; i++ { tmp = &amp;lt;-ch1 fmt.Println(tmp) tmp = &amp;lt;-ch2 fmt.Println(tmp) } } for-range package main import &amp;quot;fmt&amp;quot; func main() { slice := []int{0, 1, 2, 3} mp := make(map[int]*int) fmt.Println(&amp;quot;for range 坑&amp;quot;) for index, value := range slice { mp[index] = &amp;amp;value } //根本原因在于for range是用一个变量承接mp中的内容的 for key, value := range mp { fmt.Println(key, &amp;quot; &amp;quot;, *value) } fmt.Println(&amp;quot;等价写法&amp;qu</description>
     </item>
     
     <item>

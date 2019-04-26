@@ -4,37 +4,98 @@
   
   <url>
     <loc>https://astr0mfly.github.io/categories/</loc>
-    <lastmod>2019-04-25T07:04:20-07:00</lastmod>
+    <lastmod>2019-04-25T10:49:04-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://astr0mfly.github.io/tags/distributed/</loc>
-    <lastmod>2019-04-25T07:04:20-07:00</lastmod>
-    <priority>0</priority>
+    <loc>https://astr0mfly.github.io/moment/life-fast_employee/</loc>
+    <lastmod>2019-04-25T10:49:04-07:00</lastmod>
   </url>
   
   <url>
     <loc>https://astr0mfly.github.io/tags/</loc>
-    <lastmod>2019-04-25T07:04:20-07:00</lastmod>
+    <lastmod>2019-04-25T10:49:04-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://astr0mfly.github.io/</loc>
-    <lastmod>2019-04-25T07:04:20-07:00</lastmod>
+    <lastmod>2019-04-25T10:49:04-07:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/tags/life/</loc>
+    <lastmod>2019-04-25T10:49:04-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/</loc>
+    <lastmod>2019-04-25T10:49:04-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/series/database/</loc>
+    <lastmod>2019-04-25T09:49:26-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/blog/2019-04/mysql-index/</loc>
+    <lastmod>2019-04-25T09:49:26-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/series/</loc>
+    <lastmod>2019-04-25T09:49:26-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/tags/mysql/</loc>
+    <lastmod>2019-04-25T09:49:26-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F/</loc>
+    <lastmod>2019-04-25T09:49:26-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/pocket/wen-protobuf/</loc>
+    <lastmod>2019-04-25T09:36:07-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/blog/2019-04/distri-consisitency/</loc>
+    <lastmod>2019-04-25T08:51:17-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/tags/distributed/</loc>
+    <lastmod>2019-04-25T08:51:17-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%B9%8B%E9%81%93/</loc>
+    <lastmod>2019-04-25T08:51:17-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/blog/2019-04/distri-queue/</loc>
+    <lastmod>2019-04-25T08:17:54-07:00</lastmod>
   </url>
   
   <url>
     <loc>https://astr0mfly.github.io/blog/2019-04/distri-load_balance/</loc>
     <lastmod>2019-04-25T07:04:20-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F/</loc>
-    <lastmod>2019-04-25T07:04:20-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -45,12 +106,6 @@
   <url>
     <loc>https://astr0mfly.github.io/blog/2019-04/go-lession/</loc>
     <lastmod>2019-04-25T04:21:58-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://astr0mfly.github.io/series/</loc>
-    <lastmod>2019-04-25T04:21:58-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -77,12 +132,6 @@
   
   <url>
     <loc>https://astr0mfly.github.io/tags/cpp/</loc>
-    <lastmod>2019-04-25T03:10:41-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%B9%8B%E9%81%93/</loc>
     <lastmod>2019-04-25T03:10:41-07:00</lastmod>
     <priority>0</priority>
   </url>
@@ -194,6 +243,21 @@
   <url>
     <loc>https://astr0mfly.github.io/moment/</loc>
     <lastmod>2015-08-19T20:29:37-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/pocket/</loc>
+    <lastmod>2015-08-19T20:29:37-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/about/markdown-language/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://astr0mfly.github.io/about/markdown-latex/</loc>
+    <priority>0</priority>
   </url>
   
 </urlset>

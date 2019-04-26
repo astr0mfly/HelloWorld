@@ -12,6 +12,33 @@
     
     
     <item>
+      <title>Mysql-Index</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/mysql-index/</link>
+      <pubDate>Thu, 25 Apr 2019 09:49:26 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/mysql-index/</guid>
+      <description>索引的本质 MySQL官方对索引的定义为：索引（Index）是帮助MySQL高效获取数据的数据结构。提取句子主干，就可以得到索引的本质：索引是数据结构。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。 实际的数据库系统几乎没有使用二叉查找树或其进化品种红黑树（red-black tree</description>
+    </item>
+    
+    <item>
+      <title>Distri-Consisitency</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/distri-consisitency/</link>
+      <pubDate>Thu, 25 Apr 2019 08:51:17 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/distri-consisitency/</guid>
+      <description>分布式系统中一个重要的问题就是数据复制，数据复制一般是为了增强系统的可用性或提高性能。而实现数据复制的一个主要难题就是保持各个副本的一致性。 什么是一致性模型 一致性模型本质上是进程与数据存储的约定：如果进程遵循某些规则，那么进程对数据的读写操作都是可预期的。 一致性模型主要可以分为两类：能够保证所有进程对数据的读写顺序都保持一致的一致性模型称为强一致性模型，而不能保证的一致性模型称为弱一致性模型。 强一</description>
+    </item>
+    
+    <item>
+      <title>Distri-Queue</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/distri-queue/</link>
+      <pubDate>Thu, 25 Apr 2019 08:17:54 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/distri-queue/</guid>
+      <description>摘要 作为一种基础的抽象数据结构，队列被广泛应用在各类编程中。 - 使用分布式队列的时候，没有意识到它是队列。 - 有具体需求的时候，忘记了分布式队列的存在。 方案选型 当确定系统之间有通信需求的时候，工程师们需要做很多的决策和平衡，这直接影响工程师们是否会选择分布式队列编程模型作为架构。从这个角度出发，影响建模的因素有四个：When、Who、Where、How。 when：同步VS异步 基本问题：发出去的消息什么</description>
+    </item>
+    
+    <item>
       <title>distri-load_balance</title>
       <link>https://astr0mfly.github.io/blog/2019-04/distri-load_balance/</link>
       <pubDate>Thu, 25 Apr 2019 07:04:20 -0700</pubDate>
@@ -35,7 +62,7 @@
       <pubDate>Thu, 25 Apr 2019 04:21:58 -0700</pubDate>
       
       <guid>https://astr0mfly.github.io/blog/2019-04/go-lession/</guid>
-      <description>启动两个线程，合并输出 package main import &amp;quot;fmt&amp;quot; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 0 { ch1 &amp;lt;- i } } }() go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 1 { ch2 &amp;lt;- i } } }() tmp := 0 for i := 0; i &amp;lt; 5; i++ { tmp = &amp;lt;-ch1 fmt.Println(tmp) tmp = &amp;lt;-ch2 fmt.Println(tmp) } } 版本控制 Version Action Time 1.0 Init 2019-04-25T04:21:58-07:00</description>
+      <description>启动两个线程，合并输出 package main import &amp;quot;fmt&amp;quot; func main() { ch1 := make(chan int) ch2 := make(chan int) go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 0 { ch1 &amp;lt;- i } } }() go func() { for i := 0; i &amp;lt; 10; i++ { if i%2 == 1 { ch2 &amp;lt;- i } } }() tmp := 0 for i := 0; i &amp;lt; 5; i++ { tmp = &amp;lt;-ch1 fmt.Println(tmp) tmp = &amp;lt;-ch2 fmt.Println(tmp) } } for-range package main import &amp;quot;fmt&amp;quot; func main() { slice := []int{0, 1, 2, 3} mp := make(map[int]*int) fmt.Println(&amp;quot;for range 坑&amp;quot;) for index, value := range slice { mp[index] = &amp;amp;value } //根本原因在于for range是用一个变量承接mp中的内容的 for key, value := range mp { fmt.Println(key, &amp;quot; &amp;quot;, *value) } fmt.Println(&amp;quot;等价写法&amp;qu</description>
     </item>
     
     <item>
