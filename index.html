@@ -15,7 +15,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://astr0mfly.github.io/" />
 
-<meta property="og:updated_time" content="2019-04-25T10:49:04-07:00"/>
+<meta property="og:updated_time" content="2019-04-29T02:47:43-07:00"/>
 
 
     <title>
@@ -412,6 +412,8 @@
 
   
 
+  
+
 
 
 
@@ -444,7 +446,7 @@
             
             <li class="py-1">
               <a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%B9%8B%E9%81%93">
-                <span>编码之道 (3)</span>
+                <span>编码之道 (4)</span>
               </a>
             </li>           
           
@@ -511,6 +513,8 @@
 
   
 
+  
+
 
 
 
@@ -537,10 +541,10 @@
             <li><a href="https://astr0mfly.github.io/tags/distributed" role="button"><span>distributed (4)</span></a></li>
           
         
-            <li><a href="https://astr0mfly.github.io/tags/book" role="button"><span>book (2)</span></a></li>
+            <li><a href="https://astr0mfly.github.io/tags/cpp" role="button"><span>cpp (3)</span></a></li>
           
         
-            <li><a href="https://astr0mfly.github.io/tags/cpp" role="button"><span>cpp (2)</span></a></li>
+            <li><a href="https://astr0mfly.github.io/tags/book" role="button"><span>book (2)</span></a></li>
           
         
             <li><a href="https://astr0mfly.github.io/tags/blog" role="button"><span>blog (1)</span></a></li>
@@ -747,6 +751,60 @@
               
                   <div class="post-wrapper white-bg post-card">
   
+  <a href="https://astr0mfly.github.io/blog/2019-04/tcp-reaction/">
+    <div class="post-header text-center">
+      <div class="px-4 post-heading">Tcp-Reaction</div>
+      <ul class="post-meta li-x mt-1">
+        
+          <li>Apr 29, 2019</li>
+        
+    
+        
+          <li class="middot"></li>
+          <li>2 minutes read</li>
+        
+      </ul>
+    </div>
+    
+
+    
+      TCP通信基本流程 Windows 和 Linux 上常用的 socket API 函数并不多，除了特定操作系统提供的一些基于自身系统特性的 API， 大多数 Socket API 都源于BSD Socket （即伯克利套接字（Berkeley Sockets）），因此这些 socket 函数在不同的平台有着相似的签名和参数。 linux 查看socket函数帮助 man bind、man man、man 3 sleep windows 查看帮助 使用在线版本的 MSDN 理论剖析 服务端流程 &gt;1. 调用 socket 函数创建 socket（侦听socket） &gt;2. 调用 bind 函数 将 soc......
+    
+  </a>
+
+  
+  
+  <div class="post-meta li-x mt-2 div-x">
+    <div>
+      
+        
+          <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%B9%8B%E9%81%93"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 编码之道 </a></li>
+        
+      
+      
+    </div>
+   
+    <div>
+      
+        
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://astr0mfly.github.io/tags/cpp" role="button">cpp </a></li>
+      
+    
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+</div>
+
+              
+                  <div class="post-wrapper white-bg post-card">
+  
   <a href="https://astr0mfly.github.io/moment/life-fast_employee/">
     <div class="post-header text-center">
       <div class="px-4 post-heading">Life-Fast_employee</div>
@@ -941,60 +999,6 @@
       
         
           <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%B9%8B%E9%81%93"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 编码之道 </a></li>
-        
-      
-      
-    </div>
-   
-    <div>
-      
-        
-<div class="li-x div-x post-meta">
-  <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
-  <div class="tags-sm">
-    
-      <li><a href="https://astr0mfly.github.io/tags/distributed" role="button">Distributed </a></li>
-      
-    
-  </div>
-</div>
-      
-    </div>
-  </div>
-
-</div>
-
-              
-                  <div class="post-wrapper white-bg post-card">
-  
-  <a href="https://astr0mfly.github.io/blog/2019-04/distri-load_balance/">
-    <div class="post-header text-center">
-      <div class="px-4 post-heading">distri-load_balance</div>
-      <ul class="post-meta li-x mt-1">
-        
-          <li>Apr 25, 2019</li>
-        
-    
-        
-          <li class="middot"></li>
-          <li>12 minutes read</li>
-        
-      </ul>
-    </div>
-    
-
-    
-      负载均衡(Load Balance) 负载均衡可以将工作任务分摊到多个处理单元，从而提高并发处理能力。 常见的web负载均衡技术包括：DNS轮询、IP负载均衡和CDN。其中IP负载均衡可以使用硬件设备或软件方式来实现。 服务器集群(Cluster)使得多个服务器节点能够协同工作，根据目的的不同，服务器集群可以分为： 高性能集群：将单个重负载的请求分散到多个节点进行处理，最后再将处理结果进行汇总 高可用集群：提高冗余单元，避......
-    
-  </a>
-
-  
-  
-  <div class="post-meta li-x mt-2 div-x">
-    <div>
-      
-        
-          <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> “编码人生” </a></li>
         
       
       

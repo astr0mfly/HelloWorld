@@ -6,10 +6,19 @@
     <description>Recent content in 编码之道 on Valencia</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Thu, 25 Apr 2019 08:51:17 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 29 Apr 2019 02:47:43 -0700</lastBuildDate>
     
 	<atom:link href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%B9%8B%E9%81%93/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tcp-Reaction</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/tcp-reaction/</link>
+      <pubDate>Mon, 29 Apr 2019 02:47:43 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/tcp-reaction/</guid>
+      <description>TCP通信基本流程 Windows 和 Linux 上常用的 socket API 函数并不多，除了特定操作系统提供的一些基于自身系统特性的 API， 大多数 Socket API 都源于BSD Socket （即伯克利套接字（Berkeley Sockets）），因此这些 socket 函数在不同的平台有着相似的签名和参数。 linux 查看socket函数帮助 man bind、man man、man 3 sleep windows 查看帮助 使用在线版本的 MSDN 理论剖析 服务端流程 &amp;gt;1. 调用 socket 函数创建 socket（侦听socket） &amp;gt;2. 调用 bind 函数 将 soc</description>
+    </item>
     
     <item>
       <title>Distri-Consisitency</title>

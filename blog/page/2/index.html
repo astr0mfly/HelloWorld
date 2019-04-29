@@ -348,6 +348,8 @@
 
   
 
+  
+
 
 
 
@@ -380,7 +382,7 @@
             
             <li class="py-1">
               <a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%B9%8B%E9%81%93">
-                <span>编码之道 (3)</span>
+                <span>编码之道 (4)</span>
               </a>
             </li>           
           
@@ -393,6 +395,8 @@
 
     
           
+
+  
 
   
 
@@ -448,7 +452,7 @@
             <li><a href="https://astr0mfly.github.io/tags/distributed" role="button"><span>distributed (4)</span></a></li>
           
         
-            <li><a href="https://astr0mfly.github.io/tags/cpp" role="button"><span>cpp (2)</span></a></li>
+            <li><a href="https://astr0mfly.github.io/tags/cpp" role="button"><span>cpp (3)</span></a></li>
           
         
             <li><a href="https://astr0mfly.github.io/tags/blog" role="button"><span>blog (1)</span></a></li>
@@ -542,7 +546,7 @@
               
                 <div class="px-2 middot"></div>
                 <div>
-                  14 posts
+                  16 posts
                 </div>
               
             </div>
@@ -604,17 +608,67 @@
     <li class="page-item"><a class="page-link" href="https://astr0mfly.github.io/blog/page/3/">3</a></li>
     
     
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item"><a class="page-link" href="https://astr0mfly.github.io/blog/page/4/">4</a></li>
+    
+    
     <li class="page-item">
     <a href="https://astr0mfly.github.io/blog/page/3/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
     </li>
     
     <li class="page-item">
-        <a href="https://astr0mfly.github.io/blog/page/3/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="https://astr0mfly.github.io/blog/page/4/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
     </li>
     
 </ul>
 
           </div>
+
+          
+              <div class="post-wrapper white-bg post-card">
+  
+  <a href="https://astr0mfly.github.io/blog/2019-04/shell-autocookies/">
+    <div class="post-header text-center">
+      <div class="px-4 post-heading">Shell-AutoCookies</div>
+      <ul class="post-meta li-x mt-1">
+        
+          <li>Apr 25, 2019</li>
+        
+    
+        
+          <li class="middot"></li>
+          <li>One minute read</li>
+        
+      </ul>
+    </div>
+    
+
+    
+      用awk过滤docker容器ip #!/bin/bash #docker ps |awk &#39;{if($2==&#34;hyperledger/fabric-kafka&#34;) print $1}&#39; #docker ps |awk &#39;{if($2==&#34;hyperledger/fabric-kafka&#34;){ print $1;cmd=&#34;docker exec &#34;$1&#34; ifconfig&#34;;system(cmd);}}&#39;|grep addr:|awk &#39;{print $2}&#39;|awk -F &#34;:&#34; &#39;{print $2}&#39; #docker ps |awk &#39;{if($2==&#34;hyperledger/fabric-kafka&#34;){ print $1;cmd=&#34;docker exec &#34;$1&#34; ifconfig&#34;;system(cmd);}}&#39;|grep addr:|awk &#39;{print $2}&#39;|awk -F &#39;[ :]&#39; &#39;{print $2}&#39; docker ps |awk &#39;{if($2==&#34;hyperledger/fabric-kafka&#34;){ print $1;cmd=&#34;docker exec &#34;$1&#34; ifconfig&#34;;system(cmd);}}&#39;|awk &#39;{if($2 ~/addr:*/ &amp;&amp; $2!~/addr:127.0.0.1/){print $2}}&#39;|awk -F &#39;[ :]&#39; &#39;{print $2}&#39; out root@liu:~/work/go/src/github.com/hyperledger/fabric/examples/e2e_cli# ./catip.sh 172.18.0.8 172.18.0.7 172.18.0.6 172.18.0.5 root@liu:~/work/go/src/github.com/hyperledger/fabric/examples/e2e_cli# 版本控制 Version Action Time 1.0 Init 2019-04-25T04:26:27-07:00......
+    
+  </a>
+
+  
+  
+  <div class="post-meta li-x mt-2 div-x">
+    <div>
+      
+      
+    </div>
+   
+    <div>
+      
+    </div>
+  </div>
+
+</div>
 
           
               <div class="post-wrapper white-bg post-card">
@@ -826,64 +880,6 @@
   <div class="tags-sm">
     
       <li><a href="https://astr0mfly.github.io/tags/git" role="button">git </a></li>
-      
-    
-  </div>
-</div>
-      
-    </div>
-  </div>
-
-</div>
-
-          
-              <div class="post-wrapper white-bg post-card">
-  
-  <a href="https://astr0mfly.github.io/blog/2019-04/%E5%9F%BA%E4%BA%8Ego%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%91%E5%AD%98%E5%82%A8%E6%A1%86%E6%9E%B6/">
-    <div class="post-header text-center">
-      <div class="px-4 post-heading">基于GO的分布式云存储框架</div>
-      <ul class="post-meta li-x mt-1">
-        
-          <li>Apr 24, 2019</li>
-        
-    
-        
-          <li class="middot"></li>
-          <li>2 minutes read</li>
-        
-      </ul>
-    </div>
-    
-
-    
-      AstroCloudFIle 基于golang实现的一种分布式云存储服务 关于分支和标签 分支说明: master分支: 通过原生net/http实现各接口功能 gin分支: 通过Gin框架来改造(微服务化章节之后主要基于Gin框架来进行演示) pkg分支: 通过go-bindata等工具实现静态资源打包的一个示例 标签 tag是分支代码某个阶段的快照。如master主分支的v0.1是首个发布的版本，该版本是接入了阿里OSS。 关于需要手动安装的......
-    
-  </a>
-
-  
-  
-  <div class="post-meta li-x mt-2 div-x">
-    <div>
-      
-        
-          <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> “编码人生” </a></li>
-        
-      
-      
-        
-          <li><a href="https://astr0mfly.github.io/series/golang"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>golang</a></li>
-        
-      
-    </div>
-   
-    <div>
-      
-        
-<div class="li-x div-x post-meta">
-  <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
-  <div class="tags-sm">
-    
-      <li><a href="https://astr0mfly.github.io/tags/go" role="button">“go” </a></li>
       
     
   </div>

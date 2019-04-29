@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>series: []</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <hr>
+<h2 id="date-%222019-04-29t024743-0700%22draft-falsetitle-%22tcp-reaction%22tags-cppseries-categories-%E7%BC%96%E7%A0%81%E4%B9%8B%E9%81%93toc-true">date: &quot;2019-04-29T02:47:43-07:00&quot;
+draft: false
+title: &quot;Tcp-Reaction&quot;
+tags: [cpp]
+#series: []
+categories: [编码之道]
+toc: true</h2>
+<h2 id="tcp%E9%80%9A%E4%BF%A1%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B">TCP通信基本流程</h2>
+<p>Windows 和 Linux 上常用的 socket API 函数并不多，除了特定操作系统提供的一些基于自身系统特性的 API， 大多数 Socket API 都源于BSD Socket （即伯克利套接字（Berkeley Sockets）），因此这些 socket 函数在不同的平台有着相似的签名和参数。</p>
+<p><img src="file:////home/valens/dev/go/src/github.com/usr/valens_blog/site/content/blog/2019-04/tcp-reaction/BSD-socket.jpg" alt="socket集合"></p>
+<ul>
+<li>linux 查看socket函数帮助
+<ul>
+<li><code>man bind</code>、<code>man man</code>、<code>man 3 sleep</code></li>
+</ul>
+</li>
+<li>windows 查看帮助
+<ul>
+<li>使用在线版本的 MSDN</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E7%90%86%E8%AE%BA%E5%89%96%E6%9E%90">理论剖析</h3>
+<ul>
+<li>服务端流程</li>
+</ul>
+<blockquote>
+<ol>
+<li>调用 socket 函数创建 socket（侦听socket）</li>
+<li>调用 bind 函数 将 socket绑定到某个ip和端口的二元组上</li>
+<li>调用 listen 函数 开启侦听</li>
+<li>当有客户端请求连接上来后，调用 accept 函数接受连接，产生一个新的 socket（客户端 socket）</li>
+<li>基于新产生的 socket 调用 send 或 recv 函数开始与客户端进行数据交流</li>
+<li>通信结束后，调用 close 函数关闭侦听 socket</li>
+</ol>
+</blockquote>
+<ul>
+<li>客户端流程</li>
+</ul>
+<blockquote>
+<ol>
+<li>调用 socket函数创建客户端 socket</li>
+<li>调用 connect 函数尝试连接服务器</li>
+<li>连接成功以后调用 send 或 recv 函数开始与服务器进行数据交流</li>
+<li>通信结束后，调用 close 函数关闭侦听socket</li>
+</ol>
+</blockquote>
+<p>上述流程交互总结如下：
+<img src="file:////home/valens/dev/go/src/github.com/usr/valens_blog/site/content/blog/2019-04/tcp-reaction/tcp-reaction.jpg" alt="TCP-网络通讯"></p>
+<h3 id="%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">代码实现</h3>
+<p>Server</p>
+<pre><code class="language-cpp"><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/types.h&gt; </span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/socket.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;arpa/inet.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;unistd.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span>* argv[])</span>
+</span>{
+    <span class="hljs-comment">//1.创建一个侦听socket</span>
+    <span class="hljs-keyword">int</span> listenfd = socket(AF_INET, SOCK_STREAM, <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">if</span> (listenfd == <span class="hljs-number">-1</span>)
+    {
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"create listen socket error."</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    }
+
+    <span class="hljs-comment">//2.初始化服务器地址</span>
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">sockaddr_in</span> <span class="hljs-title">bindaddr</span>;</span>
+    bindaddr.sin_family = AF_INET;
+    bindaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    bindaddr.sin_port = htons(<span class="hljs-number">3000</span>);
+    <span class="hljs-keyword">if</span> (bind(listenfd, (struct sockaddr *)&amp;bindaddr, <span class="hljs-keyword">sizeof</span>(bindaddr)) == <span class="hljs-number">-1</span>)
+    {
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"bind listen socket error."</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    }
+
+    <span class="hljs-comment">//3.启动侦听</span>
+    <span class="hljs-keyword">if</span> (listen(listenfd, SOMAXCONN) == <span class="hljs-number">-1</span>)
+    {
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"listen error."</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    }
+
+    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)
+    {
+        <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">sockaddr_in</span> <span class="hljs-title">clientaddr</span>;</span>
+        <span class="hljs-keyword">socklen_t</span> clientaddrlen = <span class="hljs-keyword">sizeof</span>(clientaddr);
+        <span class="hljs-comment">//4. 接受客户端连接</span>
+        <span class="hljs-keyword">int</span> clientfd = accept(listenfd, (struct sockaddr *)&amp;clientaddr, &amp;clientaddrlen);
+        <span class="hljs-keyword">if</span> (clientfd != <span class="hljs-number">-1</span>)
+        {           
+            <span class="hljs-keyword">char</span> recvBuf[<span class="hljs-number">32</span>] = {<span class="hljs-number">0</span>};
+            <span class="hljs-comment">//5. 从客户端接受数据</span>
+            <span class="hljs-keyword">int</span> ret = recv(clientfd, recvBuf, <span class="hljs-number">32</span>, <span class="hljs-number">0</span>);
+            <span class="hljs-keyword">if</span> (ret &gt; <span class="hljs-number">0</span>) 
+            {
+                <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"recv data from client, data: "</span> &lt;&lt; recvBuf &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+                <span class="hljs-comment">//6. 将收到的数据原封不动地发给客户端</span>
+                ret = send(clientfd, recvBuf, <span class="hljs-built_in">strlen</span>(recvBuf), <span class="hljs-number">0</span>);
+                <span class="hljs-keyword">if</span> (ret != <span class="hljs-built_in">strlen</span>(recvBuf))
+                    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"send data error."</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+
+                <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"send data to client successfully, data: "</span> &lt;&lt; recvBuf &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+            } 
+            <span class="hljs-keyword">else</span> 
+            {
+                <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"recv data error."</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+            }
+
+            close(clientfd);
+        }
+    }
+
+    <span class="hljs-comment">//7.关闭侦听socket</span>
+    close(listenfd);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+</div></code></pre>
+<p>Client</p>
+<pre><code class="language-cpp"><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/types.h&gt; </span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/socket.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;arpa/inet.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;unistd.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SERVER_ADDRESS <span class="hljs-meta-string">"127.0.0.1"</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SERVER_PORT     3000</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SEND_DATA       <span class="hljs-meta-string">"helloworld"</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span>* argv[])</span>
+</span>{
+    <span class="hljs-comment">//1.创建一个socket</span>
+    <span class="hljs-keyword">int</span> clientfd = socket(AF_INET, SOCK_STREAM, <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">if</span> (clientfd == <span class="hljs-number">-1</span>)
+    {
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"create client socket error."</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    }
+
+    <span class="hljs-comment">//2.连接服务器</span>
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">sockaddr_in</span> <span class="hljs-title">serveraddr</span>;</span>
+    serveraddr.sin_family = AF_INET;
+    serveraddr.sin_addr.s_addr = inet_addr(SERVER_ADDRESS);
+    serveraddr.sin_port = htons(SERVER_PORT);
+    <span class="hljs-keyword">if</span> (connect(clientfd, (struct sockaddr *)&amp;serveraddr, <span class="hljs-keyword">sizeof</span>(serveraddr)) == <span class="hljs-number">-1</span>)
+    {
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"connect socket error."</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    }
+
+    <span class="hljs-comment">//3. 向服务器发送数据</span>
+    <span class="hljs-keyword">int</span> ret = send(clientfd, SEND_DATA, <span class="hljs-built_in">strlen</span>(SEND_DATA), <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">if</span> (ret != <span class="hljs-built_in">strlen</span>(SEND_DATA))
+    {
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"send data error."</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    }
+
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"send data successfully, data: "</span> &lt;&lt; SEND_DATA &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+
+    <span class="hljs-comment">//4. 从客户端收取数据</span>
+    <span class="hljs-keyword">char</span> recvBuf[<span class="hljs-number">32</span>] = {<span class="hljs-number">0</span>};
+    ret = recv(clientfd, recvBuf, <span class="hljs-number">32</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">if</span> (ret &gt; <span class="hljs-number">0</span>) 
+    {
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"recv data successfully, data: "</span> &lt;&lt; recvBuf &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+    } 
+    <span class="hljs-keyword">else</span> 
+    {
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"recv data error, data: "</span> &lt;&lt; recvBuf &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+    }
+
+    <span class="hljs-comment">//5. 关闭socket</span>
+    close(clientfd);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+
+</div></code></pre>
+<h3 id="%E6%BC%94%E7%A4%BA%E6%A1%88%E4%BE%8B">演示案例</h3>
+<p>使用流程：</p>
+<pre><code class="language-shell"><div><span class="hljs-meta">#</span><span class="bash">编译，生成可执行文件</span>
+g++ -g -o server server.cpp
+g++ -g -o client client.cpp
+<span class="hljs-meta">
+#</span><span class="bash">启动程序</span>
+./server
+./client
+<span class="hljs-meta">
+#</span><span class="bash"><span class="hljs-comment">#客户端输出</span></span>
+
+send data successfully, data: helloworld
+recv data successfully, data: helloworld
+<span class="hljs-meta">
+#</span><span class="bash"><span class="hljs-comment">#服务端端输出</span></span>
+recv data from client, data: helloworld
+send data to client successfully, data: helloworld
+
+
+
+
+</div></code></pre>
+<h2 id="%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6">版本控制</h2>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2019-04-29T02:47:43-07:00</td>
+</tr>
+</tbody>
+</table>
+
+    </body>
+    </html>

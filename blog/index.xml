@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Tcp-Reaction</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/tcp-reaction/</link>
+      <pubDate>Mon, 29 Apr 2019 02:47:43 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/tcp-reaction/</guid>
+      <description>TCP通信基本流程 Windows 和 Linux 上常用的 socket API 函数并不多，除了特定操作系统提供的一些基于自身系统特性的 API， 大多数 Socket API 都源于BSD Socket （即伯克利套接字（Berkeley Sockets）），因此这些 socket 函数在不同的平台有着相似的签名和参数。 linux 查看socket函数帮助 man bind、man man、man 3 sleep windows 查看帮助 使用在线版本的 MSDN 理论剖析 服务端流程 &amp;gt;1. 调用 socket 函数创建 socket（侦听socket） &amp;gt;2. 调用 bind 函数 将 soc</description>
+    </item>
+    
+    <item>
       <title>Mysql-Index</title>
       <link>https://astr0mfly.github.io/blog/2019-04/mysql-index/</link>
       <pubDate>Thu, 25 Apr 2019 09:49:26 -0700</pubDate>
@@ -135,6 +144,17 @@
       
       <guid>https://astr0mfly.github.io/blog/2019-04/%E4%BD%BF%E7%94%A8hugo%E5%88%B6%E4%BD%9C%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E7%95%8C%E9%9D%A2/</guid>
       <description>安装hugo 建议到如下链接下载对应文件，使用go get挺慢的。 https://github.com/gohugoio/hugo/releases 安装hugo 生成site并且 clone 对应皮肤的Git到theme文件夹下 调试 ：hugo server --theme=hyde --buildDrafts 打开 : http://localhost:1313 实时调试 生成部署： hugo --theme=hyde 上传到git ： git push -u origin master 实例皮肤：redlougue hugo链接： https://github.com/tmaiaroto/hugo-redlounge 路径解释 config.toml 站点全局的参数配置文件 archetypes Hugo的markdown文件中前置数据Front Matter定义的结构，默认使用的是default.md文件，可以自</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://astr0mfly.github.io/blog/1-01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/1-01/</guid>
+      <description>series: []  .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }   body { font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe WPC&#39;, &#39;Segoe UI&#39;, &#39;Ubuntu&#39;, &#39;Droid Sans&#39;, sans-serif; font-size: 14px; line-height: 1.6; }      date: &amp;quot;2019-04-29T02:47:43-07:00&amp;quot; draft: false title: &amp;quot;Tcp-Reaction&amp;quot; tags: [cpp] #series: [] categories: [编码之道] toc: true TCP通信基本流程 Windows 和 Linux 上常用的 socket API 函数并不多，除了特定操作系统提供的一些基于自身系统特性的 API， 大多数 Socket API 都源于BSD Socket （即伯克利套接字（Berkeley Sockets）），因此这些 socket 函数在不同的平台有着相似的签名和参数。
+ linux 查看socket函数帮助  man bind、man man、man 3 sleep   windows 查看帮助  使用在线版本的 MSDN    理论剖析  服务端流程    调用 socket 函数创建 socket（侦听socket） 调用 bind 函数 将 socket绑定到某个ip和端口的二元组上 调用 listen 函数 开启侦听 当有客户端请求连接上来后，调用 accept 函数接受连接，产生一个新的 socket（客户端 socket） 基于新产生的 socket 调用 send 或 recv 函数开始与客户端进行数据交流 通信结束后，调用 close 函数关闭侦听 socket    客户端流程    调用 socket函数创建客户端 socket 调用 connect 函数尝试连接服务器 连接成功以后调用 send 或 recv 函数开始与服务器进行数据交流 通信结束后，调用 close 函数关闭侦听socket   上述流程交互总结如下： 代码实现 Server
+#include &amp;lt;sys/types.h&amp;gt;  #include &amp;lt;sys/socket.h&amp;gt; #include &amp;lt;arpa/inet.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; #include &amp;lt;iostream&amp;gt; #include &amp;lt;string.h&amp;gt; int main(int argc, char* argv[]) { //1.创建一个侦听socket int listenfd = socket(AF_INET, SOCK_STREAM, 0); if (listenfd == -1) { std::cout &amp;lt;&amp;lt; &#34;create listen socket error.&#34; &amp;lt;&amp;lt; std::endl; return -1; } //2.初始化服务器地址 struct sockaddr_in bindaddr; bindaddr.</description>
     </item>
     
   </channel>
