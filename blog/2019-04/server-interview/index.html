@@ -7,23 +7,23 @@
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" /> 
     <meta name="author" content="Valencia">
-    <meta name="description" content="TCP通信基本流程 Windows 和 Linux 上常用的 socket API 函数并不多，除了特定操作系统提供的一些基于自身系统特性的 API， 大多数 Socket API 都源于BSD Socket （即伯克利套接字（Berkeley Sockets）），因此这些 socket 函数在不同的平台有着相似的签名和参数。 linux 查看socket函数帮助 man bind、man man、man 3 sleep windows 查看帮助 使用在线版本的 MSDN 理论剖析 服务端流程 &gt;1. 调用 socket 函数创建 socket（侦听socket） &gt;2. 调用 bind 函数 将 soc">
+    <meta name="description" content="面试经验总结 编程语法相关 计算机网络 Q：epoll/select 模型的底层实现 区别 epoll的lt和et模式及对缓冲区的理解 错误处理 &gt;1 Q：网络字节序 大小端 &gt;A：ntohl ntohs htonl htons 可以用这四个函数进行字节序转换,网络字节序 为大端 主机字节序为小端(一般) Q:进程池与线程池 实现一个线程池（写代码） &gt;用posix条件变量和信号量实现 Q:生产者消费者模型问题 实现一个什么问题记不清了 涉及了pv操作 同步">
     
-    <meta property="og:title" content="Tcp-Reaction" />
-<meta property="og:description" content="TCP通信基本流程 Windows 和 Linux 上常用的 socket API 函数并不多，除了特定操作系统提供的一些基于自身系统特性的 API， 大多数 Socket API 都源于BSD Socket （即伯克利套接字（Berkeley Sockets）），因此这些 socket 函数在不同的平台有着相似的签名和参数。 linux 查看socket函数帮助 man bind、man man、man 3 sleep windows 查看帮助 使用在线版本的 MSDN 理论剖析 服务端流程 &gt;1. 调用 socket 函数创建 socket（侦听socket） &gt;2. 调用 bind 函数 将 soc" />
+    <meta property="og:title" content="Server-Interview" />
+<meta property="og:description" content="面试经验总结 编程语法相关 计算机网络 Q：epoll/select 模型的底层实现 区别 epoll的lt和et模式及对缓冲区的理解 错误处理 &gt;1 Q：网络字节序 大小端 &gt;A：ntohl ntohs htonl htons 可以用这四个函数进行字节序转换,网络字节序 为大端 主机字节序为小端(一般) Q:进程池与线程池 实现一个线程池（写代码） &gt;用posix条件变量和信号量实现 Q:生产者消费者模型问题 实现一个什么问题记不清了 涉及了pv操作 同步" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://astr0mfly.github.io/blog/2019-04/tcp-reaction/" />
-<meta property="article:published_time" content="2019-04-29T02:47:43-07:00"/>
-<meta property="article:modified_time" content="2019-04-29T02:47:43-07:00"/>
+<meta property="og:url" content="https://astr0mfly.github.io/blog/2019-04/server-interview/" />
+<meta property="article:published_time" content="2019-04-29T06:19:10-07:00"/>
+<meta property="article:modified_time" content="2019-04-29T06:19:10-07:00"/>
 
 
     <title>
         
-             Tcp-Reaction | Valencia 
+             Server-Interview | Valencia 
         
     </title>
 
-    <link rel="canonical" href="https://astr0mfly.github.io/blog/2019-04/tcp-reaction/">
+    <link rel="canonical" href="https://astr0mfly.github.io/blog/2019-04/server-interview/">
 
     
     
@@ -325,13 +325,13 @@
   <ul class="post-meta li-x">
     
       
-        <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%B9%8B%E9%81%93"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 编码之道 </a></li>
+        <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> “编码人生” </a></li>
       
     
     
   </ul>
 
-  <div class="px-4 post-heading">Tcp-Reaction</div>
+  <div class="px-4 post-heading">Server-Interview</div>
 
   <ul class="post-meta li-x mt-1">
     
@@ -340,7 +340,7 @@
 
     
       <li class="middot"></li>
-      <li>2 minutes read</li>
+      <li>6 minutes read</li>
     
   </ul>
   
@@ -351,212 +351,296 @@
           <div class="post-content markdown">
             
 
-<h2 id="tcp通信基本流程">TCP通信基本流程</h2>
+<h1 id="面试经验总结">面试经验总结</h1>
 
-<p>Windows 和 Linux 上常用的 socket API 函数并不多，除了特定操作系统提供的一些基于自身系统特性的 API， 大多数 Socket API 都源于BSD Socket （即伯克利套接字（Berkeley Sockets）），因此这些 socket 函数在不同的平台有着相似的签名和参数。</p>
+<h2 id="编程语法相关">编程语法相关</h2>
 
-<p><img src="BSD-socket.jpg" alt="socket集合" /></p>
-
-<ul>
-<li>linux 查看socket函数帮助
+<h2 id="计算机网络">计算机网络</h2>
 
 <ul>
-<li><code>man bind</code>、<code>man man</code>、<code>man 3 sleep</code></li>
-</ul></li>
-<li>windows 查看帮助
+<li>Q：epoll/select 模型的底层实现 区别 epoll的lt和et模式及对缓冲区的理解 错误处理
+&gt;1</li>
 
-<ul>
-<li>使用在线版本的 MSDN</li>
-</ul></li>
+<li><p>Q：网络字节序 大小端
+&gt;A：ntohl ntohs htonl htons  可以用这四个函数进行字节序转换,网络字节序 为大端  主机字节序为小端(一般)</p></li>
+
+<li><p>Q:进程池与线程池 实现一个线程池（写代码）
+&gt;用posix条件变量和信号量实现</p></li>
+
+<li><p>Q:生产者消费者模型问题 实现一个什么问题记不清了 涉及了pv操作 同步与互斥
+&gt;1</p></li>
+
+<li><p>Q:进程间通信有哪些方式
+&gt;1</p></li>
+
+<li><p>Q:用文件实现进程之间的通信 (写伪代码)
+&gt;1</p></li>
+
+<li><p>Q:一个机器最大能连接的并发数目
+&gt;通过通信的四元组去回答 ip1 ip2 port1 port2 分别去匹配 具体能并非链接多少与机器的内存有关 1G大约10万条 2G大约20万条</p></li>
+
+<li><p>Q:利用信号实现 异步的i/o模型 主要不让进程阻塞
+&gt;1</p></li>
+
+<li><p>Q:信号 信号量 条件变量 hashmap
+&gt;1</p></li>
+
+<li><p>Q:http的一些问题 memched 问题 具体记不清了
+&gt;1</p></li>
+
+<li><p>Q:数据传输时间 buf满了怎么处理
+&gt;1</p></li>
+
+<li><p>Q:断电续传 用lseek() sendfile()
+&gt;1</p></li>
+
+<li><p>Q:实现一个多线程代码 交叉打印出AB
+&gt;1</p></li>
+
+<li><p>Q:influxDB是什么 大致操作指令 cjson lib_curb这些开源的源代码看过没有
+&gt;1</p></li>
+
+<li><p>Q:死锁产生的条件
+&gt;1</p></li>
+
+<li><p>Q:实现一个死锁的代码
+&gt;1</p></li>
+
+<li><p>Q:apache的底层实现 主要是i/o模型和异步 异步的实现
+&gt;1</p></li>
+
+<li><p>Q:UDP的应用场景，UDP怎么实现可靠传输
+&gt;1</p></li>
+
+<li><p>Q:LRU Cache的实现，LeetCode原题
+&gt;1</p></li>
+
+<li><p>Q:操作系统中有哪些你觉得有意思的东西
+&gt;1</p></li>
+
+<li><p>Q:三个房间，只有一个房间里面有车，你选一个，然后上帝打开另一个没车的，问你改不改主意。经典问题，答案是要改
+&gt;1</p></li>
+
+<li><p>Q:画TCP三次握手、四次挥手
+&gt;1</p></li>
+
+<li><p>Q:分段分页机制
+&gt;1</p></li>
+
+<li><p>Q:C++垃圾回收，shared_ptr的引用计数出现循环引用怎么办，
+&gt;1</p></li>
+
+<li><p>Q:实现稀疏矩阵相乘
+&gt;1</p></li>
+
+<li><p>Q:C中的malloc和free做了哪些事情，free怎么知道free多长，C++中的delete又怎么知道delete多长
+&gt;1</p></li>
+
+<li><p>Q:c++的static关键字的作用(我从elf结构,链接过程来回答)
+&gt;1</p></li>
+
+<li><p>Q:内联函数跟普通函数区别(从反汇编角度来回答)
+&gt;1</p></li>
+
+<li><p>Q:STL中的迭代器失效问题
+&gt;1</p></li>
+
+<li><p>Q:指针,引用区别(反汇编分析,其实汇编指令实现都一样,可以把引用看做编译器管理的指针,语法糖)
+&gt;1</p></li>
+
+<li><p>Q:父子进程fork时,打开的文件的偏移量是否是相同的(从内核角度看,父子进程fork会将file文件复制一份,所以肯定会的)
+&gt;1</p></li>
+
+<li><p>Q:作者：赛罗奥特曼~
+链接：<a href="https://www.nowcoder.com/discuss/26045?type=2&amp;order=3&amp;pos=135&amp;page=2">https://www.nowcoder.com/discuss/26045?type=2&amp;order=3&amp;pos=135&amp;page=2</a>
+来源：牛客网</p></li>
 </ul>
 
-<h3 id="理论剖析">理论剖析</h3>
+<p>Linux虚拟地址空间(3G以上内核,因为进程创建时,内核的页表全部拷贝到进程第768页目录项以上的,3G以下则是代码段(.init节,.text节,.rodata节),数据段(.data节,.bss节),堆(brk指针),栈从3G往下)
+  &gt;1
+- Q:找20个最大数，内存够与不够该怎么办
+  &gt;1
+- Q:多线程一个线程往一个数据中输入一些数字，另一个线程取出最大的两个数，用什么算法。
+  &gt;1
+- Q:堆的创建过程，怎么将无序的数组转换成一个堆
+  &gt;1
+- Q:iptables的实现原理
+  &gt;1
+- Q:怎么统计出现次数最多的数据（hash，前缀树）
+  &gt;1
+- Q:
+  &gt;1
+- Q:
+  &gt;1
+- Q:
+  &gt;1
+- Q:
+  &gt;1</p>
+
+<h2 id="分布式系统">分布式系统</h2>
+
+<h2 id="数据库与中间件">数据库与中间件</h2>
+
+<h1 id="资料预览">资料预览</h1>
+
+<p><a href="https://www.nowcoder.com/ta/review-c">牛客网C++面试题集合</a></p>
+
+<p>作者：赛罗奥特曼~
+链接：<a href="https://www.nowcoder.com/discuss/26045?type=2&amp;order=3&amp;pos=135&amp;page=2">https://www.nowcoder.com/discuss/26045?type=2&amp;order=3&amp;pos=135&amp;page=2</a>
+来源：牛客网</p>
+
+<p>汇编部分:</p>
+
+<pre><code>汇编语言(masm汇编,王爽写的非常不错)
+
+
+x86从实模式到保护模式(学习kernel必备,保护模式是一大坑)
+
+
+
+
+
+c/c++部分:
+
+
+C++ Primer(入门必备(但并不是0基础可以看,0基础看C++ Primer Plus)
+
+
+Effective C++,More Effective C++(提升c++的编程技巧,面试官很多都从这书里问)
+
+
+深度探索c++对象模型(了解c++的底层实现机制,不然面试官问了多态的实现,你不会就挂了)
+
+
+
+
+
+STL部门:C++标准库(侯捷)(介绍STL六大组件的应用)
+
+
+STL源码剖析(STL的源码,不过自己只看了一半而已)
+
+
+范型编程与STL(绝版书,不过讲解traits时非常的nice)
+
+
+
+
+
+操作系统概念部分 Linux鸟哥私房菜(linux相关命令操作,不过自己推荐the linux command   line这电子书更棒)
+
+
+《轻松学用linux shell编程》(shell学习相关的)
+
+
+现代操作系统(非常经典的操作系统书,不要看国内的操作系统书)
+
+
+深入理解计算机系统(CSAPP)(豆瓣高达9.0以上的书,含金量就不多说了,其中的第7章有关elf看懂了,那就不必看那本程序员的自我修养了)
+
+
+
+
+
+操作系统内核部分:
+
+
+操作系统真象还原(教你怎么从0实现一个kernel,看完对操作系统绝对有一个飞一般的认识,另外作者钢哥非常棒
+
+
+,我经常骚扰他问内核问题,都会耐心回答)
+
+
+Linux内核源代码情景分析(毛德操所写的2.4内核源码,感觉非常有深度,自己囫囵吞枣的看完,细节部门略过了)
+
+
+Linux内核设计与实现(一本比较薄的2.6内核剖析书,很容易看懂其内幕)
+
+
+深入分析Linux内核源代码(一本绝版书,陈莉君教授所写的2.4内核源代码,配合Linux内核源代码情景分析使用,效果更佳)
+
+
+深入理解Linux虚拟内存管理(这本才刚开始看,没看多久)
+
+
+Linux环境编程:从应用到内核(一本非常棒的新书,讲解apue的api背后的内核实现,作者我也加了,内核功底非常深厚)
+
+
+
+
+
+计算机网络:
+
+
+(计算机网络:自顶向下,不过学院那本谢仁希的还凑合吧)
+
+
+tcp/ip详解卷1(腾讯课堂有明教教主讲解这本书)
+
+
+网络编程:
+
+
+Unix环境高级编程,Unix网络编程(这两本就不多说了,unix的圣经),
+
+
+linux 高性能服务器编程(国内写的一本不错的书)
+
+
+
+
+
+数据库那块自己很弱只看了mysql必知必会,redis入门实战 ~面试时也没问到数据库相关的,运气爆棚~
+
+
+
+
+
+算法与数据结构:
+
+
+自己的算法能力都很弱,这里只推荐那些算法比较弱的同学:
+
+
+数据结构与算法分析(维斯),还有剑指offer题必须刷完,leetcode,编程之美也最好刷一刷,
+
+
+,那算法那块就没问题了,当然这里指的是普通的开发岗位,而非算法岗
+
+
+
+
+
+
+
+
+设计模式:
+
+
+《设计模式：可复用面向对象软件的基础》,还有博览网上面的c++设计模式视频
+</code></pre>
+
+<h1 id="面试过程">面试过程</h1>
+
+<h2 id="公司面经">公司面经</h2>
 
 <ul>
-<li>服务端流程
-&gt;1. 调用 socket 函数创建 socket（侦听socket）
-&gt;2. 调用 bind 函数 将 socket绑定到某个ip和端口的二元组上
-&gt;3. 调用 listen 函数 开启侦听
-&gt;4. 当有客户端请求连接上来后，调用 accept 函数接受连接，产生一个新的 socket（客户端 socket）
-&gt;5. 基于新产生的 socket 调用 send 或 recv 函数开始与客户端进行数据交流
-&gt;6. 通信结束后，调用 close 函数关闭侦听 socket</li>
-<li>客户端流程
-&gt;1. 调用 socket函数创建客户端 socket
-&gt;2. 调用 connect 函数尝试连接服务器
-&gt;3. 连接成功以后调用 send 或 recv 函数开始与服务器进行数据交流
-&gt;4. 通信结束后，调用 close 函数关闭侦听socket</li>
+<li><p>腾讯HR面
+知道是深圳岗吧，地点没问题吧
+哪里人，是独生子吗，有女朋友吗
+平时喜欢干什么
+对于公司有什么要求
+说一说未来三到五年的规划</p></li>
+
+<li><p>京东HR面试
+自我介绍
+家庭情况
+感情状态
+爱好
+最受挫的事
+实习合作的生活
+未来的规划</p></li>
 </ul>
-
-<p>上述流程交互总结如下：
-<img src="tcp-reaction.jpg" alt="TCP-网络通讯" /></p>
-
-<h3 id="代码实现">代码实现</h3>
-
-<p>Server</p>
-
-<pre><code class="language-cpp">#include &lt;sys/types.h&gt; 
-#include &lt;sys/socket.h&gt;
-#include &lt;arpa/inet.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;iostream&gt;
-#include &lt;string.h&gt;
-
-int main(int argc, char* argv[])
-{
-    //1.创建一个侦听socket
-    int listenfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (listenfd == -1)
-    {
-        std::cout &lt;&lt; &quot;create listen socket error.&quot; &lt;&lt; std::endl;
-        return -1;
-    }
-
-    //2.初始化服务器地址
-    struct sockaddr_in bindaddr;
-    bindaddr.sin_family = AF_INET;
-    bindaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    bindaddr.sin_port = htons(3000);
-    if (bind(listenfd, (struct sockaddr *)&amp;bindaddr, sizeof(bindaddr)) == -1)
-    {
-        std::cout &lt;&lt; &quot;bind listen socket error.&quot; &lt;&lt; std::endl;
-        return -1;
-    }
-
-    //3.启动侦听
-    if (listen(listenfd, SOMAXCONN) == -1)
-    {
-        std::cout &lt;&lt; &quot;listen error.&quot; &lt;&lt; std::endl;
-        return -1;
-    }
-
-    while (true)
-    {
-        struct sockaddr_in clientaddr;
-        socklen_t clientaddrlen = sizeof(clientaddr);
-        //4. 接受客户端连接
-        int clientfd = accept(listenfd, (struct sockaddr *)&amp;clientaddr, &amp;clientaddrlen);
-        if (clientfd != -1)
-        {           
-            char recvBuf[32] = {0};
-            //5. 从客户端接受数据
-            int ret = recv(clientfd, recvBuf, 32, 0);
-            if (ret &gt; 0) 
-            {
-                std::cout &lt;&lt; &quot;recv data from client, data: &quot; &lt;&lt; recvBuf &lt;&lt; std::endl;
-                //6. 将收到的数据原封不动地发给客户端
-                ret = send(clientfd, recvBuf, strlen(recvBuf), 0);
-                if (ret != strlen(recvBuf))
-                    std::cout &lt;&lt; &quot;send data error.&quot; &lt;&lt; std::endl;
-
-                std::cout &lt;&lt; &quot;send data to client successfully, data: &quot; &lt;&lt; recvBuf &lt;&lt; std::endl;
-            } 
-            else 
-            {
-                std::cout &lt;&lt; &quot;recv data error.&quot; &lt;&lt; std::endl;
-            }
-
-            close(clientfd);
-        }
-    }
-
-    //7.关闭侦听socket
-    close(listenfd);
-
-    return 0;
-}
-
-</code></pre>
-
-<p>Client</p>
-
-<pre><code class="language-cpp">#include &lt;sys/types.h&gt; 
-#include &lt;sys/socket.h&gt;
-#include &lt;arpa/inet.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;iostream&gt;
-#include &lt;string.h&gt;
-
-#define SERVER_ADDRESS &quot;127.0.0.1&quot;
-#define SERVER_PORT     3000
-#define SEND_DATA       &quot;helloworld&quot;
-
-int main(int argc, char* argv[])
-{
-    //1.创建一个socket
-    int clientfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (clientfd == -1)
-    {
-        std::cout &lt;&lt; &quot;create client socket error.&quot; &lt;&lt; std::endl;
-        return -1;
-    }
-
-    //2.连接服务器
-    struct sockaddr_in serveraddr;
-    serveraddr.sin_family = AF_INET;
-    serveraddr.sin_addr.s_addr = inet_addr(SERVER_ADDRESS);
-    serveraddr.sin_port = htons(SERVER_PORT);
-    if (connect(clientfd, (struct sockaddr *)&amp;serveraddr, sizeof(serveraddr)) == -1)
-    {
-        std::cout &lt;&lt; &quot;connect socket error.&quot; &lt;&lt; std::endl;
-        return -1;
-    }
-
-    //3. 向服务器发送数据
-    int ret = send(clientfd, SEND_DATA, strlen(SEND_DATA), 0);
-    if (ret != strlen(SEND_DATA))
-    {
-        std::cout &lt;&lt; &quot;send data error.&quot; &lt;&lt; std::endl;
-        return -1;
-    }
-
-    std::cout &lt;&lt; &quot;send data successfully, data: &quot; &lt;&lt; SEND_DATA &lt;&lt; std::endl;
-
-    //4. 从客户端收取数据
-    char recvBuf[32] = {0};
-    ret = recv(clientfd, recvBuf, 32, 0);
-    if (ret &gt; 0) 
-    {
-        std::cout &lt;&lt; &quot;recv data successfully, data: &quot; &lt;&lt; recvBuf &lt;&lt; std::endl;
-    } 
-    else 
-    {
-        std::cout &lt;&lt; &quot;recv data error, data: &quot; &lt;&lt; recvBuf &lt;&lt; std::endl;
-    }
-
-    //5. 关闭socket
-    close(clientfd);
-
-    return 0;
-}
-
-
-</code></pre>
-
-<h3 id="演示案例">演示案例</h3>
-
-<p>使用流程：</p>
-
-<pre><code class="language-shell">#编译，生成可执行文件
-g++ -g -o server server.cpp
-g++ -g -o client client.cpp
-
-#启动程序
-./server
-./client
-
-##客户端输出
-
-send data successfully, data: helloworld
-recv data successfully, data: helloworld
-
-##服务端端输出
-recv data from client, data: helloworld
-send data to client successfully, data: helloworld
-
-
-
-
-</code></pre>
 
 <h2 id="版本控制">版本控制</h2>
 
@@ -573,7 +657,7 @@ send data to client successfully, data: helloworld
 <tr>
 <td>1.0</td>
 <td>Init</td>
-<td>2019-04-29T02:47:43-07:00</td>
+<td>2019-04-29T06:19:10-07:00</td>
 </tr>
 </tbody>
 </table>
@@ -593,6 +677,12 @@ send data to client successfully, data: helloworld
       <li><a href="https://astr0mfly.github.io/tags/cpp" role="button">cpp </a></li>
       
     
+      <li><a href="https://astr0mfly.github.io/tags/golang" role="button">golang </a></li>
+      
+    
+      <li><a href="https://astr0mfly.github.io/tags/mysql" role="button">mysql </a></li>
+      
+    
   </div>
 </div>
               </div>
@@ -606,23 +696,16 @@ send data to client successfully, data: helloworld
           <div class="row pt-3">
             <div class="col-md-6">
               
-                <a href=https://astr0mfly.github.io/blog/2019-04/mysql-index/ class="post-meta">Previous
+                <a href=https://astr0mfly.github.io/blog/2019-04/tcp-reaction/ class="post-meta">Previous
                   <div class="pt-2 pb-5 d-flex">
                     <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
-                    <span>Mysql-Index</span>
+                    <span>Tcp-Reaction</span>
                   </div>
                 </a>
               
             </div>
             
             <div class="col-md-6 text-right" >
-              
-                <a href=https://astr0mfly.github.io/blog/2019-04/server-interview/ class="post-meta">Next
-                  <div class="pt-2 pb-5 flex-reverse">
-                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
-                    <span>Server-Interview</span>
-                  </div>
-                </a>
               
             </div>
           </div>
@@ -668,8 +751,8 @@ send data to client successfully, data: helloworld
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#tcp%e9%80%9a%e4%bf%a1%e5%9f%ba%e6%9c%ac%e6%b5%81%e7%a8%8b">
-												 TCP通信基本流程
+						 					<a class="nav-link" href="#%e9%9d%a2%e8%af%95%e7%bb%8f%e9%aa%8c%e6%80%bb%e7%bb%93">
+												 面试经验总结
 											</a>
 										</li>
 						 
@@ -692,34 +775,8 @@ send data to client successfully, data: helloworld
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#%e7%90%86%e8%ae%ba%e5%89%96%e6%9e%90">
-												 理论剖析
-											</a>
-										</li>
-						 
-								
-								
-									</ul>
-								
-									</ul>
-								
-							
-						
-				 
-						
-						
-							
-								
-								
-									<ul class="nav">
-								
-									<ul class="nav">
-								
-								
-
-										<li class="nav-item">
-						 					<a class="nav-link" href="#%e4%bb%a3%e7%a0%81%e5%ae%9e%e7%8e%b0">
-												 代码实现
+						 					<a class="nav-link" href="#%e7%bc%96%e7%a8%8b%e8%af%ad%e6%b3%95%e7%9b%b8%e5%85%b3">
+												 编程语法相关
 											</a>
 										</li>
 						 
@@ -744,8 +801,8 @@ send data to client successfully, data: helloworld
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#%e6%bc%94%e7%a4%ba%e6%a1%88%e4%be%8b">
-												 演示案例
+						 					<a class="nav-link" href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c">
+												 计算机网络
 											</a>
 										</li>
 						 
@@ -762,6 +819,130 @@ send data to client successfully, data: helloworld
 						
 							
 								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%88%86%e5%b8%83%e5%bc%8f%e7%b3%bb%e7%bb%9f">
+												 分布式系统
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e4%b8%8e%e4%b8%ad%e9%97%b4%e4%bb%b6">
+												 数据库与中间件
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%b5%84%e6%96%99%e9%a2%84%e8%a7%88">
+												 资料预览
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e9%9d%a2%e8%af%95%e8%bf%87%e7%a8%8b">
+												 面试过程
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%85%ac%e5%8f%b8%e9%9d%a2%e7%bb%8f">
+												 公司面经
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
 								
 									<ul class="nav">
 								
@@ -774,6 +955,8 @@ send data to client successfully, data: helloworld
 										</li>
 						 
 								
+								
+									</ul>
 								
 									</ul>
 								

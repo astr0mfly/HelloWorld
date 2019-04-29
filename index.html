@@ -15,7 +15,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://astr0mfly.github.io/" />
 
-<meta property="og:updated_time" content="2019-04-29T02:47:43-07:00"/>
+<meta property="og:updated_time" content="2019-04-29T06:19:10-07:00"/>
 
 
     <title>
@@ -414,6 +414,8 @@
 
   
 
+  
+
 
 
 
@@ -437,7 +439,7 @@
             
             <li class="py-1">
               <a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F">
-                <span>编码人生 (10)</span>
+                <span>编码人生 (11)</span>
               </a>
             </li>           
           
@@ -515,6 +517,8 @@
 
   
 
+  
+
 
 
 
@@ -538,13 +542,16 @@
             <li><a href="https://astr0mfly.github.io/tags/go" role="button"><span>go (5)</span></a></li>
           
         
+            <li><a href="https://astr0mfly.github.io/tags/cpp" role="button"><span>cpp (4)</span></a></li>
+          
+        
             <li><a href="https://astr0mfly.github.io/tags/distributed" role="button"><span>distributed (4)</span></a></li>
           
         
-            <li><a href="https://astr0mfly.github.io/tags/cpp" role="button"><span>cpp (3)</span></a></li>
+            <li><a href="https://astr0mfly.github.io/tags/book" role="button"><span>book (2)</span></a></li>
           
         
-            <li><a href="https://astr0mfly.github.io/tags/book" role="button"><span>book (2)</span></a></li>
+            <li><a href="https://astr0mfly.github.io/tags/mysql" role="button"><span>mysql (2)</span></a></li>
           
         
             <li><a href="https://astr0mfly.github.io/tags/blog" role="button"><span>blog (1)</span></a></li>
@@ -556,6 +563,9 @@
             <li><a href="https://astr0mfly.github.io/tags/git" role="button"><span>git (1)</span></a></li>
           
         
+            <li><a href="https://astr0mfly.github.io/tags/golang" role="button"><span>golang (1)</span></a></li>
+          
+        
             <li><a href="https://astr0mfly.github.io/tags/hugo" role="button"><span>hugo (1)</span></a></li>
           
         
@@ -563,9 +573,6 @@
           
         
             <li><a href="https://astr0mfly.github.io/tags/mbti" role="button"><span>mbti (1)</span></a></li>
-          
-        
-            <li><a href="https://astr0mfly.github.io/tags/mysql" role="button"><span>mysql (1)</span></a></li>
           
         
             <li><a href="https://astr0mfly.github.io/tags/web" role="button"><span>web (1)</span></a></li>
@@ -748,6 +755,66 @@
         
           
           <div>
+              
+                  <div class="post-wrapper white-bg post-card">
+  
+  <a href="https://astr0mfly.github.io/blog/2019-04/server-interview/">
+    <div class="post-header text-center">
+      <div class="px-4 post-heading">Server-Interview</div>
+      <ul class="post-meta li-x mt-1">
+        
+          <li>Apr 29, 2019</li>
+        
+    
+        
+          <li class="middot"></li>
+          <li>6 minutes read</li>
+        
+      </ul>
+    </div>
+    
+
+    
+      面试经验总结 编程语法相关 计算机网络 Q：epoll/select 模型的底层实现 区别 epoll的lt和et模式及对缓冲区的理解 错误处理 &gt;1 Q：网络字节序 大小端 &gt;A：ntohl ntohs htonl htons 可以用这四个函数进行字节序转换,网络字节序 为大端 主机字节序为小端(一般) Q:进程池与线程池 实现一个线程池（写代码） &gt;用posix条件变量和信号量实现 Q:生产者消费者模型问题 实现一个什么问题记不清了 涉及了pv操作 同步......
+    
+  </a>
+
+  
+  
+  <div class="post-meta li-x mt-2 div-x">
+    <div>
+      
+        
+          <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> “编码人生” </a></li>
+        
+      
+      
+    </div>
+   
+    <div>
+      
+        
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://astr0mfly.github.io/tags/cpp" role="button">cpp </a></li>
+      
+    
+      <li><a href="https://astr0mfly.github.io/tags/golang" role="button">golang </a></li>
+      
+    
+      <li><a href="https://astr0mfly.github.io/tags/mysql" role="button">mysql </a></li>
+      
+    
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+</div>
+
               
                   <div class="post-wrapper white-bg post-card">
   
@@ -935,60 +1002,6 @@
 
     
       分布式系统中一个重要的问题就是数据复制，数据复制一般是为了增强系统的可用性或提高性能。而实现数据复制的一个主要难题就是保持各个副本的一致性。 什么是一致性模型 一致性模型本质上是进程与数据存储的约定：如果进程遵循某些规则，那么进程对数据的读写操作都是可预期的。 一致性模型主要可以分为两类：能够保证所有进程对数据的读写顺序都保持一致的一致性模型称为强一致性模型，而不能保证的一致性模型称为弱一致性模型。 强一......
-    
-  </a>
-
-  
-  
-  <div class="post-meta li-x mt-2 div-x">
-    <div>
-      
-        
-          <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%B9%8B%E9%81%93"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 编码之道 </a></li>
-        
-      
-      
-    </div>
-   
-    <div>
-      
-        
-<div class="li-x div-x post-meta">
-  <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
-  <div class="tags-sm">
-    
-      <li><a href="https://astr0mfly.github.io/tags/distributed" role="button">Distributed </a></li>
-      
-    
-  </div>
-</div>
-      
-    </div>
-  </div>
-
-</div>
-
-              
-                  <div class="post-wrapper white-bg post-card">
-  
-  <a href="https://astr0mfly.github.io/blog/2019-04/distri-queue/">
-    <div class="post-header text-center">
-      <div class="px-4 post-heading">Distri-Queue</div>
-      <ul class="post-meta li-x mt-1">
-        
-          <li>Apr 25, 2019</li>
-        
-    
-        
-          <li class="middot"></li>
-          <li>8 minutes read</li>
-        
-      </ul>
-    </div>
-    
-
-    
-      摘要 作为一种基础的抽象数据结构，队列被广泛应用在各类编程中。 - 使用分布式队列的时候，没有意识到它是队列。 - 有具体需求的时候，忘记了分布式队列的存在。 方案选型 当确定系统之间有通信需求的时候，工程师们需要做很多的决策和平衡，这直接影响工程师们是否会选择分布式队列编程模型作为架构。从这个角度出发，影响建模的因素有四个：When、Who、Where、How。 when：同步VS异步 基本问题：发出去的消息什么......
     
   </a>
 

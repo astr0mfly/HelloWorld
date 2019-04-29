@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mysql on Valencia</title>
-    <link>https://astr0mfly.github.io/tags/mysql/</link>
-    <description>Recent content in mysql on Valencia</description>
+    <title>golang on Valencia</title>
+    <link>https://astr0mfly.github.io/tags/golang/</link>
+    <description>Recent content in golang on Valencia</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
     <lastBuildDate>Mon, 29 Apr 2019 06:19:10 -0700</lastBuildDate>
     
-	<atom:link href="https://astr0mfly.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://astr0mfly.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://astr0mfly.github.io/blog/2019-04/server-interview/</guid>
       <description>面试经验总结 编程语法相关 计算机网络 Q：epoll/select 模型的底层实现 区别 epoll的lt和et模式及对缓冲区的理解 错误处理 &amp;gt;1 Q：网络字节序 大小端 &amp;gt;A：ntohl ntohs htonl htons 可以用这四个函数进行字节序转换,网络字节序 为大端 主机字节序为小端(一般) Q:进程池与线程池 实现一个线程池（写代码） &amp;gt;用posix条件变量和信号量实现 Q:生产者消费者模型问题 实现一个什么问题记不清了 涉及了pv操作 同步</description>
-    </item>
-    
-    <item>
-      <title>Mysql-Index</title>
-      <link>https://astr0mfly.github.io/blog/2019-04/mysql-index/</link>
-      <pubDate>Thu, 25 Apr 2019 09:49:26 -0700</pubDate>
-      
-      <guid>https://astr0mfly.github.io/blog/2019-04/mysql-index/</guid>
-      <description>索引的本质 MySQL官方对索引的定义为：索引（Index）是帮助MySQL高效获取数据的数据结构。提取句子主干，就可以得到索引的本质：索引是数据结构。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。 实际的数据库系统几乎没有使用二叉查找树或其进化品种红黑树（red-black tree</description>
     </item>
     
   </channel>
