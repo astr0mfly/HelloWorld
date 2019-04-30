@@ -340,7 +340,7 @@
 
     
       <li class="middot"></li>
-      <li>9 minutes read</li>
+      <li>10 minutes read</li>
     
   </ul>
   
@@ -483,6 +483,18 @@ done
 </code></pre>
 
 <h3 id="函数">函数</h3>
+
+<pre><code class="language-shell">function func(){
+
+    echo &quot;hello&quot;
+    exit 0
+}
+func
+if [ $? -eq 0];then
+
+    echo &quot;successful&quot;
+fi
+</code></pre>
 
 <h3 id="内部关键字">内部关键字</h3>
 
@@ -928,6 +940,85 @@ $ ifconfig eth0 ip_address on
 $ route add deafult gw gw_ip_address
 
 
+
+
+</code></pre>
+
+<h3 id="调试菜单的模板">调试菜单的模板</h3>
+
+<pre><code class="language-shell">function CDAN(){  
+#EOF是“end of file”，表示文本结束符。
+#&lt;&lt;EOF
+#（内容）
+#EOF
+
+#首先必须要说明的是EOF在这里没有特殊的含义，你可以使用FOE或OOO等（当然也不限制在三个字符或大写字符）。
+#可以把EOF替换成其他东西，意思是把内容当作标准输入传给程
+#结合这两个标识，即可避免使用多行echo命令的方式，并实现多行输出的结果。
+
+cat &lt;&lt; someone    
++------------------------------------------------+  
+|                                                |  
+|        _o0o_          1. 安装Nginx             |  
+|        08880          2. 安装Apache            |  
+|       88&quot;.&quot;88         3. 安装MySQL             |  
+|       (|-_-|)         4. 安装PHP               |  
+|        0\=/0          5. 部署LNMP环境          |  
+|      __/   \__        6. 安装zabbix监控        |  
+|     ‘\   ///‘       7. 退出此管理程序         |  
+|    / Linux一键 \      8. 关闭计算机            |  
+|  ||    Server   ||    ======================   |    
+|  \        ////         一键安装服务           |  
+|   |||  i i i    |||               by someone   |  
+|   ___        ___      ======================   |  
+|___‘.  /--.--\ .‘___                            |  
++------------------------------------------------+  
+someone  
+}  
+CDAN  
+  
+LOG_DIR=/usr/local/src  
+read -p &quot;请您输入1-8任意数值:&quot; NUM  
+  
+if [ ${#NUM} -ne 1 ]  
+  then  
+        echo &quot;请您输入1|2|3|4|5|6|7|8&quot;  
+        exit 1  
+fi  
+  
+expr $NUM + 1 &amp;&gt;/dev/null  
+if [ &quot;$?&quot; -ne 0 ]  
+   then  
+        echo &quot;请您输入数值！&quot;  
+        exit 1  
+fi  
+  
+if [ &quot;$NUM&quot; -gt 8 ];then  
+        echo &quot;请您输入比8小的数值&quot;  
+        exit 1  
+elif [ &quot;$NUM&quot; -eq 0 ];then  
+        echo &quot;请您输入比0大的数值&quot;  
+        exit 1  
+fi  
+######################  
+function Nginx_DIR() {  
+        yum install -y gcc gcc-c++ pcre-devel zlib-devel openssl-devel &amp;&gt;/dev/null  
+        if [ $? -eq 0 ]  
+           then  
+                cd $LOG_DIR  &amp;&amp; wget http://nginx.org/download/nginx-1.12.2.tar.gz &amp;&gt;/dev/null &amp;&amp; useradd -M -s /sbin/nologin nginx &amp;&amp; \  
+        tar zxf nginx-1.12.2.tar.gz &amp;&amp; cd nginx-1.12.2/ &amp;&amp; \  
+                ./configure --prefix=/usr/local/nginx --with-http_dav_module --with-http_stub_status_module --with-http_addition_module --with-http_sub_module  --with-http_flv_module --with-http_mp4_module --with-pcre --with-http_ssl_module --with-http_gzip_static_module --user=nginx &amp;&gt;/dev/null &amp;&amp; make &amp;&gt;/dev/null &amp;&amp; make install &amp;&gt;/dev/null   
+        fi  
+  
+        if [ -e /usr/local/nginx/sbin/nginx ];then  
+                ln -s /usr/local/nginx/sbin/nginx /usr/local/sbin/ &amp;&amp; nginx &amp;&amp; echo &quot;Nginx安装并启动成功!!!&quot;  
+        fi  
+}  
+  
+if [ $NUM -eq 1 ]  
+  then  
+     echo &quot;开始安装Nginx请稍等...&quot; &amp;&amp; Nginx_DIR  
+fi
 
 
 </code></pre>
@@ -1823,6 +1914,32 @@ sh -x script.sh #查看调用栈
 										<li class="nav-item">
 						 					<a class="nav-link" href="#%e7%bd%91%e7%bb%9c">
 												 网络
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%b0%83%e8%af%95%e8%8f%9c%e5%8d%95%e7%9a%84%e6%a8%a1%e6%9d%bf">
+												 调试菜单的模板
 											</a>
 										</li>
 						 
