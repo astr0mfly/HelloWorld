@@ -80,7 +80,7 @@
       <pubDate>Thu, 25 Apr 2019 04:26:27 -0700</pubDate>
       
       <guid>https://astr0mfly.github.io/blog/2019-04/shell-autocookies/</guid>
-      <description>用awk过滤docker容器ip #!/bin/bash #docker ps |awk &#39;{if($2==&amp;quot;hyperledger/fabric-kafka&amp;quot;) print $1}&#39; #docker ps |awk &#39;{if($2==&amp;quot;hyperledger/fabric-kafka&amp;quot;){ print $1;cmd=&amp;quot;docker exec &amp;quot;$1&amp;quot; ifconfig&amp;quot;;system(cmd);}}&#39;|grep addr:|awk &#39;{print $2}&#39;|awk -F &amp;quot;:&amp;quot; &#39;{print $2}&#39; #docker ps |awk &#39;{if($2==&amp;quot;hyperledger/fabric-kafka&amp;quot;){ print $1;cmd=&amp;quot;docker exec &amp;quot;$1&amp;quot; ifconfig&amp;quot;;system(cmd);}}&#39;|grep addr:|awk &#39;{print $2}&#39;|awk -F &#39;[ :]&#39; &#39;{print $2}&#39; docker ps |awk &#39;{if($2==&amp;quot;hyperledger/fabric-kafka&amp;quot;){ print $1;cmd=&amp;quot;docker exec &amp;quot;$1&amp;quot; ifconfig&amp;quot;;system(cmd);}}&#39;|awk &#39;{if($2 ~/addr:*/ &amp;amp;&amp;amp; $2!~/addr:127.0.0.1/){print $2}}&#39;|awk -F &#39;[ :]&#39; &#39;{print $2}&#39; out root@liu:~/work/go/src/github.com/hyperledger/fabric/examples/e2e_cli# ./catip.sh 172.18.0.8 172.18.0.7 172.18.0.6 172.18.0.5 root@liu:~/work/go/src/github.com/hyperledger/fabric/examples/e2e_cli# 版本控制 Version Action Time 1.0 Init 2019-04-25T04:26:27-07:00</description>
+      <description>SHELL Shell 是操作系统的最外层，shell合并编程语言以控制进程和文件，以及启动和控制其他程序，shell通过提示用户输入可以向操作系统解释输入然后处理来自操作系统的任何结果输出。 Shell可以解释我们敲入的单条命令或者是多条命令的组合，提交给内核来处理，将处理的结果直接反馈给用户，即交互式的方式。另外一种方式是编程的方式，用户可以将要执行的命令按照自己的逻辑组织成一个脚本，然后将整个脚本提交给shell</description>
     </item>
     
     <item>

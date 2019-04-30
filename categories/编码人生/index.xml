@@ -39,6 +39,15 @@
     </item>
     
     <item>
+      <title>Shell-AutoCookies</title>
+      <link>https://astr0mfly.github.io/blog/2019-04/shell-autocookies/</link>
+      <pubDate>Thu, 25 Apr 2019 04:26:27 -0700</pubDate>
+      
+      <guid>https://astr0mfly.github.io/blog/2019-04/shell-autocookies/</guid>
+      <description>SHELL Shell 是操作系统的最外层，shell合并编程语言以控制进程和文件，以及启动和控制其他程序，shell通过提示用户输入可以向操作系统解释输入然后处理来自操作系统的任何结果输出。 Shell可以解释我们敲入的单条命令或者是多条命令的组合，提交给内核来处理，将处理的结果直接反馈给用户，即交互式的方式。另外一种方式是编程的方式，用户可以将要执行的命令按照自己的逻辑组织成一个脚本，然后将整个脚本提交给shell</description>
+    </item>
+    
+    <item>
       <title>Go-Lession</title>
       <link>https://astr0mfly.github.io/blog/2019-04/go-lession/</link>
       <pubDate>Thu, 25 Apr 2019 04:21:58 -0700</pubDate>

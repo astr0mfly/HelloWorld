@@ -7,10 +7,10 @@
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" /> 
     <meta name="author" content="Valencia">
-    <meta name="description" content="用awk过滤docker容器ip #!/bin/bash #docker ps |awk &#39;{if($2==&quot;hyperledger/fabric-kafka&quot;) print $1}&#39; #docker ps |awk &#39;{if($2==&quot;hyperledger/fabric-kafka&quot;){ print $1;cmd=&quot;docker exec &quot;$1&quot; ifconfig&quot;;system(cmd);}}&#39;|grep addr:|awk &#39;{print $2}&#39;|awk -F &quot;:&quot; &#39;{print $2}&#39; #docker ps |awk &#39;{if($2==&quot;hyperledger/fabric-kafka&quot;){ print $1;cmd=&quot;docker exec &quot;$1&quot; ifconfig&quot;;system(cmd);}}&#39;|grep addr:|awk &#39;{print $2}&#39;|awk -F &#39;[ :]&#39; &#39;{print $2}&#39; docker ps |awk &#39;{if($2==&quot;hyperledger/fabric-kafka&quot;){ print $1;cmd=&quot;docker exec &quot;$1&quot; ifconfig&quot;;system(cmd);}}&#39;|awk &#39;{if($2 ~/addr:*/ &amp;&amp; $2!~/addr:127.0.0.1/){print $2}}&#39;|awk -F &#39;[ :]&#39; &#39;{print $2}&#39; out root@liu:~/work/go/src/github.com/hyperledger/fabric/examples/e2e_cli# ./catip.sh 172.18.0.8 172.18.0.7 172.18.0.6 172.18.0.5 root@liu:~/work/go/src/github.com/hyperledger/fabric/examples/e2e_cli# 版本控制 Version Action Time 1.0 Init 2019-04-25T04:26:27-07:00">
+    <meta name="description" content="SHELL Shell 是操作系统的最外层，shell合并编程语言以控制进程和文件，以及启动和控制其他程序，shell通过提示用户输入可以向操作系统解释输入然后处理来自操作系统的任何结果输出。 Shell可以解释我们敲入的单条命令或者是多条命令的组合，提交给内核来处理，将处理的结果直接反馈给用户，即交互式的方式。另外一种方式是编程的方式，用户可以将要执行的命令按照自己的逻辑组织成一个脚本，然后将整个脚本提交给shell">
     
     <meta property="og:title" content="Shell-AutoCookies" />
-<meta property="og:description" content="用awk过滤docker容器ip #!/bin/bash #docker ps |awk &#39;{if($2==&quot;hyperledger/fabric-kafka&quot;) print $1}&#39; #docker ps |awk &#39;{if($2==&quot;hyperledger/fabric-kafka&quot;){ print $1;cmd=&quot;docker exec &quot;$1&quot; ifconfig&quot;;system(cmd);}}&#39;|grep addr:|awk &#39;{print $2}&#39;|awk -F &quot;:&quot; &#39;{print $2}&#39; #docker ps |awk &#39;{if($2==&quot;hyperledger/fabric-kafka&quot;){ print $1;cmd=&quot;docker exec &quot;$1&quot; ifconfig&quot;;system(cmd);}}&#39;|grep addr:|awk &#39;{print $2}&#39;|awk -F &#39;[ :]&#39; &#39;{print $2}&#39; docker ps |awk &#39;{if($2==&quot;hyperledger/fabric-kafka&quot;){ print $1;cmd=&quot;docker exec &quot;$1&quot; ifconfig&quot;;system(cmd);}}&#39;|awk &#39;{if($2 ~/addr:*/ &amp;&amp; $2!~/addr:127.0.0.1/){print $2}}&#39;|awk -F &#39;[ :]&#39; &#39;{print $2}&#39; out root@liu:~/work/go/src/github.com/hyperledger/fabric/examples/e2e_cli# ./catip.sh 172.18.0.8 172.18.0.7 172.18.0.6 172.18.0.5 root@liu:~/work/go/src/github.com/hyperledger/fabric/examples/e2e_cli# 版本控制 Version Action Time 1.0 Init 2019-04-25T04:26:27-07:00" />
+<meta property="og:description" content="SHELL Shell 是操作系统的最外层，shell合并编程语言以控制进程和文件，以及启动和控制其他程序，shell通过提示用户输入可以向操作系统解释输入然后处理来自操作系统的任何结果输出。 Shell可以解释我们敲入的单条命令或者是多条命令的组合，提交给内核来处理，将处理的结果直接反馈给用户，即交互式的方式。另外一种方式是编程的方式，用户可以将要执行的命令按照自己的逻辑组织成一个脚本，然后将整个脚本提交给shell" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://astr0mfly.github.io/blog/2019-04/shell-autocookies/" />
 <meta property="article:published_time" content="2019-04-25T04:26:27-07:00"/>
@@ -324,6 +324,10 @@
           <div class="post-header text-center" >
   <ul class="post-meta li-x">
     
+      
+        <li><a href="https://astr0mfly.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> “编码人生” </a></li>
+      
+    
     
   </ul>
 
@@ -336,7 +340,7 @@
 
     
       <li class="middot"></li>
-      <li>One minute read</li>
+      <li>9 minutes read</li>
     
   </ul>
   
@@ -347,7 +351,370 @@
           <div class="post-content markdown">
             
 
-<h2 id="用awk过滤docker容器ip">用awk过滤docker容器ip</h2>
+<h2 id="shell">SHELL</h2>
+
+<p>Shell 是操作系统的最外层，shell合并编程语言以控制进程和文件，以及启动和控制其他程序，shell通过提示用户输入可以向操作系统解释输入然后处理来自操作系统的任何结果输出。</p>
+
+<p>Shell可以解释我们敲入的单条命令或者是多条命令的组合，提交给内核来处理，将处理的结果直接反馈给用户，即交互式的方式。另外一种方式是编程的方式，用户可以将要执行的命令按照自己的逻辑组织成一个脚本，然后将整个脚本提交给shell，带shell解析完成后，回馈给用户。</p>
+
+<p>shell脚本是纯文本文件，可以使用任何文本编辑器编写
+shell脚本通常是以.sh 作为后缀名，类似于windows下的.bat批处理文件</p>
+
+<h2 id="语法">语法</h2>
+
+<p>Shell语法对空格敏感，要多注意规范</p>
+
+<h3 id="变量">变量</h3>
+
+<p>变量命名大小写，以字母或者下划线开头，后面可以跟字母数字下划线，其他字符标志着变量名结束</p>
+
+<p>局部变量A.sh
+A=100;echo $A</p>
+
+<p>转换为全局变量B.sh
+export A
+./A.sh</p>
+
+<p>清除变量 ： unset variable
+显示所有变量 ： set
+显示环境变量 : env</p>
+
+<p>设置全局变量 ： export　M2＝200 或者是M2=200; export M2</p>
+
+<p>只读变量: 指不能被清除或重新赋值的变量
+readonly myvar</p>
+
+<p>位置参量（命令行参数）
+|符号|含义|
+|:-:|:-:|
+|$0|当前脚本名|
+|$1-$9|第1个到第9个位置变量|
+|<code>${10}</code>|第10个位置变量，第11个<code>${11}</code>|
+|$#|位置参量的数量|
+|$*|以单字符串显示所有位置参量|
+|<code>$@</code>|未加双引号与$*含义相同|
+|$$|脚本运行时的当前进程号|
+|$!|最后一个后台运行的进程的进程号|
+|$?|上一个脚本或者命令的推出状态，0表示成功，其他值表示错误|</p>
+
+<h3 id="数组">数组</h3>
+
+<p>数组最多支持二维?
+arr=(math english chinese)
+引用变量：${arr[0]}
+数组个数：${#arr[<em>]}
+所有元素：${arr[</em>]}
+数组赋值：arr[0]=chemical</p>
+
+<h3 id="输入输出">输入输出</h3>
+
+<pre><code class="language-shell">read name  #输入名字
+
+echo &quot;What is your name ?&quot;  # What is your name ?
+
+printf &quot;Hello world&quot; #Hello world
+
+printf &quot;%-5s %-10s %-4s\n&quot; No Name Mark
+
+echo -e &quot;\e[1;35m This is red text \e[0m&quot; #\e[1;35 将颜色设置为紫色，\e[0m将颜色置回
+
+echo &quot;What is your name ?&quot; &gt;name.txt  
+cat name.txt
+#输出：What is your name ?
+
+echo &quot;Hello,limit !&quot; &gt;&gt;name.txt
+cat name.txt
+#输出：
+#What is your name ?
+#Hello,limit!
+
+
+
+</code></pre>
+
+<h3 id="条件测试">条件测试</h3>
+
+<pre><code class="language-shell">if [ condition ];then
+
+    command
+fi
+
+if condition; then
+
+    command
+elif condition2
+
+    command2
+
+else confition3
+
+    command3
+fi
+
+case 变量 in
+值1）
+命令（命令组）
+;;
+值2）
+命令（命令组）
+;;
+*)
+命令（命令组）
+;;
+esac
+
+
+</code></pre>
+
+<h3 id="控制语句">控制语句</h3>
+
+<pre><code class="language-shell">while (( $#&gt;0 ))
+do
+echo $1
+shift
+done
+
+
+for index in arr
+do
+
+done
+
+</code></pre>
+
+<h3 id="函数">函数</h3>
+
+<h3 id="内部关键字">内部关键字</h3>
+
+<h4 id="操作符">操作符</h4>
+
+<ul>
+<li><p>整数操作符
+-eq #等于
+-ne #不等于
+-gt #大于
+-lt #小于
+-ge #大于等于
+-le #小于等于</p></li>
+
+<li><p>字符串操作符
+= #检测两个字符串是否相等，相等返回true
+!= #检测两个字符串是否相等，不想等返回true
+-z #检测字符串长度是否为0，为0返回true
+-n #检测字符串长度是否为0，不为0返回true
+str #检测字符串是否为空，不为空返回true</p></li>
+
+<li><p>文件测试运算符
+-d file #检测文件是否是目录，如果是则返回true
+-f file #检测文件是否是普通文件，如果是则返回true
+-r file #检测文件是否是可读，如果是则返回true
+-w file #检测文件是否可写，如果是则返回true
+-x file #检测文件是否可执行，如果是则返回true
+-s file #检测文件是否为空（文件大小是否大于0），如果不是则返回true-e file #检测文件是否存在（包括目录），如果不是则返回true</p></li>
+
+<li><p>布尔运算符
+！ #非运算，表达式为true,则返回false
+-o #或运算，有一个表达式为true,则返回true
+-a #与运算，两个表达式为true,才返回true
+&gt;$ if true;then echo &ldquo;YES&rdquo;; else echo &ldquo;NO&rdquo;; fi
+&gt;YES</p></li>
+
+<li><p>逻辑运算符
+&amp;&amp; #与运算，逻辑的and
+|| #或运算，逻辑的or</p></li>
+</ul>
+
+<p><code>[[ ]]</code>运算,如果是条件运算，还需要加一层[]对条件表达式的返回值做bool转换。</p>
+
+<h4 id="算术运算">算术运算</h4>
+
+<pre><code class="language-shell">#!/bin/sh
+num=121213232
+echo &quot;obase=2;$num&quot; | bc #转换为二进制
+
+num1=1110001010
+echo &quot;obase=10;ibase=2;$num1&quot; | bc #转换为十进制
+
+echo &quot;sqrt(100)&quot; | bc  #平方根，结果为10
+echo &quot;10^2&quot; | bc #2次方，结果为100
+
+$ echo &quot;scale=3; 1/13&quot;  | bc
+#.076
+
+$ echo &quot;1 13&quot; | awk '{printf(&quot;%0.3f\n&quot;,$1/$2)}'
+#0.077
+
+$ echo $RANDOM
+#81
+
+##srand() 在无参数时，采用当前时间作为 rand() 随机数产生器的一个 seed 。
+$ echo &quot;&quot; | awk '{srand(); printf(&quot;%f&quot;, rand());}'
+#0.237788
+
+
+
+
+</code></pre>
+
+<h4 id="seq">seq</h4>
+
+<p>它可以产生一系列数，你可以指定数的递增间隔，也可以指定相邻两个数之间的分割符</p>
+
+<pre><code class="language-shell"># wget一系列书籍
+$ for i in `seq -f&quot;http://thns.tsinghua.edu.cn/thnsebooks/ebook73/%02g.pdf&quot; 1 21`;do wget -c $i; done
+
+$ for i in `seq -w 1 21`;do wget -c &quot;http://thns.tsinghua.edu.cn/thnsebooks/ebook73/$i&quot;; done
+
+$ for i in {1..5}; do echo -n &quot;$i &quot;; done
+#1 2 3 4 5
+
+</code></pre>
+
+<h4 id="grep">grep</h4>
+
+<pre><code>datafile.txt：
+northwest   NW     Charles Main          3.0          .98          3          34
+western     WE     Sharon Gray           5.3          .97          5          23
+southwest   SW     Lewis Dalsass         2.7          .8           2          18
+southern    SO     Suan Chin             5.1          .95          4          15
+eastern     EA     TB Savage             4.4          .84          5          20
+northeast   NE     AM Main Jr            5.1          .94          3          13
+north       NO     Margot Weber          4.5          .89          5          9
+central     CT     Ann Stephens          5.7          .94          5          13
+
+</code></pre>
+
+<hr />
+
+<pre><code class="language-shell">#打印所有名字以J开头的行
+grep '^J' datebook
+
+#打印所有以700结尾的行
+grep '700$' datebook
+
+#打印所有不包含834的行
+grep -v &quot;834&quot; datebook
+
+#打印所以包含一个大写字母，后跟4个小写字母，一个逗号，一个空格和一个大写字母的行
+grep '[A-Z][a-z]\{4\}\,[[:space:]][A-Z]' datebook
+
+#打印包含有Lincoln或lincoln（注意：grep不区分大小写）的行
+grep '[Ll]incoln' datebook
+
+# 去掉空行
+grep -v ^$
+</code></pre>
+
+<h4 id="uniq">uniq</h4>
+
+<p>uniq -c：统计相同行的个数，即每个单词的个数</p>
+
+<h4 id="sort">sort</h4>
+
+<p>sort -n -k 1 -r：按照第一列 -k 1 的数字 -n 逆序 -r 排序</p>
+
+<h4 id="head-tail">head/tail</h4>
+
+<p>head -10：取出前十行
+tail -10：取出尾十行</p>
+
+<h4 id="sed">sed</h4>
+
+<p>选项与参数：
+-n ：使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN 的数据一般都会被列出到终端上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。
+-e ：直接在命令列模式上进行 sed 的动作编辑；
+-f ：直接将 sed 的动作写在一个文件内， -f filename 则可以运行 filename 内的 sed 动作；
+-r ：sed 的动作支持的是延伸型正规表示法的语法。(默认是基础正规表示法语法)
+-i ：直接修改读取的文件内容，而不是输出到终端。
+sed命令功能
+p 打印
+d 删除行
+g 取出暂存缓冲区的内容，将其复制到模式空间，覆盖该处的原有内容
+s 用一个字符串替换另一个</p>
+
+<p>替换标志：
+g在行内进行全局替换
+p打印行
+w将行写入文件
+x交换暂存缓冲区与模式空间的内容
+y将字符转换为另一字符（不能对正则表达式使用y命令）</p>
+
+<pre><code>1.把Jon的名字改为Jonathan
+sed -n 's/Jon/Jonathan/p' datebook
+
+2.把头3行删除
+sed '1,3d' datebook
+
+3.打印第5~10行
+sed -n  '5,10p' datebook
+
+4.删除含有Lane的所有行
+sed '/Lane/d' datebook
+
+9.删除所有空行
+sed '/^ *$/d' datebook    # 如果空行中包含了有space和Tab键，则此命令也成立
+</code></pre>
+
+<h4 id="awk">awk</h4>
+
+<pre><code class="language-shell">awk '{print $1 $2}'
+
+$ var=&quot;get the length of me&quot;
+$ echo $var | awk '{printf(&quot;%d\n&quot;, match($0,&quot;the&quot;));}'
+5
+
+$ awk '/consists of/{ printf(&quot;%s:%d:%s\n&quot;,FILENAME, FNR, $0)}' text  #看到没？和grep的结果一样
+$ sed -n -e '/consists of/=;/consists of/p' text #同样可以打印行号
+</code></pre>
+
+<h4 id="expr">expr</h4>
+
+<p>expr的每个参数之间必须用空格分隔，特殊字符无需转义
+举例：expr &ldquo;$number&rdquo; + 0</p>
+
+<h4 id="toc_19">&amp;</h4>
+
+<p>放在启动参数后面表示设置此进程为后台进程</p>
+
+<h4 id="select">select</h4>
+
+<p>select var in worldlist
+do
+命令（或命令组）
+done
+举例：</p>
+
+<pre><code class="language-shell">#!/bin/bash
+#Scriptname:runit
+ps3=&quot;Select a program to execute:&quot;
+select program in `ls -F` pwd date
+do$program
+done
+</code></pre>
+
+<h4 id="shif">shif</h4>
+
+<p>将参量左移指定的次数，未加参数时表示左移一次，移动后，左端的参数被删除
+举例：</p>
+
+<pre><code class="language-shell">set joe mary tom sam
+shift
+echo $*
+#结果显示：mary tom sam
+</code></pre>
+
+<h2 id="规范">规范</h2>
+
+<blockquote>
+<p>#!/bin/bash 就可以直接./bash_script执行</p>
+</blockquote>
+
+<p>把bash手册输出为pdf文件
+man -t bash | ps2pdf - bash.pdf</p>
+
+<h2 id="范例">范例</h2>
+
+<h3 id="用awk过滤docker容器ip">用awk过滤docker容器ip</h3>
 
 <pre><code class="language-shell">#!/bin/bash
 #docker ps |awk '{if($2==&quot;hyperledger/fabric-kafka&quot;) print $1}'
@@ -367,6 +734,215 @@ docker ps |awk '{if($2==&quot;hyperledger/fabric-kafka&quot;){ print $1;cmd=&quo
 172.18.0.6
 172.18.0.5
 root@liu:~/work/go/src/github.com/hyperledger/fabric/examples/e2e_cli# 
+</code></pre>
+
+<h3 id="处理url地址">处理URL地址</h3>
+
+<pre><code class="language-shell">$ url=&quot;ftp://anonymous:ftp@mirror.lzu.edu.cn/software/scim-1.4.7.tar.gz&quot;
+
+#匹配URL地址，判断URL地址的有效性
+$ echo $url | grep &quot;ftp://[a-z]*:[a-z]*@[a-z\./-]*&quot;
+
+#截取服务器类型
+$ echo ${url%%:*}
+ftp
+$ echo $url | cut -d&quot;:&quot; -f 1
+ftp
+
+#截取域名
+$ tmp=${url##*@} ; echo ${tmp%%/*}
+mirror.lzu.edu.cn
+
+#截取路径
+$ tmp=${url##*@} ; echo ${tmp%/*}
+mirror.lzu.edu.cn/software
+
+#截取文件名
+$ basename $url
+scim-1.4.7.tar.gz
+$ echo ${url##*/}
+scim-1.4.7.tar.gz
+
+#截取文件类型（扩展名）
+$ echo $url | sed -e 's/.*[0-9].\(.*\)/\1/g'
+tar.gz
+
+</code></pre>
+
+<h3 id="查看进程">查看进程</h3>
+
+<pre><code class="language-shell">#查看指定程序名的进程ID
+$ sleep 100 &amp;
+$ pidof sleep
+#查看进程的内存映像
+$ cat /proc/9298/maps
+#打印 cpu 使用率最高的前 4 个程序
+$ ps -e -o &quot;%C %c&quot; | sort -u -k1 -r | head -5
+ 7.5 firefox-bin
+ 1.1 Xorg
+ 0.8 scim-panel-gtk
+ 0.2 scim-bridge
+
+#获取使用虚拟内存最大的 5 个进程：
+$ ps -e -o &quot;%z %c&quot; | sort -n -k1 -r | head -5
+349588 firefox-bin
+ 96612 xfce4-terminal
+ 88840 xfdesktop
+ 76332 gedit
+ 58920 scim-panel-gtk
+
+#系统所有进程之间都有“亲缘”关系，可以通过 pstree 查看这种关系
+$ pstree
+
+#用top动态查看进程信息
+$ top
+
+#确保特定程序只有一个副本在运行
+pidfile=/tmp/$0&quot;.pid&quot;
+if [ -f $pidfile ]; then
+       OLDPID=$(cat $pidfile)
+    ps -e -o &quot;%p&quot; | tr -d &quot; &quot; | grep -q &quot;^$OLDPID$&quot;
+    [ $? -eq 0 ] &amp;&amp; exit
+fi
+
+echo $$ &gt; $pidfile
+
+#... 代码主体
+
+#设置信号0的动作，当程序退出时触发该信号从而删除掉临时文件
+trap &quot;rm $pidfile&quot;      0
+
+#获取进程优先级
+$ ps -e -o &quot;%p %c %n&quot; | grep xfs
+ 5089 xfs               0
+
+#结束进程
+$ sleep 50 &amp;   #启动一个进程
+[1] 11347
+$ kill 11347   #结束进程
+
+#暂停某个进程
+$ sleep 50 &amp;
+[1] 11441
+$ jobs
+[1]+  Running                 sleep 50 &amp;
+$ kill -s SIGSTOP 11441   #这个等同于我们对一个前台进程执行CTRL+Z操作
+$ jobs
+[1]+  Stopped                 sleep 50
+$ kill -s SIGCONT 11441   #这个等同于之前我们使用bg %1操作让一个后台进程运行起来
+$ jobs
+[1]+  Running                 sleep 50 &amp;
+$ kill %1                  #在当前会话(session)下，也可以通过作业号控制进程
+$ jobs
+[1]+  Terminated              sleep 50
+
+#无名管道（pipe）
+$ ps -ef | grep init
+
+#有名管道（named pipe）
+$ mkfifo fifo_test    #通过mkfifo命令创建一个有名管道
+$ echo &quot;fewfefe&quot; &gt; fifo_test
+#试图往fifo_test文件中写入内容，但是被阻塞，要另开一个终端继续下面的操作
+$ cat fifo_test        #另开一个终端，记得，另开一个。试图读出fifo_test的内容
+fewfefe
+
+#使用 Shell 内置命令 fg 把作业 1 调到前台运行，然后按下 CTRL+Z 让该进程暂停
+$ fg %1
+sleep 50
+^Z
+[1]+  Stopped                 sleep 50
+
+#启动停止的进程并运行在后台
+$ bg %1
+[2]+ sleep 50 &amp;
+
+
+
+</code></pre>
+
+<h3 id="消费者模式">消费者模式</h3>
+
+<p>一种应用架构非常适合本地的多程序任务设计，如果结合 web cgi，那么也将适合远程控制的要求。引入 web cgi 的唯一改变是，要把控制程序 ./control.sh 放到 web 的 cgi 目录下，并对它作一些修改，以使它符合 CGI 的规范，这些规范包括文档输出格式的表示（在文件开头需要输出 content-tpye: text/html 以及一个空白行）和输入参数的获取 (web 输入参数都存放在 QUERY_STRING 环境变量里头）</p>
+
+<pre><code class="language-shell">$ cat app.sh
+#!/bin/bash
+
+FIFO=fifo_test
+while :;
+do
+    CI=`cat $FIFO`  #CI --&gt; Control Info
+    case $CI in
+        0) echo &quot;The CONTROL number is ZERO, do something ...&quot;
+            ;;
+        1) echo &quot;The CONTROL number is ONE, do something ...&quot;
+            ;;
+        *) echo &quot;The CONTROL number not recognized, do something else...&quot;
+            ;;
+    esac
+done
+
+$ cat control.sh
+#!/bin/bash
+
+FIFO=fifo_test
+CI=$1
+
+[ -z &quot;$CI&quot; ] &amp;&amp; echo &quot;the control info should not be empty&quot; &amp;&amp; exit
+
+echo $CI &gt; $FIFO
+
+#一个程序通过管道控制另外一个程序的工作
+$ chmod +x app.sh control.sh    #修改这两个程序的可执行权限，以便用户可以执行它们
+$ ./app.sh  #在一个终端启动这个应用程序，在通过./control.sh发送控制码以后查看输出
+The CONTROL number is ONE, do something ...    #发送1以后
+The CONTROL number is ZERO, do something ...    #发送0以后
+The CONTROL number not recognized, do something else...  #发送一个未知的控制码以后
+$ ./control.sh 1            #在另外一个终端，发送控制信息，控制应用程序的工作
+$ ./control.sh 0
+$ ./control.sh 4343
+
+
+#CGI 控制程序
+#!/bin/bash
+FIFO=./fifo_test
+CI=$QUERY_STRING
+
+[ -z &quot;$CI&quot; ] &amp;&amp; echo &quot;the control info should not be empty&quot; &amp;&amp; exit
+
+echo -e &quot;content-type: text/html\n\n&quot;
+echo $CI &gt; $FIFO
+
+#在实际使用时，请确保 control.sh 能够访问到 fifo_test 管道，并且有写权限，以便通过浏览器控制 app.sh
+&gt;&gt; &quot;http://ipaddress\_or\_dns/cgi-bin/control.sh?0&quot;
+#问号 ? 后面的内容即 QUERY_STRING，类似之前的 $1 
+
+</code></pre>
+
+<h3 id="网络">网络</h3>
+
+<pre><code class="language-shell">#通过dhclient获取IP地址
+$ dhclient ethN
+
+#静态配置IP地址
+$ ifconfig eth0 ip_address on
+$ route add deafult gw gw_ip_address
+
+
+
+
+</code></pre>
+
+<h3 id="调试shell">调试shell</h3>
+
+<pre><code class="language-shell">
+sh -n script.sh #查看语法错误
+
+sh -x script.sh #查看调用栈
+
+#正确使用 source 和 .
+仅使用 source 和 . 来执行你的环境配置等功能，建议不要用于其它用途。 在Shell中使用脚本时，使用 bash your_script.sh 而不是 source your_script.sh 或 . your_script.sh。
+当使用 bash 的时候，当前的Shell会创建一个新的子进程执行你的脚本；当使用 source 和 . 时，当前的Shell会直接解释执行 your_script.sh 中的代码。如果 your_script.sh 中包含了类似 exit 0 这样的代码，使用source 和 . 执行会导致当前Shell意外地退出。
+
 </code></pre>
 
 <h2 id="版本控制">版本控制</h2>
@@ -394,6 +970,19 @@ root@liu:~/work/go/src/github.com/hyperledger/fabric/examples/e2e_cli#
           
           <div class="row">
             <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://astr0mfly.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://astr0mfly.github.io/tags/shell" role="button">shell </a></li>
+      
+    
+  </div>
+</div>
+              </div>
             
             </div>
             
@@ -466,12 +1055,806 @@ root@liu:~/work/go/src/github.com/hyperledger/fabric/examples/e2e_cli#
 								
 
 										<li class="nav-item">
+						 					<a class="nav-link" href="#shell">
+												 SHELL
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%af%ad%e6%b3%95">
+												 语法
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%8f%98%e9%87%8f">
+												 变量
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%95%b0%e7%bb%84">
+												 数组
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%be%93%e5%85%a5%e8%be%93%e5%87%ba">
+												 输入输出
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%9d%a1%e4%bb%b6%e6%b5%8b%e8%af%95">
+												 条件测试
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%8e%a7%e5%88%b6%e8%af%ad%e5%8f%a5">
+												 控制语句
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%87%bd%e6%95%b0">
+												 函数
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%86%85%e9%83%a8%e5%85%b3%e9%94%ae%e5%ad%97">
+												 内部关键字
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%93%8d%e4%bd%9c%e7%ac%a6">
+												 操作符
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%ae%97%e6%9c%af%e8%bf%90%e7%ae%97">
+												 算术运算
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#seq">
+												 seq
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#grep">
+												 grep
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#uniq">
+												 uniq
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#sort">
+												 sort
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#head-tail">
+												 head/tail
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#sed">
+												 sed
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#awk">
+												 awk
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#expr">
+												 expr
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#toc_19">
+												 &amp;
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#select">
+												 select
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#shif">
+												 shif
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%a7%84%e8%8c%83">
+												 规范
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%8c%83%e4%be%8b">
+												 范例
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
 						 					<a class="nav-link" href="#%e7%94%a8awk%e8%bf%87%e6%bb%a4docker%e5%ae%b9%e5%99%a8ip">
 												 用awk过滤docker容器ip
 											</a>
 										</li>
 						 
 								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%a4%84%e7%90%86url%e5%9c%b0%e5%9d%80">
+												 处理URL地址
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%9f%a5%e7%9c%8b%e8%bf%9b%e7%a8%8b">
+												 查看进程
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%b6%88%e8%b4%b9%e8%80%85%e6%a8%a1%e5%bc%8f">
+												 消费者模式
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%bd%91%e7%bb%9c">
+												 网络
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%b0%83%e8%af%95shell">
+												 调试shell
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
 								
 									</ul>
 								
